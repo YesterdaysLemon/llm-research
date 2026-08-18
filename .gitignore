@@ -1,0 +1,32 @@
+# Local environments and secrets
+.env
+.env.*
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Models, checkpoints, and large generated artifacts
+*.gguf
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+checkpoints/
+models/
+artifacts/
+
+# Raw or private data stays local by default
+data/raw/
+data/private/
