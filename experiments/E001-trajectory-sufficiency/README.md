@@ -4,11 +4,13 @@
 
 - Hypothesis: H-002
 - Date registered: 2026-08-18
-- Status: P0 pilot complete; full E001 hypothesis remains open
+- Status: P0 pilot complete; P1 stopped at failed capability gate; full H-002 remains open
 - Primary host: Ryzen 7 7700, 64 GB RAM, RTX 4060 8 GB
 - Reduced host: CPU-only or Apple M2 with 16 GB unified memory
 
 The completed [P0 report](report.md) and [raw metrics](results/pilot.json) are the current evidence. P0 found a consistent shallow-transfer signal, not general compositional transfer.
+
+The prospectively registered P1 development phase is documented in [`preregister-p1.md`](preregister-p1.md). It stopped before confirmation after every student candidate failed the 80% in-distribution capability gate; see [`report-p1-development.md`](report-p1-development.md). Its confirmatory pair set was never evaluated.
 
 ## P0 implementation
 

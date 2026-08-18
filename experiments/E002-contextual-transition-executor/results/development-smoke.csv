@@ -1,0 +1,4 @@
+model_id,model_type,stored_parameters,active_parameters_per_step,runs,id_accuracy_mean,id_accuracy_std,evaluation_accuracy_mean,evaluation_accuracy_std,train_seconds_mean,train_seconds_std
+gru-32,gru,9647,6336,1,0.4978,0.0,0.0746,0.0,31.169408599991584,0.0
+transformer-2x256,transformer,1082927,1082927,1,0.6054,0.0,0.0862,0.0,27.669592300022487,0.0
+transition-table,transition_table,17672,2209,1,1.0,0.0,1.0,0.0,26.116241299983812,0.0

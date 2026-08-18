@@ -1,0 +1,533 @@
+{
+  "experiment_id": "E002-development-table-budget",
+  "phase": "development",
+  "timestamp_utc": "2026-08-18T22:27:14.641591+00:00",
+  "config_path": "experiments\\E002-contextual-transition-executor\\config\\development-table-budget.json",
+  "config_sha256": "fd62d3f1b8c6aa8fb24ca168e334915c11e1de6f6bf66610db90db8ebcbf07b5",
+  "git_commit": "04735fe0525272477dfac54ce8127de25295954b",
+  "git_status_porcelain": "M NEXT.md\n M hypothesis.md\n?? experiments/E001-trajectory-sufficiency/config/p1-dev-arch-4x128.json\n?? experiments/E001-trajectory-sufficiency/config/p1-dev-arch-4x256.json\n?? experiments/E001-trajectory-sufficiency/config/p1-dev-budget.json\n?? experiments/E001-trajectory-sufficiency/preregister-p1.md\n?? experiments/E001-trajectory-sufficiency/report-p1-development.md\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x128.csv\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x128.json\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x256.csv\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x256.json\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-budget.csv\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-budget.json\n?? experiments/E001-trajectory-sufficiency/src/run_p1.py\n?? experiments/E001-trajectory-sufficiency/tests/test_p1.py\n?? experiments/E002-contextual-transition-executor/",
+  "environment": {
+    "python": "3.12.13 (main, Apr 14 2026, 14:31:26) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060",
+    "gpu_power_draw_w": "[N/A]"
+  },
+  "relation_definitions": [
+    {
+      "relation": 0,
+      "a": 9,
+      "b": 43
+    },
+    {
+      "relation": 1,
+      "a": 32,
+      "b": 37
+    },
+    {
+      "relation": 2,
+      "a": 29,
+      "b": 9
+    },
+    {
+      "relation": 3,
+      "a": 5,
+      "b": 22
+    },
+    {
+      "relation": 4,
+      "a": 11,
+      "b": 25
+    },
+    {
+      "relation": 5,
+      "a": 19,
+      "b": 40
+    },
+    {
+      "relation": 6,
+      "a": 36,
+      "b": 1
+    },
+    {
+      "relation": 7,
+      "a": 33,
+      "b": 20
+    }
+  ],
+  "runs": [
+    {
+      "model_id": "table-e5",
+      "model_type": "transition_table",
+      "seed": 401,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.050125030708312986,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.06918326263427735,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 1.837237700005062,
+      "optimizer_steps": 395,
+      "example_exposures": 100000,
+      "last_batch_loss": 0.04156170040369034,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e10",
+      "model_type": "transition_table",
+      "seed": 401,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.01489008264541626,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.02056171064376831,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 3.138370100001339,
+      "optimizer_steps": 790,
+      "example_exposures": 200000,
+      "last_batch_loss": 0.017997656017541885,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e20",
+      "model_type": "transition_table",
+      "seed": 401,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.004443049573898315,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.006134840321540833,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 6.332067899988033,
+      "optimizer_steps": 1580,
+      "example_exposures": 400000,
+      "last_batch_loss": 0.004294572398066521,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e40",
+      "model_type": "transition_table",
+      "seed": 401,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.0011256914615631103,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.0015544176667928696,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 12.840534000017215,
+      "optimizer_steps": 3160,
+      "example_exposures": 800000,
+      "last_batch_loss": 0.0010889845434576273,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e80",
+      "model_type": "transition_table",
+      "seed": 401,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.00017331419885158539,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.00023932925313711165,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 25.914608700026292,
+      "optimizer_steps": 6320,
+      "example_exposures": 1600000,
+      "last_batch_loss": 0.00017451819439884275,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e5",
+      "model_type": "transition_table",
+      "seed": 402,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.04984728679656982,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.0686586072921753,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 1.5928614999866113,
+      "optimizer_steps": 395,
+      "example_exposures": 100000,
+      "last_batch_loss": 0.05299549549818039,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e10",
+      "model_type": "transition_table",
+      "seed": 402,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.014837186527252197,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.020440383005142213,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 3.237326300004497,
+      "optimizer_steps": 790,
+      "example_exposures": 200000,
+      "last_batch_loss": 0.013985967263579369,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e20",
+      "model_type": "transition_table",
+      "seed": 402,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.004429501914978027,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.0061043545007705684,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 6.502533799997764,
+      "optimizer_steps": 1580,
+      "example_exposures": 400000,
+      "last_batch_loss": 0.004794351290911436,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e40",
+      "model_type": "transition_table",
+      "seed": 402,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.0011226048678159713,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.0015470459818840026,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 12.90656120001222,
+      "optimizer_steps": 3160,
+      "example_exposures": 800000,
+      "last_batch_loss": 0.001062978757545352,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e80",
+      "model_type": "transition_table",
+      "seed": 402,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.0001729099165648222,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.0002382725790143013,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 26.581621899997117,
+      "optimizer_steps": 6320,
+      "example_exposures": 1600000,
+      "last_batch_loss": 0.00015456585970241576,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e5",
+      "model_type": "transition_table",
+      "seed": 403,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.04994903469085693,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.0687671682357788,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 1.744482500012964,
+      "optimizer_steps": 395,
+      "example_exposures": 100000,
+      "last_batch_loss": 0.05204879492521286,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e10",
+      "model_type": "transition_table",
+      "seed": 403,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.014855556511878967,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.02045335545539856,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 3.4647899999981746,
+      "optimizer_steps": 790,
+      "example_exposures": 200000,
+      "last_batch_loss": 0.01551264338195324,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e20",
+      "model_type": "transition_table",
+      "seed": 403,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.004432358801364899,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.0061035192251205446,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 6.634507199982181,
+      "optimizer_steps": 1580,
+      "example_exposures": 400000,
+      "last_batch_loss": 0.004196309484541416,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e40",
+      "model_type": "transition_table",
+      "seed": 403,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.0011239441931247712,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.001547664624452591,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 13.303185900003882,
+      "optimizer_steps": 3160,
+      "example_exposures": 800000,
+      "last_batch_loss": 0.0011733394348993897,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-e80",
+      "model_type": "transition_table",
+      "seed": 403,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 1.0,
+      "id_cross_entropy": 0.00017306926771998405,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "evaluation_accuracy": 1.0,
+      "evaluation_cross_entropy": 0.0002383305974304676,
+      "evaluation_accuracy_by_depth": {
+        "2": 1.0,
+        "3": 1.0,
+        "4": 1.0
+      },
+      "train_seconds": 27.224770199973136,
+      "optimizer_steps": 6320,
+      "example_exposures": 1600000,
+      "last_batch_loss": 0.00016724082524888217,
+      "peak_gpu_memory_bytes": 26974720
+    }
+  ],
+  "summary": [
+    {
+      "model_id": "table-e10",
+      "model_type": "transition_table",
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "runs": 3,
+      "id_accuracy_mean": 1.0,
+      "id_accuracy_std": 0.0,
+      "evaluation_accuracy_mean": 1.0,
+      "evaluation_accuracy_std": 0.0,
+      "train_seconds_mean": 3.28016213333467,
+      "train_seconds_std": 0.16737284499375588
+    },
+    {
+      "model_id": "table-e20",
+      "model_type": "transition_table",
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "runs": 3,
+      "id_accuracy_mean": 1.0,
+      "id_accuracy_std": 0.0,
+      "evaluation_accuracy_mean": 1.0,
+      "evaluation_accuracy_std": 0.0,
+      "train_seconds_mean": 6.489702966655993,
+      "train_seconds_std": 0.15162735656345408
+    },
+    {
+      "model_id": "table-e40",
+      "model_type": "transition_table",
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "runs": 3,
+      "id_accuracy_mean": 1.0,
+      "id_accuracy_std": 0.0,
+      "evaluation_accuracy_mean": 1.0,
+      "evaluation_accuracy_std": 0.0,
+      "train_seconds_mean": 13.016760366677772,
+      "train_seconds_std": 0.2502390604814823
+    },
+    {
+      "model_id": "table-e5",
+      "model_type": "transition_table",
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "runs": 3,
+      "id_accuracy_mean": 1.0,
+      "id_accuracy_std": 0.0,
+      "evaluation_accuracy_mean": 1.0,
+      "evaluation_accuracy_std": 0.0,
+      "train_seconds_mean": 1.7248605666682124,
+      "train_seconds_std": 0.12336408304285268
+    },
+    {
+      "model_id": "table-e80",
+      "model_type": "transition_table",
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "runs": 3,
+      "id_accuracy_mean": 1.0,
+      "id_accuracy_std": 0.0,
+      "evaluation_accuracy_mean": 1.0,
+      "evaluation_accuracy_std": 0.0,
+      "train_seconds_mean": 26.57366693333218,
+      "train_seconds_std": 0.6551169743692504
+    }
+  ]
+}

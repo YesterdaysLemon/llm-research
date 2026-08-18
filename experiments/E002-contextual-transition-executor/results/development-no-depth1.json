@@ -1,0 +1,154 @@
+{
+  "experiment_id": "E002-development-no-depth1",
+  "phase": "development-ablation",
+  "timestamp_utc": "2026-08-18T22:27:38.053160+00:00",
+  "config_path": "experiments\\E002-contextual-transition-executor\\config\\development-no-depth1.json",
+  "config_sha256": "c85c2ca584884c84312e43dd514968451c49c20ec73f9c3901d359da33affaf5",
+  "git_commit": "04735fe0525272477dfac54ce8127de25295954b",
+  "git_status_porcelain": "M NEXT.md\n M hypothesis.md\n?? experiments/E001-trajectory-sufficiency/config/p1-dev-arch-4x128.json\n?? experiments/E001-trajectory-sufficiency/config/p1-dev-arch-4x256.json\n?? experiments/E001-trajectory-sufficiency/config/p1-dev-budget.json\n?? experiments/E001-trajectory-sufficiency/preregister-p1.md\n?? experiments/E001-trajectory-sufficiency/report-p1-development.md\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x128.csv\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x128.json\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x256.csv\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x256.json\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-budget.csv\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-budget.json\n?? experiments/E001-trajectory-sufficiency/src/run_p1.py\n?? experiments/E001-trajectory-sufficiency/tests/test_p1.py\n?? experiments/E002-contextual-transition-executor/",
+  "environment": {
+    "python": "3.12.13 (main, Apr 14 2026, 14:31:26) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060",
+    "gpu_power_draw_w": "[N/A]"
+  },
+  "relation_definitions": [
+    {
+      "relation": 0,
+      "a": 9,
+      "b": 43
+    },
+    {
+      "relation": 1,
+      "a": 32,
+      "b": 37
+    },
+    {
+      "relation": 2,
+      "a": 29,
+      "b": 9
+    },
+    {
+      "relation": 3,
+      "a": 5,
+      "b": 22
+    },
+    {
+      "relation": 4,
+      "a": 11,
+      "b": 25
+    },
+    {
+      "relation": 5,
+      "a": 19,
+      "b": 40
+    },
+    {
+      "relation": 6,
+      "a": 36,
+      "b": 1
+    },
+    {
+      "relation": 7,
+      "a": 33,
+      "b": 20
+    }
+  ],
+  "runs": [
+    {
+      "model_id": "table-no-depth1-e5",
+      "model_type": "transition_table",
+      "seed": 401,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 0.1294,
+      "id_cross_entropy": 3.642287677001953,
+      "id_accuracy_by_depth": {
+        "2": 0.27925966249319545,
+        "3": 0.043504171632896306,
+        "4": 0.04107744107744108
+      },
+      "evaluation_accuracy": 0.0632,
+      "evaluation_cross_entropy": 3.776370129394531,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.1806640625,
+        "3": 0.03697183098591549,
+        "4": 0.02992957746478873
+      },
+      "train_seconds": 1.8695579000050202,
+      "optimizer_steps": 395,
+      "example_exposures": 100000,
+      "last_batch_loss": 3.661506175994873,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-no-depth1-e5",
+      "model_type": "transition_table",
+      "seed": 402,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 0.1556,
+      "id_cross_entropy": 3.582312274169922,
+      "id_accuracy_by_depth": {
+        "2": 0.30321175830157865,
+        "3": 0.09058402860548272,
+        "4": 0.046464646464646465
+      },
+      "evaluation_accuracy": 0.073,
+      "evaluation_cross_entropy": 3.7369677307128906,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.181640625,
+        "3": 0.058098591549295774,
+        "4": 0.035211267605633804
+      },
+      "train_seconds": 1.5893742999760434,
+      "optimizer_steps": 395,
+      "example_exposures": 100000,
+      "last_batch_loss": 3.610624313354492,
+      "peak_gpu_memory_bytes": 26974720
+    },
+    {
+      "model_id": "table-no-depth1-e5",
+      "model_type": "transition_table",
+      "seed": 403,
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "id_accuracy": 0.1674,
+      "id_cross_entropy": 3.5021951171875,
+      "id_accuracy_by_depth": {
+        "2": 0.2874251497005988,
+        "3": 0.12872467222884387,
+        "4": 0.06262626262626263
+      },
+      "evaluation_accuracy": 0.116,
+      "evaluation_cross_entropy": 3.6489362548828126,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.220703125,
+        "3": 0.12030516431924883,
+        "4": 0.06558098591549295
+      },
+      "train_seconds": 1.6723476000188384,
+      "optimizer_steps": 395,
+      "example_exposures": 100000,
+      "last_batch_loss": 3.572956085205078,
+      "peak_gpu_memory_bytes": 26974720
+    }
+  ],
+  "summary": [
+    {
+      "model_id": "table-no-depth1-e5",
+      "model_type": "transition_table",
+      "stored_parameters": 17672,
+      "active_parameters_per_step": 2209,
+      "runs": 3,
+      "id_accuracy_mean": 0.1508,
+      "id_accuracy_std": 0.019449421585229727,
+      "evaluation_accuracy_mean": 0.08406666666666666,
+      "evaluation_accuracy_std": 0.028085820859169018,
+      "train_seconds_mean": 1.7104265999999673,
+      "train_seconds_std": 0.14392088142785786
+    }
+  ]
+}

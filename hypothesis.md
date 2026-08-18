@@ -202,15 +202,36 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 **Kill condition.** Reject the 8×/2× target if no combined model meets the frozen capability floor on two model families, or if the energy gain disappears when measured on supported dense or structured-sparse kernels.
 
+## H-008 — Context-selected parameter reuse beats trajectory supervision
+
+**Status:** proposed; motivated prospectively by the failed E001-P1 capability gate
+
+**Origin:** capability per parameter, context-aware parameter definitions, and the depth-specific E001 failure
+
+**Confidence:** medium on finite-state composition; low beyond structured domains
+
+**Claim.** On compositional transition tasks, a compact model that selects a relation-specific operator from context and reuses the same execution rule at every step will achieve higher held-out-composition accuracy per stored and active parameter than a generic Transformer student, even when the Transformer receives teacher logits or relational trajectories.
+
+**Why it might win.** The architecture factors knowledge into transition operators and an iteration rule instead of asking a fixed-depth encoder to rediscover sequential execution. Only one context-selected operator is active per step, so stored parameters, active parameters, and repeated computation become distinct quantities.
+
+**Strong rival.** The executor may win only because its structure nearly specifies the synthetic task. It may fail on ambiguous natural language, learned state spaces, or tasks whose useful decomposition is unknown. A lookup transition table can also hide poor scaling in the number of states.
+
+**Minimum test.** Compare labels, logits, and relational supervision for a generic Transformer and a weight-tied transition executor on affine and bitwise permutation families, withheld ordered pairs, multiple depths, data-size curves, and a no-single-step-supervision ablation. Match examples and report stored parameters, per-step active parameters, tensor bytes, wall time, and accuracy separately.
+
+**Primary measure.** Held-out composition accuracy per stored parameter, with absolute accuracy and depth-four accuracy as hard floors.
+
+**Kill condition.** Reject the general efficiency interpretation if the executor advantage disappears on the second task family, requires direct labels for every primitive transition, or is erased by a comparably sized generic recurrent baseline.
+
 ## Priority order
 
-1. **H-002** — tests whether activation trajectories contain transferable structure rather than coordinates.
-2. **H-007** — turns that mechanism into a capability-per-parameter and per-joule target.
-3. **H-006** — establishes honest energy measurement and a strong systems baseline.
-4. **H-003** — asks whether durable learning requires weight change.
-5. **H-001** — converts the sleep analogy into a bounded algorithmic test.
-6. **H-005** — tests the ecology claim after a reliable task harness exists.
-7. **H-004** — most speculative; run only with strong controls.
+1. **H-008** — tests whether architectural parameter reuse dominates trajectory supervision on the current mechanism task.
+2. **H-002** — tests whether activation trajectories contain transferable structure rather than coordinates.
+3. **H-007** — turns those mechanisms into a capability-per-parameter and per-joule target.
+4. **H-006** — establishes honest energy measurement and a strong systems baseline.
+5. **H-003** — asks whether durable learning requires weight change.
+6. **H-001** — converts the sleep analogy into a bounded algorithmic test.
+7. **H-005** — tests the ecology claim after a reliable task harness exists.
+8. **H-004** — most speculative; run only with strong controls.
 
 ## Open decisions
 

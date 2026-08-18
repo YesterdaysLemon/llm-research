@@ -10,17 +10,11 @@ The gain mostly appeared at composition depth two and weakened sharply with dept
 
 Read the [pilot report](experiments/E001-trajectory-sufficiency/report.md) before interpreting or extending the result.
 
-## Next decision
+## Active decision
 
-Run E001-P1 only after preregistering controls that distinguish teacher information from a generic relational regularizer:
+E001-P1 stopped before confirmation because every registered student missed its capability gate. Read the [development report](experiments/E001-trajectory-sufficiency/report-p1-development.md).
 
-1. matched-dimensional random targets;
-2. relations derived from an untrained teacher;
-3. student self-relations without teacher information;
-4. additional labeled examples matched to the trajectory target's stored bytes;
-5. a development-only auxiliary-weight sweep fixed before the comparison.
-
-Do not move to billion-parameter models until a relational condition improves depth-three and depth-four held-out composition and beats these controls.
+The next bounded experiment is E002: compare the generic Transformer with a compact context-selected transition executor. The question is whether architectural parameter reuse produces compositional capability more efficiently than adding teacher trajectories to an unsuitable student.
 
 ## Start-of-session checklist
 

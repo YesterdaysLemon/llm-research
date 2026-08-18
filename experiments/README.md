@@ -63,6 +63,10 @@ Record environment, commit, complete run table, failures, and caveats. Link raw 
 
 Its first pilot is complete. Read the [E001-P0 report](E001-trajectory-sufficiency/report.md) and [raw result](E001-trajectory-sufficiency/results/pilot.json).
 
+E001-P1 then stopped before confirmation because every registered student missed its learnability gate. The [development report](E001-trajectory-sufficiency/report-p1-development.md) records that failure without treating floor effects as a trajectory test.
+
+[E002 — Context-selected transition execution](E002-contextual-transition-executor/README.md) follows the resulting architectural hypothesis: separate stored parameters from the context-selected operator applied at each composition step. Its [prospective protocol](E002-contextual-transition-executor/preregister.md) freezes the confirmatory comparison.
+
 ## Working loop
 
 Use [WORKFLOW.md](WORKFLOW.md) for every experiment. The short version is:
