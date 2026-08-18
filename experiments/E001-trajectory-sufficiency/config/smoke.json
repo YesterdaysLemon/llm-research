@@ -1,0 +1,48 @@
+{
+  "experiment_id": "E001-P0-smoke",
+  "data_seed": 1729,
+  "teacher_seed": 101,
+  "student_seeds": [11],
+  "conditions": ["labels", "logits", "relational", "shuffled"],
+  "data": {
+    "num_entities": 23,
+    "num_relations": 4,
+    "teacher_depths": [1, 2, 3, 4],
+    "student_depths": [2, 3, 4],
+    "id_depths": [2, 3, 4],
+    "ood_depths": [2, 3, 4],
+    "heldout_pairs": [[0, 1], [2, 3]],
+    "teacher_train_examples": 20000,
+    "student_train_examples": 4000,
+    "id_test_examples": 2000,
+    "ood_test_examples": 2000
+  },
+  "teacher": {
+    "d_model": 128,
+    "n_heads": 4,
+    "n_layers": 4,
+    "d_ff": 512,
+    "dropout": 0.0,
+    "epochs": 10,
+    "learning_rate": 0.001
+  },
+  "student": {
+    "d_model": 128,
+    "n_heads": 4,
+    "n_layers": 2,
+    "d_ff": 256,
+    "dropout": 0.0,
+    "epochs": 10,
+    "learning_rate": 0.001
+  },
+  "training": {
+    "batch_size": 256,
+    "weight_decay": 0.01,
+    "temperature": 2.0,
+    "label_weight": 0.5,
+    "logit_weight": 0.5,
+    "auxiliary_weight": 1.0,
+    "gradient_clip": 1.0,
+    "num_workers": 0
+  }
+}

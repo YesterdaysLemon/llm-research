@@ -15,6 +15,10 @@ These are testable descendants of the original seed ideas. A failed hypothesis i
 - Report absolute scores, uncertainty intervals, wall time, peak memory, and measured or estimated energy.
 - Do not call a representation causal unless an intervention changes the predicted behavior.
 
+## Project objective
+
+The primary optimization target is capability per parameter and per joule. Continual learning and model ecologies are secondary. Theory of mind supplies hypotheses and experimental distinctions; it is not evidence that current systems are conscious.
+
 ## H-001 — Interference-aware consolidation
 
 **Status:** proposed
@@ -43,29 +47,34 @@ These are testable descendants of the original seed ideas. A failed hypothesis i
 
 ## H-002 — Relational trajectory distillation
 
-**Status:** proposed
+**Status:** proposed; E001-P0 pilot is suggestive but does not establish the claim
 
 **Origin:** learning emergent behavior from activations
 
 **Confidence:** medium-low
 
-**Claim.** At fixed student size, data, and training compute, a mixed objective that transfers teacher outputs plus relational structure among selected hidden states will improve held-out compositional generalization more than output-only distillation.
+**Claim.** At fixed student size, data, and training compute, a mixed objective that transfers teacher outputs plus basis-invariant relational structure across hidden-state trajectories will improve held-out compositional generalization more than output-only or pointwise hidden-state distillation.
 
 **Why it might win.** Internal-representation and attention-relation distillation have improved compressed language models ([Aguilar et al., 2019](https://arxiv.org/abs/1910.03723); [Wang et al., 2020](https://arxiv.org/abs/2002.10957)). Relations among states may survive arbitrary basis differences better than pointwise activation matching.
 
-**Strong rival.** Student and teacher can implement different valid algorithms. Hidden-state constraints may waste capacity, and closer teacher matching need not improve generalization ([Stanton et al., 2021](https://arxiv.org/abs/2106.05945)).
+**Strong rival.** The trajectory may only be meaningful when interpreted by the teacher's weights. Student and teacher can implement different valid algorithms, hidden-state constraints may waste capacity, and closer teacher matching need not improve generalization ([Stanton et al., 2021](https://arxiv.org/abs/2106.05945)).
 
 **Minimum test.**
 
 1. Use a teacher at least twice the student's parameter count.
-2. Build output-only, pointwise-hidden, relational-hidden, and mixed-loss students from the same initialization.
+2. Build output-only, pointwise-hidden, relational-trajectory, and mixed-loss students from the same initialization.
 3. Match prompts, tokens, optimizer steps, and trainable parameters.
 4. Evaluate both in-distribution imitation and held-out task compositions.
-5. Intervene on the best-correlated hidden relation; do not rely on a probe alone.
+5. Add shuffled-trajectory, random-projection, and orthogonal-basis controls.
+6. Intervene on the best-correlated hidden relation; do not rely on a probe alone.
 
 **Primary measure.** Held-out accuracy per trainable parameter and training joule.
 
 **Kill condition.** Reject the claim if the mixed objective fails to beat output-only distillation on held-out compositions across two task families, or if gains vanish under matched compute.
+
+**Coordinate-artifact condition.** Reject the geometric interpretation if the method requires the teacher's original coordinate basis, cannot distinguish real from example-shuffled trajectories, or provides no gain beyond an equally sized random auxiliary target.
+
+**Pilot evidence.** In E001-P0, a relational Gram-matrix objective beat labels, logits, pointwise matching, and example-shuffled trajectories across three seeds on held-out ordered relation pairs. Mean held-out accuracy was 8.77% versus 4.23% for logits and 3.88% for shuffled trajectories. However, the advantage was concentrated in shallow compositions and depth-four performance remained near chance. This supports a weaker claim that relational trajectories can transfer some local structure; it does not yet support transfer of a general composition algorithm. See the [report](experiments/E001-trajectory-sufficiency/report.md).
 
 ## H-003 — Hybrid memory beats weights that “never stop growing”
 
@@ -167,20 +176,45 @@ These are testable descendants of the original seed ideas. A failed hypothesis i
 
 **Kill condition.** Reject the routing claim if it cannot match large-model quality with lower total energy after router and retry costs.
 
+## H-007 — Tail-preserving multiplicative compression
+
+**Status:** proposed
+
+**Origin:** capability per parameter and the suspicion of large avoidable redundancy
+
+**Confidence:** medium for one order of storage reduction; low for multiple orders
+
+**Claim.** A compression stack combining low-bit weights, learned structured sparsity, and trajectory-aware distillation can reduce stored model bytes by at least 8× and measured inference energy by at least 2× while preserving a predeclared broad capability floor better than ordinary output distillation at the same final size.
+
+**Why it might win.** Quantization, pruning, and distillation attack different redundancies and can have complementary effects ([Movva et al., 2022](https://arxiv.org/abs/2208.09684)). Relational trajectory targets may protect rare distinctions that magnitude-based pruning or logits alone discard.
+
+**Strong rival.** The easy benchmark mass is compressible but the difficult tail is capacity-bound. Unstructured sparsity may save bytes without saving energy, and the trajectory objective may only rearrange which capabilities are lost.
+
+**Minimum test.**
+
+1. Freeze a baseline teacher, broad evaluation suite, and difficult-tail subset.
+2. Measure FP16, eight-bit, four-bit, structured-pruned, distilled, and combined variants.
+3. Compare output-only and relational-trajectory distillation at the same student architecture and byte budget.
+4. Measure model bytes, active parameters, wall time, peak memory, and joules separately.
+5. Include calibration, rare compositions, corrupted inputs, and one continual-learning probe.
+
+**Primary measure.** Hypervolume of the capability-versus-bytes-versus-joules Pareto frontier subject to a hard per-task capability floor.
+
+**Kill condition.** Reject the 8×/2× target if no combined model meets the frozen capability floor on two model families, or if the energy gain disappears when measured on supported dense or structured-sparse kernels.
+
 ## Priority order
 
-1. **H-003** — cheapest conceptual discriminator: does durable learning need weight change?
-2. **H-001** — converts the sleep analogy into a bounded algorithmic test.
-3. **H-002** — closest to the original activation-distillation idea.
-4. **H-006** — establishes honest energy measurement early.
-5. **H-005** — tests the ecology claim after a reliable task harness exists.
-6. **H-004** — most speculative; run only with strong controls.
+1. **H-002** — tests whether activation trajectories contain transferable structure rather than coordinates.
+2. **H-007** — turns that mechanism into a capability-per-parameter and per-joule target.
+3. **H-006** — establishes honest energy measurement and a strong systems baseline.
+4. **H-003** — asks whether durable learning requires weight change.
+5. **H-001** — converts the sleep analogy into a bounded algorithmic test.
+6. **H-005** — tests the ecology claim after a reliable task harness exists.
+7. **H-004** — most speculative; run only with strong controls.
 
-## Questions that should change this ledger
+## Open decisions
 
-- Is the project's main optimization target continual adaptation, energy, capability per parameter, or a theory of mind?
-- Is “consciousness” meant as an engineering mechanism, a phenomenon to detect, or an ethical concern?
-- What kinds of experience may the model learn from: raw conversation, explicit approval, environmental reward, or curated datasets?
-- Which properties must remain stable while the system learns: factual reliability, personality, safety policy, skills, or all of them?
-- What result would make us abandon the idea that evolving representation geometry is central?
-- Are local experiments constrained to a particular GPU, RAM budget, operating system, or maximum run time?
+- Define the first frozen broad-capability suite and its difficult-tail subset.
+- Decide how much average-score gain may compensate for a loss on one rare task; the default should be “none” until justified.
+- Choose direct wall-power measurement or hardware telemetry for the M2 and RTX 4060 hosts.
+- Decide whether the first large-model replication uses same-family teacher/student architectures or deliberately different ones.

@@ -1,12 +1,20 @@
 # Wobbly Intelligence
 
-An early-stage research notebook about learning systems that live, adapt, forget, consolidate, cooperate, and consume energy.
+An early-stage research notebook about efficient learning systems that compress, adapt, forget, consolidate, cooperate, and consume energy.
 
 The working question is not simply whether brains and language models are alike. It is:
 
 > Which functions of biological and collective intelligence survive translation into testable, useful algorithms?
 
 This repository begins with intuitions spanning cognitive science, neurophysiology, computer science, machine learning, and philosophy of mind. Those intuitions are starting points, not findings.
+
+## Priority order
+
+1. **Energy efficiency and capability per parameter**
+2. **Continual learning and ecologies of models**
+3. **Theory of mind as experimental motivation and an intuition pump**
+
+The project does not presently treat machine consciousness as an engineering claim or near-term ethical finding.
 
 ## Current research threads
 
@@ -22,10 +30,15 @@ This repository begins with intuitions spanning cognitive science, neurophysiolo
 
 ## Start here
 
+- [NEXT](NEXT.md) is the current research-session entry point.
 - [Original seed ideas](notes/seed-ideas.md) preserves the initial note.
+- [Research priorities](notes/2026-08-18-priorities.md) records the first project decisions.
 - [Landscape review](research/landscape.md) pressure-tests the note against research.
+- [Compression frontier](research/compression-frontier.md) maps the strongest efficiency case and its failure modes.
 - [Hypothesis ledger](hypothesis.md) turns the strongest ideas and counterideas into falsifiable proposals.
 - [Experiments](experiments/README.md) defines how tests should be registered and reported.
+- [Experiment workflow](experiments/WORKFLOW.md) defines the repeatable research loop.
+- [E001-P0 report](experiments/E001-trajectory-sufficiency/report.md) is the first completed pilot.
 
 ## Epistemic rules
 
@@ -51,19 +64,30 @@ The project will:
 
     .
     ├── README.md                 Project map and research norms
+    ├── NEXT.md                   Current decision and next bounded work
     ├── hypothesis.md             Falsifiable hypothesis ledger
     ├── notes/
-    │   └── seed-ideas.md         Preserved raw thinking
+    │   ├── seed-ideas.md         Preserved raw thinking
+    │   └── 2026-08-18-priorities.md
     ├── research/
-    │   └── landscape.md          Evidence, counterevidence, and reformulations
+    │   ├── landscape.md          Broad evidence and counterevidence
+    │   └── compression-frontier.md
     └── experiments/
-        └── README.md              Experiment registration and reporting template
+        ├── README.md              Experiment registration template
+        ├── WORKFLOW.md            Repeatable research-session loop
+        └── E001-trajectory-sufficiency/
+            ├── README.md          Experiment design and amendments
+            ├── report.md          Interpretation of the completed pilot
+            ├── config/            Frozen machine-readable configurations
+            ├── src/               Experiment implementation
+            ├── tests/             Deterministic validity checks
+            └── results/           Raw metrics and flat summaries
 
 As the project grows, each implemented experiment should receive a numbered directory such as experiments/E001-continual-memory. Large models, private data, and generated artifacts should not be committed.
 
 ## Project status
 
-**Exploratory / pre-experimental.** No hypothesis in this repository is currently established by original experimental evidence.
+**Exploratory / early experimental.** E001-P0 is a suggestive synthetic pilot; no hypothesis in this repository is established.
 
 ## License
 

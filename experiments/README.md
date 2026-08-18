@@ -57,6 +57,19 @@ Define maximum runs, seeds, compute, and the condition that ends exploration.
 
 Record environment, commit, complete run table, failures, and caveats. Link raw artifacts by content hash or release location rather than committing large files.
 
-## First recommended experiment
+## First experiment
 
-Start with H-003 on a synthetic but adversarial stream of timestamped facts, reversals, and compositional procedures. It requires less interpretability machinery than hidden-state distillation and directly tests whether “not frozen” must mean “weights keep changing.”
+[E001 — Trajectory sufficiency](E001-trajectory-sufficiency/README.md) tests whether basis-invariant relations across teacher activation trajectories transfer compositional behavior to a smaller student beyond what labels, logits, and pointwise activations provide.
+
+Its first pilot is complete. Read the [E001-P0 report](E001-trajectory-sufficiency/report.md) and [raw result](E001-trajectory-sufficiency/results/pilot.json).
+
+## Working loop
+
+Use [WORKFLOW.md](WORKFLOW.md) for every experiment. The short version is:
+
+1. preregister the decision and losing result;
+2. commit or hash the configuration;
+3. use smoke runs only to catch invalid designs or broken code;
+4. run the frozen comparison;
+5. preserve raw metrics without overwriting them;
+6. report what changed, what did not, and what remains unsupported.
