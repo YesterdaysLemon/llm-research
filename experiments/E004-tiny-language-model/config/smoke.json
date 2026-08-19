@@ -1,0 +1,73 @@
+{
+  "experiment_id": "E004-smoke",
+  "phase": "smoke-capability-only",
+  "dataset": {
+    "path": "data/raw/tinystories/TinyStoriesV2-GPT4-valid.txt",
+    "url": "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/f54c09fd23315a6f9c86f9dc80f725de7d8f9c64/TinyStoriesV2-GPT4-valid.txt?download=true",
+    "revision": "f54c09fd23315a6f9c86f9dc80f725de7d8f9c64",
+    "license": "CDLA-Sharing-1.0",
+    "bytes": 22502601,
+    "sha256": "6874bae9a4c1a4e7edcf0e53b86c17817e9cf881fc75ff2368da457b80c0585d",
+    "train_stories": 12000,
+    "validation_stories": 2000,
+    "vocab_size": 2048,
+    "sequence_length": 64,
+    "controlled_sequence_fraction": 0.2,
+    "controlled_train_records": 20000,
+    "controlled_train_depths": [1, 2, 3, 4],
+    "controlled_modulus": 11,
+    "controlled_seed": 8402,
+    "heldout_pairs": [
+      ["add:1", "multiply:2"],
+      ["multiply:2", "add:1"],
+      ["add:3", "multiply:3"],
+      ["multiply:3", "add:3"]
+    ]
+  },
+  "teacher": {
+    "seed": 8400,
+    "d_model": 320,
+    "n_heads": 8,
+    "n_layers": 8,
+    "d_ff": 1280,
+    "dropout": 0.0
+  },
+  "student": {
+    "seed": 8401,
+    "d_model": 160,
+    "n_heads": 4,
+    "n_layers": 4,
+    "d_ff": 640,
+    "dropout": 0.0
+  },
+  "smoke": {
+    "checkpoint_steps": [400, 2400, 7200, 21600]
+  },
+  "training": {
+    "batch_size": 16,
+    "learning_rate": 0.0004,
+    "min_learning_rate_ratio": 1.0,
+    "warmup_steps": 20,
+    "weight_decay": 0.1,
+    "gradient_clip": 1.0,
+    "use_bfloat16": true
+  },
+  "evaluation": {
+    "natural_batches": 128,
+    "controlled_examples": 512,
+    "id_depths": [2, 3, 4],
+    "heldout_depths": [2, 3, 4, 6],
+    "seed": 8403
+  },
+  "gates": {
+    "natural_nll_improvement_min": 0.2,
+    "teacher_id_accuracy_min": 0.70,
+    "teacher_id_accuracy_each_depth_min": 0.50,
+    "teacher_heldout_depth_2_to_4_accuracy_min": 0.55,
+    "teacher_heldout_each_pair_accuracy_min": 0.30,
+    "student_id_accuracy_min": 0.55,
+    "student_id_depth_4_accuracy_min": 0.30,
+    "student_heldout_depth_2_to_4_accuracy_min": 0.20,
+    "student_heldout_depth_2_to_4_accuracy_max": 0.80
+  }
+}

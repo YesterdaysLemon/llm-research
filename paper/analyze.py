@@ -46,6 +46,12 @@ E003 = load(
 E003_ANALYSIS = load(
     "experiments/E003-label-geometry-specificity/results/analysis.json"
 )
+E004_ORDINARY = load(
+    "experiments/E004-tiny-language-model/results/smoke.json"
+)
+E004_WEIGHTED = load(
+    "experiments/E004-tiny-language-model/results/smoke-answer-weighted.json"
+)
 
 
 def runs_by_condition(payload: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
@@ -61,6 +67,40 @@ def sample_summary(values: list[float]) -> dict[str, float | int]:
         "n": int(array.size),
         "mean": float(array.mean()),
         "sd": float(array.std(ddof=1)) if array.size > 1 else 0.0,
+    }
+
+
+def e004_final(payload: dict[str, Any], model: str) -> dict[str, Any]:
+    training = payload[model]["training"]
+    rung = training["rungs"][-1]
+    evaluation = rung["evaluation"]
+    return {
+        "step": int(rung["step"]),
+        "selected_step": training["selected_step"],
+        "natural_nll": float(evaluation["natural"]["nll"]),
+        "id_accuracy": float(evaluation["controlled_id"]["accuracy"]),
+        "id_depth": {
+            key: float(value)
+            for key, value in evaluation["controlled_id"]["accuracy_by_depth"].items()
+        },
+        "heldout_accuracy": float(
+            evaluation["controlled_heldout"]["accuracy"]
+        ),
+        "heldout_depth": {
+            key: float(value)
+            for key, value in evaluation["controlled_heldout"][
+                "accuracy_by_depth"
+            ].items()
+        },
+        "heldout_pair": {
+            key: float(value)
+            for key, value in evaluation["controlled_heldout"][
+                "accuracy_by_pair"
+            ].items()
+        },
+        "training_seconds": float(rung["training_seconds_cumulative"]),
+        "peak_gpu_memory_bytes": int(training["peak_gpu_memory_bytes"]),
+        "source_exposures": rung["source_exposures"],
     }
 
 
@@ -221,6 +261,23 @@ analysis = {
         "e003_label_geometry": E003["config_sha256"],
     },
     "e003_label_geometry": E003_ANALYSIS,
+    "e004_tiny_lm": {
+        "ordinary": {
+            "config_sha256": E004_ORDINARY["config_sha256"],
+            "git_commit": E004_ORDINARY["git_commit"],
+            "teacher": e004_final(E004_ORDINARY, "teacher"),
+            "student": e004_final(E004_ORDINARY, "student"),
+        },
+        "answer_weighted": {
+            "config_sha256": E004_WEIGHTED["config_sha256"],
+            "git_commit": E004_WEIGHTED["git_commit"],
+            "teacher": e004_final(E004_WEIGHTED, "teacher"),
+            "student": e004_final(E004_WEIGHTED, "student"),
+        },
+        "chance": 1 / 11,
+        "registered_decision": "controlled_benchmark_retired_after_failed_capability_gates",
+        "timing_comparability": "invalid because the weighted teacher final rung ran under severe GPU contention",
+    },
 }
 
 (GENERATED / "statistics.json").write_text(
@@ -298,6 +355,34 @@ lines.extend(
         f"- label geometry minus logits: {percent(e003_secondary['overall']['mean'])} "
         f"[{percent(e003_secondary['overall']['ci95_low'])}, {percent(e003_secondary['overall']['ci95_high'])}]",
         f"- registered decision: {analysis['e003_label_geometry']['registered_decision']}",
+    ]
+)
+e004 = analysis["e004_tiny_lm"]
+lines.extend(
+    [
+        "",
+        "## E004 tiny causal-LM capability gate",
+        "",
+        "| Model | Objective | Natural NLL | ID | ID d2 | ID d3 | ID d4 | Held-out | Held d2 | Held d3 | Held d4 | Held d6 |",
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ]
+)
+for model in ("teacher", "student"):
+    for objective, label in (("ordinary", "ordinary CE"), ("answer_weighted", "answer-weighted CE")):
+        item = e004[objective][model]
+        lines.append(
+            f"| {model.title()} | {label} | {item['natural_nll']:.4f} | "
+            f"{percent(item['id_accuracy'])} | {percent(item['id_depth']['2'])} | "
+            f"{percent(item['id_depth']['3'])} | {percent(item['id_depth']['4'])} | "
+            f"{percent(item['heldout_accuracy'])} | {percent(item['heldout_depth']['2'])} | "
+            f"{percent(item['heldout_depth']['3'])} | {percent(item['heldout_depth']['4'])} | "
+            f"{percent(item['heldout_depth']['6'])} |"
+        )
+lines.extend(
+    [
+        "",
+        f"- registered decision: {e004['registered_decision']}",
+        f"- timing comparability: {e004['timing_comparability']}",
     ]
 )
 (GENERATED / "tables.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

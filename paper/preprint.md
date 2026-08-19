@@ -10,7 +10,7 @@ Independent researcher
 
 ## Abstract
 
-Can the geometry of a model's internal representations provide useful supervision to a smaller model, and is such supervision an efficient substitute for the right computational structure? We test these questions on finite-state composition tasks where every example specifies a start entity and a sequence of relations. Our relational objective matches normalized, centered Gram matrices of selected teacher and student encoder-layer states, making the target invariant to orthogonal changes of hidden-state basis. In a prospectively registered affine-permutation confirmation with ten paired student seeds, a generic Transformer trained with teacher logits plus learned-teacher geometry reached 23.31% held-out-pair accuracy, compared with 11.30% for logits alone. The paired effect was 12.01 percentage points (95% CI [10.16, 13.86]). After an independent model council identified terminal-label geometry as the strongest missing control, a prospectively registered extension found that learned-teacher geometry exceeded the target-label Gram by 17.44 points [15.65, 19.23]; target-label geometry itself underperformed logits by 5.43 points [-6.66, -4.19]. The learned-teacher effect therefore exceeds terminal-answer equivalence under this setup. However, learned-teacher depth-four held-out accuracy was only 3.51%, and in-distribution depth-four accuracy was only 8.15%; the registered algorithm-transfer criterion failed under a severe student capability ceiling. A task-aligned transition-table executor reached 100% at every depth using 17,672 stored parameters, 61.3 times fewer than the Transformer, but it was given the correct factorization. A fixed bitwise replication missed its teacher positive-control gate and is descriptive only. The result supports a learned-teacher representation signal beyond outputs and answer classes, while leaving algorithm content, causal mechanism, cross-family generality, and efficiency unresolved.
+Can the geometry of a model's internal representations provide useful supervision to a smaller model, and is such supervision an efficient substitute for the right computational structure? We test these questions on finite-state composition tasks where every example specifies a start entity and a sequence of relations. Our relational objective matches normalized, centered Gram matrices of selected teacher and student encoder-layer states, making the target invariant to orthogonal changes of hidden-state basis. In a prospectively registered affine-permutation confirmation with ten paired student seeds, a generic Transformer trained with teacher logits plus learned-teacher geometry reached 23.31% held-out-pair accuracy, compared with 11.30% for logits alone. The paired effect was 12.01 percentage points (95% CI [10.16, 13.86]). After an independent model council identified terminal-label geometry as the strongest missing control, a prospectively registered extension found that learned-teacher geometry exceeded the target-label Gram by 17.44 points [15.65, 19.23]; target-label geometry itself underperformed logits by 5.43 points [-6.66, -4.19]. The learned-teacher effect therefore exceeds terminal-answer equivalence under this setup. However, learned-teacher depth-four held-out accuracy was only 3.51%, and in-distribution depth-four accuracy was only 8.15%; the registered algorithm-transfer criterion failed under a severe student capability ceiling. A task-aligned transition-table executor reached 100% at every depth using 17,672 stored parameters, 61.3 times fewer than the Transformer, but it was given the correct factorization. A fixed bitwise replication missed its teacher positive-control gate and is descriptive only. A prospectively gated tiny causal-LM bridge also stopped before distillation: answer weighting raised teacher depth-two in-distribution accuracy from 29.24% to 90.06%, but teacher depth-four accuracy remained 13.53% and no capability gate passed. The result supports a learned-teacher representation signal beyond outputs and answer classes in the affine classifier, while leaving language-model transfer, algorithm content, causal mechanism, cross-family generality, and efficiency unresolved.
 
 ## 1. Introduction
 
@@ -39,6 +39,7 @@ Our contributions are:
 - a distinction among stored parameters, semantically selected parameters, realized computation, and reuse across input steps;
 - a 61.3-fold two-model stored-parameter comparison demonstrating the leverage, and the limitations, of encoding the correct finite-state factorization;
 - a transparent failed replication gate that prevents a descriptively favorable second task family from being counted as confirmation; and
+- a prospectively gated tiny causal-LM bridge whose failed positive controls expose rare-decision-token loss allocation as a shallow acquisition bottleneck without licensing a geometry comparison; and
 - an end-to-end reproducible workflow containing preregistrations, frozen configurations, raw per-seed results, analysis code, and a public draft manuscript.
 
 ## 2. Related work
@@ -59,7 +60,7 @@ Architectures with repeated computation offer an obvious alternative to merely i
 
 ### 2.3 Scope relative to model compression
 
-This is not a study of large language models, pruning, quantization, natural-language reasoning, or measured energy. Parameter count is an incomplete efficiency measure: memory layout, arithmetic intensity, conditional execution, hardware kernels, and data movement all matter. We therefore report wall time and parameters separately and make no joule claim. The experiment asks a prior mechanistic question: whether a chosen form of internal geometry transfers more useful compositional information than outputs, and whether supervision or factorization is the larger lever on a controlled task.
+The main confirmation is not a study of large language models, pruning, quantization, natural-language reasoning, or measured energy. A follow-on 10.54M-parameter teacher and 1.58M-parameter causal-LM bridge is included only as a failed capability gate; it never runs a distillation condition. Parameter count is an incomplete efficiency measure: memory layout, arithmetic intensity, conditional execution, hardware kernels, and data movement all matter. We therefore report wall time and parameters separately and make no joule claim. The main experiment asks a prior mechanistic question: whether a chosen form of internal geometry transfers more useful compositional information than outputs, and whether supervision or factorization is the larger lever on a controlled task.
 
 ## 3. Research questions and registered claims
 
@@ -144,6 +145,14 @@ After the first manuscript draft, independent read-only audits by Claude Opus 5 
 For each training example with terminal label `y`, E003 constructs a one-hot vector `e_y` over the 47 entity classes and repeats it at both student layers. Its normalized centered minibatch Gram is matched with the same relational loss and auxiliary weight 3.0 used in E002. The new student keeps the same architecture, seeds, examples, minibatch order, optimizer, labels-plus-logits base loss, and 48 epochs. E003 does not rerun or modify the committed E002 reference conditions.
 
 The primary paired contrast is E002 learned-teacher geometry minus E003 target-label geometry. A positive 95% lower confidence bound supports benefit beyond terminal-label equivalence. Target-label geometry minus E002 logits is secondary. The extension registers no algorithm claim, no information-matched byte claim, and no cross-family claim.
+
+### 4.8 E004 tiny causal-language-model capability bridge
+
+E004 prospectively gates a language-model extension before any KD or geometry condition. A deterministic 2,048-token word-and-punctuation vocabulary is fitted on 12,000 complete TinyStories source stories; 2,000 disjoint stories supply natural validation. Twenty percent of training sequence rows contain complete controlled records describing affine operations modulo 11. Four directed add/multiply pairs are absent from training and crossed equally with evaluation depths. The 10,540,160-parameter teacher has eight width-320 decoder blocks; the 1,575,360-parameter student has four width-160 blocks. Both use ordinary causal next-token CE, deterministic math attention, and capability rungs at 400, 2,400, 7,200, and 21,600 steps.
+
+Teacher gates require natural NLL below a frozen unigram baseline, at least 70% controlled ID accuracy, at least 50% at every ID depth, at least 55% held-out accuracy over depths two through four, and at least 30% for every held-out pair. The labels-only student has separate ID and held-out corridor gates. If either positive control fails, no distillation condition may run.
+
+After the ordinary smoke failed, one separately preregistered diagnostic upweighted only the controlled answer position by 25, approximately the mean 24.77-token record length. Every seed, model, split, schedule, gate, and ladder rung remained fixed. Its stop rule retires the benchmark if the teacher still fails at 21,600 steps.
 
 ## 5. Preliminary experiments and the failed E001-P1 gate
 
@@ -253,9 +262,26 @@ Target-label geometry did not act as a weaker positive substitute. It underperfo
 
 The E003 student's in-distribution accuracy was only 5.20% at depth four. E003 therefore says nothing positive about algorithm transfer. Learned teacher geometry could carry input neighborhoods, intermediate features, difficulty structure, or other task information not reducible to terminal-label identity; no causal intervention identifies which relation mediates behavior.
 
-## 10. Discussion
+## 10. Tiny causal-LM bridge and failed capability gate
 
-### 10.1 What is present in learned-teacher geometry?
+Both E004 runs reproduced their frozen commits with clean worktrees. The natural-text endpoint learned: the teacher/student ordinary-CE runs reached validation NLL 2.1197/2.2090, far below the 5.3530 training-unigram baseline. Controlled capability did not. Table 5 reports the final rung; chance answer accuracy is 9.09%.
+
+**Table 5. E004 final capability rung. Each objective used one frozen teacher seed and one frozen student seed; these are capability diagnostics, not multi-seed treatment estimates.**
+
+| Model and objective | Natural NLL | ID overall | ID d2 | ID d3 | ID d4 | Held-out | Held d2 | Held d3 | Held d4 | Held d6 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Teacher, ordinary CE | 2.1197 | 16.80% | 29.24% | 11.70% | 9.41% | 12.89% | 17.97% | 8.59% | 11.72% | 13.28% |
+| Teacher, answer-weighted CE | 2.1288 | 43.36% | 90.06% | 26.32% | 13.53% | 17.58% | 28.91% | 20.31% | 10.94% | 10.16% |
+| Student, ordinary CE | 2.2090 | 6.84% | 4.09% | 5.85% | 10.59% | 7.62% | 5.47% | 13.28% | 4.69% | 7.03% |
+| Student, answer-weighted CE | 2.2517 | 48.44% | 88.30% | 46.20% | 10.59% | 16.41% | 26.56% | 21.88% | 10.94% | 6.25% |
+
+Answer weighting materially changed shallow acquisition: teacher/student ID depth-two gains were 60.82/84.21 percentage points with little natural-NLL change. The original objective had placed only 0.706% of supervised positions at controlled answers, so rare-decision-token dilution was a real bottleneck. The improvement did not extend through depth. Teacher ID depth four remained 13.53%, teacher held-out overall was 17.58%, and every registered gate failed. This is compatible with learning shallow templates or associations rather than an iterative state update; architecture, optimization, data coverage, and grammar remain confounded.
+
+E004 therefore stops before the scientific treatment of interest. It provides no evidence about hidden-relation distillation in language models and no efficiency result. Severe GPU contention affected the weighted teacher's final rung, so its wall time is non-comparable; peak framework allocation was approximately 384 MB and the driver exposed no power telemetry. The registered consequence is to retire this controlled benchmark for H-010 rather than add another rescue.
+
+## 11. Discussion
+
+### 11.1 What is present in learned-teacher geometry?
 
 The affine result rejects an overly strong null hypothesis: a student's behavior cannot benefit from relations among a teacher's layer representations unless it also receives the teacher's weights. A basis-invariant Gram target improves held-out behavior, and the effect disappears when the example-to-geometry assignment is shuffled or when learned-teacher geometry is replaced with random or untrained features. The safest interpretation is that correspondence-preserving relations among learned teacher representations provide a useful training signal.
 
@@ -263,7 +289,7 @@ That statement is weaker than saying the target contains an algorithm. E003 rule
 
 The depth curve also admits fewer mechanistic claims than the registered behavioral decision. Relational supervision improves the descriptive normalized-transfer ratio at all three depths, but the student's in-distribution capability collapses with depth. The current evidence cannot distinguish missing target information from insufficient capacity, representational impossibility, or a severe optimization/inductive-bias mismatch. It shows that the frozen relational objective did not produce reliable depth-general behavior; it does not show that a learned algorithm was present locally and then became non-portable.
 
-### 10.2 Context-aware parameter definitions
+### 11.2 Context-aware parameter definitions
 
 The experiment suggests a useful vocabulary for the project's efficiency question.
 
@@ -277,39 +303,43 @@ Two models with the same stored count can have very different computation; two m
 
 This is conceptually adjacent to conditional computation and modular networks, but the experiment does not establish that sparse expert routing or dynamic weights improve language-model efficiency. It generates a narrower hypothesis: compression gains may come less from retaining every detail of a large model's activations and more from discovering a compact set of reusable, context-selected operators.
 
-### 10.3 Implications for compression
+### 11.3 Implications for compression
 
 No general lossless compression claim follows. The table's 61.3-fold stored-parameter advantage comes from known finite-state structure, two selected model designs, and a tiny domain. In realistic tasks, the correct states may be latent, relation boundaries ambiguous, transition operators continuous, and error accumulation costly. A table also scales quadratically with state count. The result is best treated as a target for representation discovery: can a learner infer a small operator library and execution rule without being handed the factorization?
 
 Layer-geometry supervision may still help that discovery. Our data suggest it carries relational hints even when it fails to transfer the full procedure. A future architecture could use geometry to learn state abstractions or routing assignments while a recurrent executor supplies the missing iteration. That is a new hypothesis, not a result of this paper.
 
-### 10.4 Failed gates as evidence
+### 11.4 Failed gates as evidence
 
-Two failures materially shaped the conclusion. E001-P1 stopped because its students missed the capability gate; this prevented a misleading OOD comparison among incapable models. The bitwise cell stopped at interpretation because its teacher missed the positive-control gate; this prevented descriptively favorable numbers from being called replication. These rules reduced the number of positive claims but increased their auditability.
+Three failures materially shaped the conclusion. E001-P1 stopped because its students missed the capability gate; this prevented a misleading OOD comparison among incapable models. The bitwise cell stopped at interpretation because its teacher missed the positive-control gate; this prevented descriptively favorable numbers from being called replication. E004 stopped before language-model distillation because even answer-weighted teacher and student positive controls did not sustain controlled behavior through depth. These rules reduced the number of positive claims but increased their auditability.
 
-## 11. Limitations
+### 11.5 Rare decision-token allocation
+
+E004 adds a narrower optimization hypothesis. When a semantic event occupies one token among many descriptive tokens, token-averaged likelihood can learn the surrounding language while barely optimizing the decision. Weighting the answer approximately by record length produced very large shallow gains without adding parameters or tokens. This does not demonstrate better algorithms: depth-four and held-out behavior remained poor. A future test should compare event-balanced weighting with ordinary record oversampling at matched answer exposure and multiple seeds before treating loss allocation as a general efficiency lever.
+
+## 12. Limitations
 
 First, the tasks are synthetic and finite. They do not establish effects in language models, continuous control, perception, continual learning, or natural data. Second, the transition executor receives the correct factorization and known entity identities; representation discovery is excluded. Its semantic table selection is not realized as sparse compute by the current code. Third, the generic baselines were not exhaustively tuned, and a different recurrent or iterative architecture might close the gap. The registered stopping rule intentionally forbids post-result rescue searches.
 
 Fourth, the affine relational confirmation uses ten paired seeds, but only one task-generation seed and one family passed all confirmatory gates. Generalization across task families is unresolved. Fifth, the bitwise teacher failure makes even favorable student contrasts nonconfirmatory. Sixth, Student-t intervals at `n=10` summarize seed variation but do not include uncertainty across dataset generation, architecture choice, or researcher decisions.
 
-Seventh, the relational target is only invariant to orthogonal basis changes and isotropic scaling. Other invertible reparameterizations can alter it. The teacher was trained without the student's pair exclusions and is therefore a deliberately privileged supervisor. Eighth, E003 excludes terminal-label equivalence but does not distinguish among other teacher-derived statistics. Its target-label control is harmful rather than neutral, like the shuffled and random controls. Ninth, matched example counts and model sizes do not imply matched information or compute: layer-representation tensors are larger than logits, relational objectives add training time, and E001's registered data-rich and wall-time-matched label baselines were never run after its capability gate failed. E003 wall times are additionally non-comparable because host contention varied severely across seeds. Tenth, wall time on one RTX 4060 is an implementation-specific systems observation, not an energy measurement. Finally, no causal intervention showed that a particular geometric relation mediates behavior; the controls establish predictive utility of the supervision signal, not a mechanistic identity.
+Seventh, the relational target is only invariant to orthogonal basis changes and isotropic scaling. Other invertible reparameterizations can alter it. The teacher was trained without the student's pair exclusions and is therefore a deliberately privileged supervisor. Eighth, E003 excludes terminal-label equivalence but does not distinguish among other teacher-derived statistics. Its target-label control is harmful rather than neutral, like the shuffled and random controls. Ninth, matched example counts and model sizes do not imply matched information or compute: layer-representation tensors are larger than logits, relational objectives add training time, and E001's registered data-rich and wall-time-matched label baselines were never run after its capability gate failed. E003 wall times are additionally non-comparable because host contention varied severely across seeds. Tenth, E004 uses one teacher and one student seed for capability gating, trains on a pinned source-pool split rather than a standard TinyStories benchmark split, and never reaches a valid geometry comparison. Its answer-weighting contrast is descriptive and cannot distinguish event balancing from other objective or curriculum changes. Eleventh, wall time on one RTX 4060 is an implementation-specific systems observation, not an energy measurement; E004's weighted teacher timing is additionally contaminated by severe GPU contention. Finally, no causal intervention showed that a particular geometric relation mediates behavior; the controls establish predictive utility of the supervision signal, not a mechanistic identity.
 
-## 12. Reproducibility, ethics, and provenance
+## 13. Reproducibility, ethics, and provenance
 
-All experiment code, exact configurations, preregistrations, selection records, raw per-seed JSON, generated statistics, and manuscript sources are included in the repository. The main runs used Python 3.12, PyTorch 2.13.0 with CUDA 13.0, and an NVIDIA RTX 4060 on Windows. Deterministic tests cover task generation, held-out pair separation, Gram invariance, control construction, model parameter accounting, and executor behavior. Configuration hashes and pre-run git states are recorded in the raw results.
+All experiment code, exact configurations, preregistrations, selection records, raw JSON, generated statistics, and manuscript sources are included in the repository. The main runs used Python 3.12, PyTorch 2.13.0 with CUDA 13.0, and an NVIDIA RTX 4060 on Windows. Deterministic tests cover task generation, held-out pair separation, Gram invariance, control construction, model parameter accounting, executor behavior, E004 causal masking, depth-by-pair balance, complete-record packing, answer masks, and result provenance. Configuration hashes and pre-run git states are recorded in the raw results.
 
 The work uses synthetic data and presents no human-subject or privacy risk. It does not test consciousness, theory of mind, deception, autonomous agency, or deployment behavior. The likely ethical risk is epistemic: extrapolating a clean finite-state demonstration into unsupported claims about brains or large language models. We mitigate that risk by stating failed gates, absolute performance, and scope boundaries prominently.
 
-OpenAI Codex assisted with repository inspection, implementation, experiment execution, statistical analysis, figure generation, and manuscript drafting under the human research direction of Alireza Afshan. Read-only external audits by Anthropic Claude Opus 5 and Alibaba Qwen 3.8 independently identified the target-label control and additional interpretive limits; Codex verified their claims against source and results before inclusion. The author is responsible for reviewing the design, claims, and final text. No language model was used as an experimental subject or a source of empirical labels.
+OpenAI Codex assisted with repository inspection, implementation, experiment execution, statistical analysis, figure generation, and manuscript drafting under the human research direction of Alireza Afshan. Read-only external audits by Anthropic Claude Opus 5 and Alibaba Qwen 3.8 independently identified the E003 target-label control and additional interpretive limits; Codex verified their claims against source and results before inclusion. A later E004 design audit was completed by Opus 5; two bounded Qwen 3.8 attempts timed out without reports, and no Qwen claim was attributed to that audit. The author is responsible for reviewing the design, claims, and final text. Language models served as bounded experimental subjects only in E004's capability gate; no external model report was used as an empirical label.
 
-## 13. Conclusion
+## 14. Conclusion
 
 Normalized learned-teacher layer geometry more than doubles the generic Transformer's held-out-pair accuracy relative to output distillation in the affine composition task. The effect is reproducible across paired seeds, survives an orthogonal-basis-invariant formulation, and is not reproduced by shuffled, random, untrained, or terminal-label targets. E003 prospectively shows a 17.44-point learned-teacher advantage over label geometry. The useful training signal therefore exceeds outputs and terminal-answer identity under this setup. The registered strong algorithm criterion still fails under a severe depth-four capability ceiling, leaving the signal's content and the cause of deep-composition failure inconclusive.
 
 A task-factored transition executor solves the same task exactly with 61.3 times fewer stored parameters. That result is deliberately unfair in an informative way: the executor knows the correct factorization. It proves that a compact exact representation exists on this task. It does not establish a general efficiency frontier, a causal benefit from context selection, or realized sparse compute.
 
-The immediate experiment is a tiny causal language-model bridge containing ordinary next-token training, output distillation, learned hidden-relation geometry, next-token target geometry, and an ordinary extra-compute or extra-data baseline. A separate architecture study can ask whether a learner can discover a compact operator library and recurrent execution rule rather than receiving one.
+The first tiny causal-language-model bridge stopped before distillation. Event-balanced answer weighting produced striking depth-two gains but did not establish depth-four or held-out capability, so it supplies no language-model evidence for relational geometry. The next bridge should test hidden-geometry specificity on natural held-out NLL without claiming compositional transfer, while a future controlled benchmark must first demonstrate a passing teacher under an independently validated training setup. A separate architecture study can ask whether a learner can discover a compact operator library and recurrent execution rule rather than receiving one.
 
 ## References
 
@@ -347,6 +377,8 @@ Tung, F., and Mori, G. (2019). [Similarity-preserving knowledge distillation](ht
 | Bitwise teacher | At least 95% overall and at every depth | Failed at depth four; cell invalid |
 | Cross-family structured efficiency | Registered criteria in both families | Inconclusive because bitwise cell invalid |
 | E003 teacher specificity | Learned-teacher minus target-label geometry has positive 95% lower bound | Supported on affine |
+| E004 ordinary causal-LM capability | Teacher and labels-only student clear natural and controlled gates | Failed; no KD/geometry run |
+| E004 answer-weighted diagnostic | Same gates after one record-scale answer-weight amendment | Failed; controlled benchmark retired |
 
 ## Appendix B. Exact run inventory
 
@@ -356,5 +388,7 @@ Tung, F., and Mori, G. (2019). [Similarity-preserving knowledge distillation](ht
 - E002 bitwise fixed replication: eight conditions, five paired student seeds, failed teacher positive control.
 - E002 development: three transition-table budget seeds, three no-depth-one seeds, four relational-weight settings over three seeds, and explicitly labeled post-observation diagnostics.
 - E003 label-geometry extension: one new condition, ten paired student seeds, passing teacher gate, no retuning.
+- E004 ordinary capability smoke: one teacher seed and one labels-only student seed over four cumulative rungs; every controlled gate failed.
+- E004 answer-weighted diagnostic: the same two seeds and rungs with one preregistered loss-weight amendment; every controlled gate failed and no distillation condition ran.
 
 All figures and tables are regenerated by `paper/analyze.py` directly from committed raw JSON. The source-of-truth result files are listed in `paper/README.md`.

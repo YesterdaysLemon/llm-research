@@ -32,7 +32,9 @@ The project does not presently treat machine consciousness as an engineering cla
 
 - [Preprint](paper/preprint.md) reports the completed E001-E002 study, including the council-driven claim corrections, failed gates, and scope limits.
 - [External council](research/council-2026-08-19.md) records the verified Opus 5 and Qwen 3.8 critique and its contribution to the project.
+- [E004 design audit](research/council-2026-08-19-e004.md) records the verified pre-smoke blockers, prospective repairs, and the explicit Qwen timeout boundary.
 - [E003 report](experiments/E003-label-geometry-specificity/report.md) records the completed teacher-specificity control.
+- [E004 final diagnostic](experiments/E004-tiny-language-model/report-answer-weighted.md) records the failed tiny causal-LM capability gate, the shallow answer-weighting effect, and the benchmark retirement boundary.
 - [E002 report](experiments/E002-contextual-transition-executor/report.md) is the compact experimental handoff.
 - [NEXT](NEXT.md) is the current research-session entry point.
 - [Original seed ideas](notes/seed-ideas.md) preserves the initial note.
@@ -99,18 +101,25 @@ The project will:
             ├── report.md          Final compact handoff
             ├── src/ and tests/    Implementation and validity checks
             └── results/           Development and confirmatory metrics
-        └── E003-label-geometry-specificity/
+        ├── E003-label-geometry-specificity/
             ├── preregister.md     Frozen target-label Gram control
             ├── config/            Single-condition confirmation
             ├── report.md          Registered decision and limitations
             └── results/           Raw metrics and generated analysis
+        └── E004-tiny-language-model/
+            ├── preregister.md     Two-stage causal-LM protocol
+            ├── config/            Frozen smoke and later fixed configs
+            ├── src/ and tests/    Dependency-light model, data, and checks
+            └── results/           Preserved smoke and fixed artifacts
 
 As the project grows, each implemented experiment should receive a numbered directory such as experiments/E004-tiny-language-model. Large models, private data, and intermediate generated artifacts should not be committed; compact paper figures and release PDFs are versioned for auditability.
 
 ## Project status
 
-**Preprint / bounded synthetic evidence.** The affine confirmation supports a reproducible benefit from correspondence-preserving learned-teacher layer geometry. E003 shows that terminal-label equivalence does not explain that gain under the frozen objective, but the depth-four student remains below a credible capability floor and other causal accounts remain open. The 61.3-fold executor comparison proves a compact exact factorization exists on this task; it is not a general frontier or realized sparse-compute result. The next experiment is a preregistered tiny causal-language-model bridge. No result yet establishes general compression, language-model, energy, continual-learning, or consciousness claims.
+**Preprint / bounded synthetic evidence.** The affine confirmation supports a reproducible benefit from correspondence-preserving learned-teacher layer geometry. E003 shows that terminal-label equivalence does not explain that gain under the frozen objective, but the depth-four student remains below a credible capability floor and other causal accounts remain open. The 61.3-fold executor comparison proves a compact exact factorization exists on this task; it is not a general frontier or realized sparse-compute result. E004's first tiny causal-LM bridge stopped at its positive-control gate: answer weighting greatly improved shallow ID behavior, but no teacher/student gate passed and no geometry condition ran. No result yet establishes language-model distillation benefit, general compression, energy efficiency, continual learning, or consciousness claims.
 
 ## License
 
-No license has been selected yet. Public visibility does not by itself grant permission to reuse the work.
+This repository is released under the [MIT License](LICENSE). Third-party
+datasets and model artifacts retain their own licenses; each experiment records
+those dependencies separately.

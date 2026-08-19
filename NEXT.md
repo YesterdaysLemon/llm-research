@@ -16,11 +16,45 @@ The bitwise cell remains descriptive because its teacher missed the registered p
 
 ## Active decision
 
-Preregister H-010 as E004, the first tiny causal language-model bridge. Do not run a fixed comparison until a smoke phase has established a teacher and labels-only student capability floor and frozen the corpus/tokenizer artifacts.
+E004 is complete at its stop rule. Neither the ordinary nor answer-weighted
+capability ladder produced a teacher or labels-only student that passed the
+controlled gates through 21,600 steps. The affine benchmark is retired for
+H-010, and no fixed KD/geometry comparison may run on it.
 
-The experiment must decide whether learned hidden-relation geometry improves genuine next-token learning beyond both output distillation and next-token target geometry at matched student size, tokens, initialization, and optimizer steps.
+The pre-smoke Opus 5 audit and local replay found five blocking defects in the
+first draft; all were repaired before training. Qwen 3.8 timed out twice without
+a report, so no Qwen claim enters the design. The repaired protocol uses a
+non-commutative six-operator affine language modulo 11, crosses every held-out
+pair with every evaluation depth, starts controlled training at complete record
+boundaries, evaluates in float32, and replaces the guessed 400/300-step budget
+with a capability-only ladder at 400, 2,400, 7,200, and 21,600 steps. See the
+[E004 protocol](experiments/E004-tiny-language-model/preregister.md) and
+[design audit](research/council-2026-08-19-e004.md).
 
-The minimum core is:
+The [smoke report](experiments/E004-tiny-language-model/report-smoke.md) records
+the result. Natural NLL improved strongly, but final teacher ID/held-out answer
+accuracy was only 16.80%/12.89% and final student accuracy was 6.84%/7.62%
+against 9.09% chance. Answer positions were 0.706% of all supervised positions.
+The diagnostic changed only their CE weight to `25`, approximately the mean
+controlled-record length. It raised teacher/student depth-two ID accuracy to
+90.06%/88.30%, confirming objective dilution, but teacher depth-four ID remained
+13.53% and held-out overall only 17.58%. The
+[diagnostic report](experiments/E004-tiny-language-model/report-answer-weighted.md)
+is the final E004 authority.
+
+The next bounded design decision is E005: a natural-text-only tiny-LM
+specificity bridge. It should ask whether learned hidden relation geometry
+improves frozen TinyStories validation NLL beyond output KD, target-token
+geometry, teacher-logit geometry, and untrained-teacher geometry. It must not
+claim compositional transfer, and its compute/data baseline and at least five
+paired seeds must be frozen before the run. A future controlled benchmark gets
+a new experiment ID and must demonstrate a passing teacher before geometry is
+introduced.
+
+E005 must decide whether learned hidden-relation geometry improves genuine
+next-token learning beyond both output distillation and next-token target
+geometry at matched student size, tokens, initialization, and optimizer steps.
+Its minimum core is:
 
 1. ordinary next-token training;
 2. output distillation;
@@ -28,9 +62,16 @@ The minimum core is:
 4. output plus next-token target geometry;
 5. an ordinary extra-data or extra-compute baseline.
 
-Prefer a 1M–10M-parameter student and a 10M–40M teacher that can both run on the RTX 4060 and M2 host. Use at least five paired seeds, a dominant simple-English stream, and a smaller controlled compositional stream. Freeze natural validation NLL, controlled accuracy by depth, teacher and student capability gates, token counts, model bytes, wall time, and peak memory before the fixed run. No activation-specific claim is allowed unless learned hidden geometry beats both output distillation and target-token geometry. No efficiency claim is allowed unless it survives the ordinary compute/data control.
-
-Candidate public foundations include TinyStories for language that small models can learn, WikiText-2 as a small natural-text anchor, and Pythia's openly documented small checkpoints for calibration or architecture references. Dataset versions, licenses, tokenizer training data, and exact checksums must be frozen before use.
+It also requires teacher-logit geometry and frozen untrained-teacher geometry
+controls before a learned-hidden-specificity interpretation. Prefer the existing
+1.6M-parameter student and 10.5M-parameter teacher unless a prospective
+capability ladder rejects them. Use at least five paired student seeds and the
+pinned TinyStories source split. Freeze validation NLL, token counts, model
+bytes, wall time, peak memory, stopping rules, and the ordinary compute/data
+baseline before the fixed run. No compositional claim is available in E005, no
+activation-specific claim is allowed unless learned hidden geometry beats both
+output distillation and target-token geometry, and no efficiency claim is
+allowed unless it survives the ordinary compute/data control.
 
 ## Start-of-session checklist
 
