@@ -244,6 +244,7 @@ class PairedBatchStream:
         sequence_length: int,
         controlled_fraction: float,
         pad_id: int,
+        question_id: int,
         seed: int,
     ) -> None:
         if natural.numel() <= sequence_length:
@@ -257,10 +258,13 @@ class PairedBatchStream:
         self.sequence_length = int(sequence_length)
         self.controlled_fraction = float(controlled_fraction)
         self.pad_id = int(pad_id)
+        self.question_id = int(question_id)
         self.generator = torch.Generator().manual_seed(int(seed))
         self.controlled_carry = 0.0
 
-    def _controlled_row(self) -> tuple[torch.Tensor, torch.Tensor, int]:
+    def _controlled_row(
+        self,
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, int]:
         start = int(
             torch.randint(
                 len(self.controlled_records), (), generator=self.generator
@@ -286,11 +290,16 @@ class PairedBatchStream:
         row = torch.tensor(values, dtype=torch.long)
         mask = torch.zeros(self.sequence_length, dtype=torch.bool)
         mask[: valid_length - 1] = True
-        return row, mask, records
+        answer_mask = row[:-1].eq(self.question_id) & mask
+        if int(answer_mask.sum().item()) != records:
+            raise RuntimeError("controlled answer mask does not match packed records")
+        return row, mask, answer_mask, records
 
     def batch(
         self, batch_size: int
-    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, dict[str, int]]:
+    ) -> tuple[
+        torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, dict[str, int]
+    ]:
         target_controlled = (
             self.controlled_carry + int(batch_size) * self.controlled_fraction
         )
@@ -304,13 +313,17 @@ class PairedBatchStream:
         source_flags = source_flags[permutation]
         rows: list[torch.Tensor] = []
         masks: list[torch.Tensor] = []
+        answer_masks: list[torch.Tensor] = []
         controlled_records = 0
         source_tokens: defaultdict[str, int] = defaultdict(int)
         for flag in source_flags.tolist():
             if flag:
-                row, mask, records = self._controlled_row()
+                row, mask, answer_mask, records = self._controlled_row()
                 controlled_records += records
                 source_tokens["controlled"] += int(mask.sum().item())
+                source_tokens["controlled_answers"] += int(
+                    answer_mask.sum().item()
+                )
             else:
                 maximum = self.natural.numel() - self.sequence_length - 1
                 offset = int(
@@ -320,9 +333,11 @@ class PairedBatchStream:
                 )
                 row = self.natural[offset : offset + self.sequence_length + 1]
                 mask = torch.ones(self.sequence_length, dtype=torch.bool)
+                answer_mask = torch.zeros(self.sequence_length, dtype=torch.bool)
                 source_tokens["natural"] += self.sequence_length
             rows.append(row)
             masks.append(mask)
+            answer_masks.append(answer_mask)
         tokens = torch.stack(rows)
         metadata = {
             "natural_sequences": int(batch_size) - controlled_count,
@@ -330,10 +345,12 @@ class PairedBatchStream:
             "controlled_records": controlled_records,
             "natural_supervised_tokens": source_tokens["natural"],
             "controlled_supervised_tokens": source_tokens["controlled"],
+            "controlled_answer_tokens": source_tokens["controlled_answers"],
         }
         return (
             tokens[:, :-1].contiguous(),
             tokens[:, 1:].contiguous(),
             torch.stack(masks),
+            torch.stack(answer_masks),
             metadata,
         )

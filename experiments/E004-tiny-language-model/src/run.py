@@ -104,11 +104,23 @@ def prepare_data(config: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def masked_cross_entropy(logits: Tensor, targets: Tensor, mask: Tensor) -> Tensor:
+def masked_cross_entropy(
+    logits: Tensor,
+    targets: Tensor,
+    mask: Tensor,
+    answer_mask: Tensor,
+    *,
+    answer_weight: float,
+) -> Tensor:
     losses = F.cross_entropy(
         logits.flatten(0, 1), targets.flatten(), reduction="none"
     ).view_as(targets)
     weights = mask.to(losses.dtype)
+    weights = weights * torch.where(
+        answer_mask,
+        torch.as_tensor(answer_weight, dtype=losses.dtype, device=losses.device),
+        torch.ones((), dtype=losses.dtype, device=losses.device),
+    )
     return (losses * weights).sum() / weights.sum().clamp_min(1.0)
 
 
@@ -137,6 +149,7 @@ def train_capability_ladder(
         sequence_length=int(dataset["sequence_length"]),
         controlled_fraction=float(dataset["controlled_sequence_fraction"]),
         pad_id=int(data["vocabulary"].stoi["<pad>"]),
+        question_id=int(data["vocabulary"].stoi["?"]),
         seed=seed + 100_000,
     )
     optimizer = torch.optim.AdamW(
@@ -166,17 +179,24 @@ def train_capability_ladder(
         )
         for group in optimizer.param_groups:
             group["lr"] = float(training["learning_rate"]) * multiplier
-        inputs, targets, mask, metadata = stream.batch(
+        inputs, targets, mask, answer_mask, metadata = stream.batch(
             int(training["batch_size"])
         )
         accumulate_counts(source_totals, metadata)
         inputs = inputs.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
         mask = mask.to(device, non_blocking=True)
+        answer_mask = answer_mask.to(device, non_blocking=True)
         optimizer.zero_grad(set_to_none=True)
         with autocast_context(device, bool(training["use_bfloat16"])):
             logits, _ = model(inputs)
-            loss = masked_cross_entropy(logits, targets, mask)
+            loss = masked_cross_entropy(
+                logits,
+                targets,
+                mask,
+                answer_mask,
+                answer_weight=float(training.get("answer_loss_weight", 1.0)),
+            )
         loss.backward()
         nn.utils.clip_grad_norm_(
             model.parameters(), float(training["gradient_clip"])

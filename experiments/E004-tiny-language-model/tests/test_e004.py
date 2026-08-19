@@ -31,6 +31,7 @@ from model import (  # noqa: E402
     relation_distance,
     target_relation,
 )
+from run import masked_cross_entropy  # noqa: E402
 
 
 HELDOUT = (
@@ -159,13 +160,17 @@ class DataTests(unittest.TestCase):
             sequence_length=32,
             controlled_fraction=1.0,
             pad_id=vocabulary.stoi["<pad>"],
+            question_id=vocabulary.stoi["?"],
             seed=12,
         )
-        inputs, targets, mask, metadata = stream.batch(2)
+        inputs, targets, mask, answer_mask, metadata = stream.batch(2)
         self.assertTrue(torch.all(inputs[:, 0].eq(vocabulary.stoi["<bos>"])))
         self.assertTrue(torch.all(targets[~mask].eq(vocabulary.stoi["<pad>"])))
         self.assertEqual(metadata["controlled_sequences"], 2)
         self.assertGreaterEqual(metadata["controlled_records"], 2)
+        self.assertEqual(
+            int(answer_mask.sum().item()), metadata["controlled_records"]
+        )
 
     def test_sequence_mixture_is_exact_over_five_batches(self) -> None:
         vocabulary = Vocabulary(("<pad>", "<unk>", "<bos>", "<eos>", "x"))
@@ -177,16 +182,30 @@ class DataTests(unittest.TestCase):
             sequence_length=8,
             controlled_fraction=0.2,
             pad_id=0,
+            question_id=4,
             seed=3,
         )
         total = 0
         for _ in range(5):
-            _, _, _, metadata = stream.batch(16)
+            _, _, _, _, metadata = stream.batch(16)
             total += metadata["controlled_sequences"]
         self.assertEqual(total, 16)
 
 
 class ModelTests(unittest.TestCase):
+    def test_answer_weight_changes_only_weighted_loss_reduction(self) -> None:
+        logits = torch.tensor([[[5.0, 0.0], [0.0, 5.0]]])
+        targets = torch.tensor([[0, 0]])
+        mask = torch.ones((1, 2), dtype=torch.bool)
+        answer_mask = torch.tensor([[False, True]])
+        ordinary = masked_cross_entropy(
+            logits, targets, mask, answer_mask, answer_weight=1.0
+        )
+        weighted = masked_cross_entropy(
+            logits, targets, mask, answer_mask, answer_weight=25.0
+        )
+        self.assertGreater(float(weighted), float(ordinary))
+
     def test_causal_lm_shapes(self) -> None:
         model = TinyCausalLM(
             vocab_size=37,

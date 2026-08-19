@@ -17,6 +17,9 @@ Neither teacher nor labels-only student selected a passing rung, so the fixed
 paired comparison is not licensed. The next bounded action is a separately
 registered answer-weighting diagnostic; no KD or geometry result exists.
 
+The diagnostic changes only the controlled answer-token loss weight and is
+frozen in [its own preregistration](preregister-answer-weighted.md).
+
 ## Local data
 
 The natural-language component is a pinned TinyStories source artifact. Fetch
