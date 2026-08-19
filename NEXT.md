@@ -4,22 +4,29 @@ Last updated: 2026-08-18
 
 ## Current evidence
 
-E001-P0 produced a consistent but limited signal: basis-invariant relational trajectory distillation improved a small student's accuracy on held-out ordered relation pairs compared with labels, logits, pointwise matching, and shuffled trajectories.
+The E001-E002 experimental arc has reached its preregistered stopping boundary. The [preprint](paper/preprint.md) and [compact E002 report](experiments/E002-contextual-transition-executor/report.md) are the current authorities.
 
-The gain mostly appeared at composition depth two and weakened sharply with depth. This does not yet show transfer of a general composition algorithm.
+The valid affine confirmation supports a narrow claim: basis-invariant relational activation geometry transfers local compositional structure. It does not support transfer of a depth-general iterative algorithm. A context-selected transition executor solved the finite-state task with 61.3 times fewer stored parameters than the relational Transformer, but it was given the correct task factorization.
 
-Read the [pilot report](experiments/E001-trajectory-sufficiency/report.md) before interpreting or extending the result.
+The fixed bitwise cell is descriptive only. Its teacher missed the preregistered depth-four positive-control gate, so the cross-family claim is inconclusive.
 
 ## Active decision
 
-E001-P1 stopped before confirmation because every registered student missed its capability gate. Read the [development report](experiments/E001-trajectory-sufficiency/report-p1-development.md).
+Pause experiments while the human researcher reads and challenges the preprint. Do not launch rescue runs or expand the benchmark before deciding whether the paper's claims, framing, and next hypothesis are worth carrying forward.
 
-The next bounded experiment is E002: compare the generic Transformer with a compact context-selected transition executor. The question is whether architectural parameter reuse produces compositional capability more efficiently than adding teacher trajectories to an unsuitable student.
+The leading proposed follow-up is H-009: learn a compact operator library and recurrent execution rule instead of hand-specifying the finite-state table. Relational geometry would be tested as a discovery signal, not assumed to contain the algorithm.
+
+## Questions for the reading pass
+
+1. Is “local relational information, not a portable program” the right interpretation of the depth curve?
+2. Is the deliberately privileged transition executor a clarifying existence proof or too unlike the generic baseline to anchor the efficiency argument?
+3. Should the failed bitwise cell remain in the main text, move to an appendix, or be omitted from the first public manuscript revision?
+4. Is the next prize operator discovery, an independently gated replication, or a return to continual learning?
 
 ## Start-of-session checklist
 
-1. Run git status and preserve unrelated work.
-2. Read the active hypothesis, most recent report, and this file.
+1. Run `git status` and preserve unrelated work.
+2. Read the preprint, the relevant preregistration, and this file.
 3. State one decision the session can change.
-4. Freeze the configuration or analysis rule before looking at the relevant result.
+4. Freeze the configuration or analysis rule before looking at a new result.
 5. End by updating the report or this file, including null and negative outcomes.

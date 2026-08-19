@@ -30,6 +30,8 @@ The project does not presently treat machine consciousness as an engineering cla
 
 ## Start here
 
+- [Preprint](paper/preprint.md) reports the completed E001-E002 study, including failed gates and scope limits.
+- [E002 report](experiments/E002-contextual-transition-executor/report.md) is the compact experimental handoff.
 - [NEXT](NEXT.md) is the current research-session entry point.
 - [Original seed ideas](notes/seed-ideas.md) preserves the initial note.
 - [Research priorities](notes/2026-08-18-priorities.md) records the first project decisions.
@@ -38,7 +40,8 @@ The project does not presently treat machine consciousness as an engineering cla
 - [Hypothesis ledger](hypothesis.md) turns the strongest ideas and counterideas into falsifiable proposals.
 - [Experiments](experiments/README.md) defines how tests should be registered and reported.
 - [Experiment workflow](experiments/WORKFLOW.md) defines the repeatable research loop.
-- [E001-P0 report](experiments/E001-trajectory-sufficiency/report.md) is the first completed pilot.
+- [E001-P0 report](experiments/E001-trajectory-sufficiency/report.md) is the exploratory pilot.
+- [E001-P1 report](experiments/E001-trajectory-sufficiency/report-p1-development.md) records the failed capability gate.
 
 ## Epistemic rules
 
@@ -72,22 +75,33 @@ The project will:
     ├── research/
     │   ├── landscape.md          Broad evidence and counterevidence
     │   └── compression-frontier.md
+    ├── paper/
+    │   ├── preprint.md            Canonical manuscript
+    │   ├── analyze.py             Raw-result analysis and figures
+    │   ├── build_pdf.py           Reproducible PDF build
+    │   └── generated/             Derived statistics and figures
+    ├── output/pdf/                Release-ready preprint PDF
     └── experiments/
         ├── README.md              Experiment registration template
         ├── WORKFLOW.md            Repeatable research-session loop
-        └── E001-trajectory-sufficiency/
+        ├── E001-trajectory-sufficiency/
             ├── README.md          Experiment design and amendments
             ├── report.md          Interpretation of the completed pilot
             ├── config/            Frozen machine-readable configurations
             ├── src/               Experiment implementation
             ├── tests/             Deterministic validity checks
             └── results/           Raw metrics and flat summaries
+        └── E002-contextual-transition-executor/
+            ├── preregister.md     Frozen prospective protocol
+            ├── report.md          Final compact handoff
+            ├── src/ and tests/    Implementation and validity checks
+            └── results/           Development and confirmatory metrics
 
-As the project grows, each implemented experiment should receive a numbered directory such as experiments/E001-continual-memory. Large models, private data, and generated artifacts should not be committed.
+As the project grows, each implemented experiment should receive a numbered directory such as experiments/E003-continual-memory. Large models, private data, and intermediate generated artifacts should not be committed; compact paper figures and release PDFs are versioned for auditability.
 
 ## Project status
 
-**Exploratory / early experimental.** E001-P0 is a suggestive synthetic pilot; no hypothesis in this repository is established.
+**Preprint / bounded synthetic evidence.** The affine confirmation supports local relational transfer but not transfer of a depth-general iterative algorithm. The cross-family claim remains inconclusive because the bitwise teacher failed its registered positive-control gate. No result establishes general compression, language-model, energy, continual-learning, or consciousness claims.
 
 ## License
 

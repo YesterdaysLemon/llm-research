@@ -26,6 +26,7 @@ Thumbs.db
 checkpoints/
 models/
 artifacts/
+tmp/
 
 # Raw or private data stays local by default
 data/raw/

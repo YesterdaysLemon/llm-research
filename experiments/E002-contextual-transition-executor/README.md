@@ -1,5 +1,7 @@
 # E002 — Context-selected transition execution
 
+**Status:** complete at the preregistered stopping boundary. Read the [final report](report.md) and [preprint](../../paper/preprint.md).
+
 ## Question
 
 Does explicit reuse of a context-selected transition operator produce more compositional capability per parameter than a generic Transformer, and does relational teacher supervision still help once the student architecture can execute the task?

@@ -47,7 +47,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## H-002 — Relational trajectory distillation
 
-**Status:** proposed; E001-P0 pilot is suggestive but does not establish the claim
+**Status:** inconclusive for the broad two-family claim; affine local-transfer subclaim supported; strong algorithm-transfer subclaim not supported
 
 **Origin:** learning emergent behavior from activations
 
@@ -74,7 +74,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 **Coordinate-artifact condition.** Reject the geometric interpretation if the method requires the teacher's original coordinate basis, cannot distinguish real from example-shuffled trajectories, or provides no gain beyond an equally sized random auxiliary target.
 
-**Pilot evidence.** In E001-P0, a relational Gram-matrix objective beat labels, logits, pointwise matching, and example-shuffled trajectories across three seeds on held-out ordered relation pairs. Mean held-out accuracy was 8.77% versus 4.23% for logits and 3.88% for shuffled trajectories. However, the advantage was concentrated in shallow compositions and depth-four performance remained near chance. This supports a weaker claim that relational trajectories can transfer some local structure; it does not yet support transfer of a general composition algorithm. See the [report](experiments/E001-trajectory-sufficiency/report.md).
+**Evidence.** In E001-P0, a relational Gram-matrix objective beat labels, logits, pointwise matching, and example-shuffled trajectories across three exploratory seeds. E002 then prospectively confirmed the local effect on affine permutations: relational accuracy was 23.31% versus 11.30% for logits and 6.65% for shuffled geometry across ten paired seeds. The relational-minus-logits effect was +12.01 percentage points, 95% CI [10.16, 13.86]. Depth-four accuracy was only 3.51% against 2.13% chance and failed the registered algorithm-transfer floor. A fixed bitwise cell was descriptively favorable but invalid because its teacher missed the positive-control gate. See the [preprint](paper/preprint.md).
 
 ## H-003 — Hybrid memory beats weights that “never stop growing”
 
@@ -204,7 +204,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## H-008 — Context-selected parameter reuse beats trajectory supervision
 
-**Status:** proposed; motivated prospectively by the failed E001-P1 capability gate
+**Status:** inconclusive for the registered cross-family claim; affine executor criteria passed; bitwise cell invalid
 
 **Origin:** capability per parameter, context-aware parameter definitions, and the depth-specific E001 failure
 
@@ -222,10 +222,39 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 **Kill condition.** Reject the general efficiency interpretation if the executor advantage disappears on the second task family, requires direct labels for every primitive transition, or is erased by a comparably sized generic recurrent baseline.
 
+**Evidence.** On the valid affine confirmation, the transition-table executor reached 100% at every depth with 17,672 parameters, versus 23.31% for the 1,082,927-parameter relational Transformer. It eventually reached 100% without primitive-transition examples in an exploratory ten-epoch diagnostic, while the small GRU reached only 9.44%. The fixed bitwise table also reached 100% descriptively, but the family cell was invalid under the registered teacher gate. Cross-family support therefore remains inconclusive.
+
+## H-009 — Geometry-guided operator discovery
+
+**Status:** proposed from the joint E001-E002 evidence
+
+**Origin:** local trajectory transfer plus the task-aligned executor advantage
+
+**Confidence:** low-medium on latent finite-state tasks; low beyond structured domains
+
+**Claim.** A modular recurrent learner that jointly discovers latent state slots, a small context-selected operator library, and a reusable execution rule will generalize to unseen relation pairs and longer depths more efficiently than a generic Transformer or GRU. Relational teacher geometry will improve operator discovery compared with labels and logits alone, even though geometry by itself did not transfer the full algorithm.
+
+**Why it might win.** E002 separates two ingredients: relational geometry supplies useful local structure, while a correctly factored executor supplies exact iteration. Combining a learned factorization with repeated execution could turn the former into a routing or state-discovery signal instead of asking it to serve as a portable program.
+
+**Strong rival.** The finite-state factorization may still be doing nearly all the work. A learned modular system could collapse to arbitrary slots, require hidden supervision, or lose its advantage when observations obscure entity identity. Relational geometry might reproduce the same shallow correlations seen in E002 without improving operator recovery or long-depth behavior.
+
+**Minimum test.**
+
+1. Generate at least two transition families with latent states observed through frozen random relabelings or noisy feature maps rather than direct entity IDs.
+2. Compare a generic Transformer, a matched GRU, and a modular recurrent student with learned state slots and soft operator routing.
+3. For the modular student, compare labels, teacher logits, and logits plus relational geometry from paired initializations.
+4. Train through depth four; freeze evaluation at depths six and eight and on unseen ordered relation pairs.
+5. Use at least three task-generation seeds and five training seeds, with a teacher positive-control gate and a modular labels-only capability gate.
+6. Report absolute accuracy, stored and selected parameters, operator-use entropy, and factor-recovery metrics after permutation alignment. Treat recovery as secondary to behavior.
+
+**Primary measure.** Held-out depth-six/eight accuracy per stored parameter, subject to an absolute accuracy floor fixed from development.
+
+**Kill condition.** Reject the geometry-guided discovery claim if relational supervision does not improve the modular student over output-only supervision across both frozen families, if long-depth accuracy remains near chance, or if the method requires direct latent-state or operator labels.
+
 ## Priority order
 
-1. **H-008** — tests whether architectural parameter reuse dominates trajectory supervision on the current mechanism task.
-2. **H-002** — tests whether activation trajectories contain transferable structure rather than coordinates.
+1. **H-009** — tests whether operator structure can be discovered rather than hand-specified, with geometry as a discovery signal.
+2. **H-002 / H-008 replication** — independently gate the broad activation and executor claims before generalizing them.
 3. **H-007** — turns those mechanisms into a capability-per-parameter and per-joule target.
 4. **H-006** — establishes honest energy measurement and a strong systems baseline.
 5. **H-003** — asks whether durable learning requires weight change.
@@ -235,7 +264,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## Open decisions
 
-- Define the first frozen broad-capability suite and its difficult-tail subset.
-- Decide how much average-score gain may compensate for a loss on one rare task; the default should be “none” until justified.
+- Complete the human reading and challenge pass on the E001-E002 preprint before selecting another experiment.
+- Choose between H-009 operator discovery, an independently gated replication, and a return to continual learning.
+- Define the first frozen broad-capability suite and its difficult-tail subset before making a general compression claim.
 - Choose direct wall-power measurement or hardware telemetry for the M2 and RTX 4060 hosts.
-- Decide whether the first large-model replication uses same-family teacher/student architectures or deliberately different ones.
