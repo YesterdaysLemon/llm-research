@@ -1459,5 +1459,152 @@
     },
     "registered_decision": "learned_teacher_advantage_beyond_terminal_label_equivalence",
     "wall_time_comparability": "invalid for cross-run efficiency comparison because host contention caused large seed-level runtime variation"
+  },
+  "e004_tiny_lm": {
+    "ordinary": {
+      "config_sha256": "7bff46ca8ac07e92312ba167ada2012f21f20b0178ba8816793f16c76637d0c5",
+      "git_commit": "bc4ca00fdc4b3edbb06d387525220b940e1447c0",
+      "teacher": {
+        "step": 21600,
+        "selected_step": null,
+        "natural_nll": 2.119684126228094,
+        "id_accuracy": 0.16796875,
+        "id_depth": {
+          "2": 0.29239766081871343,
+          "3": 0.11695906432748537,
+          "4": 0.09411764705882353
+        },
+        "heldout_accuracy": 0.12890625,
+        "heldout_depth": {
+          "2": 0.1796875,
+          "3": 0.0859375,
+          "4": 0.1171875,
+          "6": 0.1328125
+        },
+        "heldout_pair": {
+          "add:1->multiply:2": 0.1015625,
+          "add:3->multiply:3": 0.09375,
+          "multiply:2->add:1": 0.1640625,
+          "multiply:3->add:3": 0.15625
+        },
+        "training_seconds": 587.4494765999843,
+        "peak_gpu_memory_bytes": 384376832,
+        "source_exposures": {
+          "natural_sequences": 276480,
+          "controlled_sequences": 69120,
+          "controlled_records": 150088,
+          "natural_supervised_tokens": 17694720,
+          "controlled_supervised_tokens": 3558659
+        }
+      },
+      "student": {
+        "step": 21600,
+        "selected_step": null,
+        "natural_nll": 2.2089539552107453,
+        "id_accuracy": 0.068359375,
+        "id_depth": {
+          "2": 0.04093567251461988,
+          "3": 0.05847953216374269,
+          "4": 0.10588235294117647
+        },
+        "heldout_accuracy": 0.076171875,
+        "heldout_depth": {
+          "2": 0.0546875,
+          "3": 0.1328125,
+          "4": 0.046875,
+          "6": 0.0703125
+        },
+        "heldout_pair": {
+          "add:1->multiply:2": 0.0390625,
+          "add:3->multiply:3": 0.0703125,
+          "multiply:2->add:1": 0.09375,
+          "multiply:3->add:3": 0.1015625
+        },
+        "training_seconds": 268.257526100002,
+        "peak_gpu_memory_bytes": 241271808,
+        "source_exposures": {
+          "natural_sequences": 276480,
+          "controlled_sequences": 69120,
+          "controlled_records": 150053,
+          "natural_supervised_tokens": 17694720,
+          "controlled_supervised_tokens": 3557809
+        }
+      }
+    },
+    "answer_weighted": {
+      "config_sha256": "893488f25cc7ae24ae2f64044944a998e6f234618afaf2713391bc0927a5aa1a",
+      "git_commit": "74c18976a6692e9952372535739849da683844ff",
+      "teacher": {
+        "step": 21600,
+        "selected_step": null,
+        "natural_nll": 2.128777253907174,
+        "id_accuracy": 0.43359375,
+        "id_depth": {
+          "2": 0.9005847953216374,
+          "3": 0.2631578947368421,
+          "4": 0.13529411764705881
+        },
+        "heldout_accuracy": 0.17578125,
+        "heldout_depth": {
+          "2": 0.2890625,
+          "3": 0.203125,
+          "4": 0.109375,
+          "6": 0.1015625
+        },
+        "heldout_pair": {
+          "add:1->multiply:2": 0.1484375,
+          "add:3->multiply:3": 0.1015625,
+          "multiply:2->add:1": 0.21875,
+          "multiply:3->add:3": 0.234375
+        },
+        "training_seconds": 1321.3349272999913,
+        "peak_gpu_memory_bytes": 384377856,
+        "source_exposures": {
+          "natural_sequences": 276480,
+          "controlled_sequences": 69120,
+          "controlled_records": 150088,
+          "natural_supervised_tokens": 17694720,
+          "controlled_supervised_tokens": 3558659,
+          "controlled_answer_tokens": 150088
+        }
+      },
+      "student": {
+        "step": 21600,
+        "selected_step": null,
+        "natural_nll": 2.2516965428367257,
+        "id_accuracy": 0.484375,
+        "id_depth": {
+          "2": 0.8830409356725146,
+          "3": 0.4619883040935672,
+          "4": 0.10588235294117647
+        },
+        "heldout_accuracy": 0.1640625,
+        "heldout_depth": {
+          "2": 0.265625,
+          "3": 0.21875,
+          "4": 0.109375,
+          "6": 0.0625
+        },
+        "heldout_pair": {
+          "add:1->multiply:2": 0.171875,
+          "add:3->multiply:3": 0.1328125,
+          "multiply:2->add:1": 0.1875,
+          "multiply:3->add:3": 0.1640625
+        },
+        "training_seconds": 250.46961639996152,
+        "peak_gpu_memory_bytes": 241272832,
+        "source_exposures": {
+          "natural_sequences": 276480,
+          "controlled_sequences": 69120,
+          "controlled_records": 150053,
+          "natural_supervised_tokens": 17694720,
+          "controlled_supervised_tokens": 3557809,
+          "controlled_answer_tokens": 150053
+        }
+      }
+    },
+    "chance": 0.09090909090909091,
+    "registered_decision": "controlled_benchmark_retired_after_failed_capability_gates",
+    "timing_comparability": "invalid because the weighted teacher final rung ran under severe GPU contention"
   }
 }

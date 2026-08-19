@@ -254,7 +254,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## H-010 — Activation-specific distillation survives next-token controls
 
-**Status:** E004 capability smoke failed; activation-specific claim remains untested
+**Status:** E004 controlled benchmark retired after failed capability gates; activation-specific claim remains untested
 
 **Origin:** applying H-002 to genuine causal language modeling as early as possible
 
@@ -292,20 +292,64 @@ chance. The fixed KD/geometry study is therefore invalid to run. Because answer
 positions were only 0.706% of supervised positions, one answer-weighted
 capability diagnostic is registered before abandoning the benchmark.
 
+**Diagnostic outcome.** Answer weighting raised teacher depth-two ID accuracy
+from 29.24% to 90.06% and student depth-two ID from 4.09% to 88.30%, supporting
+objective dilution as a real shallow-learning bottleneck. Teacher depth-four ID
+remained 13.53% and held-out overall 17.58%, so the positive control still
+failed. Per registration, this benchmark is retired and no geometry comparison
+was run.
+
+## H-011 — Rare decision-token allocation
+
+**Status:** exploratory single-seed support for shallow acquisition; depth-general claim not supported
+
+**Origin:** E004 capability failure and answer-weighted diagnostic
+
+**Confidence:** medium for loss-allocation effects; low for algorithmic transfer
+
+**Claim.** In mixed causal streams where task-defining decision tokens are
+rare, allocating loss approximately per semantic event rather than per token
+will improve acquisition of the rare task without requiring more parameters,
+but will not by itself guarantee iterative depth generalization.
+
+**Why it might win.** Token-averaged likelihood spends most gradient budget on
+frequent grammar and natural text. One record-scale weight makes the event's
+decision target compete with the tokens that describe it.
+
+**Strong rival.** Weighting may merely encourage shallow answer templates or
+calibration changes. Oversampling complete records, curriculum, recurrent
+architectures, or explicit intermediate supervision may be necessary for the
+underlying computation.
+
+**Minimum test.** On a new controlled task with a teacher that clears capability,
+compare token-uniform CE, event-balanced weighting, and record oversampling at
+matched optimizer compute and effective answer exposures across at least five
+seeds. Report natural NLL, ID and held-out accuracy by depth, and gradient share
+at decision tokens.
+
+**Evidence.** In one paired E004 seed, answer weighting improved teacher/student
+depth-two ID by 60.82/84.21 percentage points with little natural-NLL change.
+Depth-four teacher accuracy remained near chance and no registered gate passed.
+
+**Kill condition.** Reject a general acquisition benefit if event weighting
+does not beat token-uniform CE across seeds at matched answer exposure, or if
+its gain is reproduced entirely by ordinary record oversampling.
+
 **Primary measure.** The joint result on natural-text validation NLL and capability-gated held-out controlled composition. The activation-specific claim requires learned hidden relations to beat both output distillation and target-token geometry under paired uncertainty intervals.
 
 **Kill condition.** Reject activation-specific benefit under this design if learned hidden relations fail to beat target-token geometry, if any gain disappears against the extra-compute/data baseline, or if the student capability gate fails. A failed gate triggers redesign of the benchmark, not a positive or negative mechanism claim.
 
 ## Priority order
 
-1. **H-010** — move immediately into a tiny causal language model while carrying E003's specificity and ordinary-compute controls.
-2. **H-009** — test whether operator structure can be discovered rather than hand-specified.
-3. **H-008 replication / H-007** — independently gate and then scale the efficiency claims.
-4. **H-006** — establish honest energy measurement and a strong systems baseline.
-5. **H-003** — ask whether durable learning requires weight change.
-6. **H-001** — convert the sleep analogy into a bounded algorithmic test.
-7. **H-005** — test the ecology claim after a reliable task harness exists.
-8. **H-004** — most speculative; run only with strong controls.
+1. **H-010** — move to a natural-text-only tiny-LM specificity bridge; do not reuse E004's retired controlled benchmark.
+2. **H-011** — retest rare decision-token allocation only on a new capability-gated task.
+3. **H-009** — test whether operator structure can be discovered rather than hand-specified.
+4. **H-008 replication / H-007** — independently gate and then scale the efficiency claims.
+5. **H-006** — establish honest energy measurement and a strong systems baseline.
+6. **H-003** — ask whether durable learning requires weight change.
+7. **H-001** — convert the sleep analogy into a bounded algorithmic test.
+8. **H-005** — test the ecology claim after a reliable task harness exists.
+9. **H-004** — most speculative; run only with strong controls.
 
 ## Open decisions
 

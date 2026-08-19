@@ -11,13 +11,14 @@ directory and require only PyTorch plus the Python standard library.
 
 ## Status
 
-**Initial capability smoke failed; H-010 remains untested.** Read the
-[prospective protocol](preregister.md) and [smoke report](report-smoke.md).
-Neither teacher nor labels-only student selected a passing rung, so the fixed
-paired comparison is not licensed. The next bounded action is a separately
-registered answer-weighting diagnostic; no KD or geometry result exists.
+**Capability gate failed; the controlled benchmark is retired.** Read the
+[prospective protocol](preregister.md), [initial smoke report](report-smoke.md),
+and [answer-weighted diagnostic](report-answer-weighted.md). Weighting rare
+answer positions created strong shallow ID gains, but neither teacher nor
+labels-only student passed the frozen gates. The fixed paired comparison was not
+run, so H-010 remains untested.
 
-The diagnostic changes only the controlled answer-token loss weight and is
+The diagnostic changed only the controlled answer-token loss weight and was
 frozen in [its own preregistration](preregister-answer-weighted.md).
 
 ## Local data

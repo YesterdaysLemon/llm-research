@@ -70,9 +70,9 @@ E001-P1 then stopped before confirmation because every registered student missed
 [E003 — Label-geometry specificity](E003-label-geometry-specificity/README.md) added one prospectively registered control to distinguish learned-teacher layer geometry from terminal-label similarity. Its [report](E003-label-geometry-specificity/report.md) records a positive learned-teacher-specificity decision without adding tuning or rescue conditions.
 
 [E004 — Tiny causal-language-model bridge](E004-tiny-language-model/README.md)
-moves H-010 into causal next-token learning. Its first registration freezes a
-teacher and labels-only student smoke gate before any distillation condition is
-viewed.
+moved H-010 into causal next-token learning. Both its ordinary and
+answer-weighted capability ladders failed their teacher/student gates, so the
+controlled benchmark was retired before any distillation condition ran.
 
 ## Working loop
 

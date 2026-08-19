@@ -1,0 +1,724 @@
+{
+  "experiment_id": "E004-smoke-answer-weighted",
+  "phase": "capability-diagnostic-answer-weighted",
+  "timestamp_utc": "2026-08-19T23:00:29.416260+00:00",
+  "config_path": "experiments\\E004-tiny-language-model\\config\\smoke-answer-weighted.json",
+  "config_sha256": "893488f25cc7ae24ae2f64044944a998e6f234618afaf2713391bc0927a5aa1a",
+  "git_commit": "74c18976a6692e9952372535739849da683844ff",
+  "git_status_porcelain": "",
+  "dataset": {
+    "path": "data/raw/tinystories/TinyStoriesV2-GPT4-valid.txt",
+    "revision": "f54c09fd23315a6f9c86f9dc80f725de7d8f9c64",
+    "license": "CDLA-Sharing-1.0",
+    "bytes": 22502601,
+    "sha256": "6874bae9a4c1a4e7edcf0e53b86c17817e9cf881fc75ff2368da457b80c0585d",
+    "vocabulary_size": 2048,
+    "vocabulary_sha256": "bb0587253d44f87eaa5b2202daa1082f7437f8cdb07fa6133a5703048ee05588",
+    "natural_train_tokens": 2312569,
+    "natural_validation_tokens": 381261,
+    "controlled_train_records": 20000,
+    "controlled_train_tokens": 495395,
+    "unigram_validation_nll": 5.353011740165501
+  },
+  "environment": {
+    "python": "3.12.13 (main, Apr 14 2026, 14:31:26) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060",
+    "deterministic_algorithms": true,
+    "training_autocast": "bfloat16",
+    "evaluation_precision": "float32"
+  },
+  "teacher": {
+    "parameters": 10540160,
+    "training": {
+      "checkpoint_steps": [
+        400,
+        2400,
+        7200,
+        21600
+      ],
+      "selected_step": null,
+      "peak_gpu_memory_bytes": 384377856,
+      "rungs": [
+        {
+          "step": 400,
+          "mean_training_loss": 3.631775601506233,
+          "training_seconds_cumulative": 10.188123299973086,
+          "evaluation_seconds": 5.855765300017083,
+          "source_exposures": {
+            "natural_sequences": 5120,
+            "controlled_sequences": 1280,
+            "controlled_records": 2765,
+            "natural_supervised_tokens": 327680,
+            "controlled_supervised_tokens": 65865,
+            "controlled_answer_tokens": 2765
+          },
+          "evaluation": {
+            "natural": {
+              "nll": 3.503240803256631,
+              "perplexity": 33.22294671383809,
+              "tokens": 8192,
+              "precision": "float32"
+            },
+            "controlled_id": {
+              "accuracy": 0.0703125,
+              "answer_nll": 2.5401759885717183,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.07017543859649122,
+                "3": 0.08187134502923976,
+                "4": 0.058823529411764705
+              },
+              "examples_by_depth": {
+                "2": 171,
+                "3": 171,
+                "4": 170
+              },
+              "accuracy_by_pair": {
+                "none": 0.0703125
+              },
+              "examples_by_pair": {
+                "none": 512
+              },
+              "precision": "float32"
+            },
+            "controlled_heldout": {
+              "accuracy": 0.087890625,
+              "answer_nll": 2.524730767821893,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.109375,
+                "3": 0.09375,
+                "4": 0.078125,
+                "6": 0.0703125
+              },
+              "examples_by_depth": {
+                "2": 128,
+                "3": 128,
+                "4": 128,
+                "6": 128
+              },
+              "accuracy_by_pair": {
+                "add:1->multiply:2": 0.109375,
+                "add:3->multiply:3": 0.0703125,
+                "multiply:2->add:1": 0.0703125,
+                "multiply:3->add:3": 0.1015625
+              },
+              "examples_by_pair": {
+                "add:1->multiply:2": 128,
+                "add:3->multiply:3": 128,
+                "multiply:2->add:1": 128,
+                "multiply:3->add:3": 128
+              },
+              "precision": "float32"
+            }
+          },
+          "gates": {
+            "natural_beats_unigram": true,
+            "id_overall": false,
+            "id_each_depth": false,
+            "heldout_depth_2_to_4": false,
+            "heldout_each_pair": false,
+            "all": false
+          }
+        },
+        {
+          "step": 2400,
+          "mean_training_loss": 2.710398909151554,
+          "training_seconds_cumulative": 60.11655279996921,
+          "evaluation_seconds": 6.113159300002735,
+          "source_exposures": {
+            "natural_sequences": 30720,
+            "controlled_sequences": 7680,
+            "controlled_records": 16720,
+            "natural_supervised_tokens": 1966080,
+            "controlled_supervised_tokens": 396790,
+            "controlled_answer_tokens": 16720
+          },
+          "evaluation": {
+            "natural": {
+              "nll": 2.6577939009293914,
+              "perplexity": 14.264784832127706,
+              "tokens": 8192,
+              "precision": "float32"
+            },
+            "controlled_id": {
+              "accuracy": 0.103515625,
+              "answer_nll": 2.419271030696109,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.14035087719298245,
+                "3": 0.05847953216374269,
+                "4": 0.11176470588235295
+              },
+              "examples_by_depth": {
+                "2": 171,
+                "3": 171,
+                "4": 170
+              },
+              "accuracy_by_pair": {
+                "none": 0.103515625
+              },
+              "examples_by_pair": {
+                "none": 512
+              },
+              "precision": "float32"
+            },
+            "controlled_heldout": {
+              "accuracy": 0.078125,
+              "answer_nll": 2.4482068920042366,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.0546875,
+                "3": 0.1171875,
+                "4": 0.078125,
+                "6": 0.0625
+              },
+              "examples_by_depth": {
+                "2": 128,
+                "3": 128,
+                "4": 128,
+                "6": 128
+              },
+              "accuracy_by_pair": {
+                "add:1->multiply:2": 0.0859375,
+                "add:3->multiply:3": 0.0625,
+                "multiply:2->add:1": 0.1015625,
+                "multiply:3->add:3": 0.0625
+              },
+              "examples_by_pair": {
+                "add:1->multiply:2": 128,
+                "add:3->multiply:3": 128,
+                "multiply:2->add:1": 128,
+                "multiply:3->add:3": 128
+              },
+              "precision": "float32"
+            }
+          },
+          "gates": {
+            "natural_beats_unigram": true,
+            "id_overall": false,
+            "id_each_depth": false,
+            "heldout_depth_2_to_4": false,
+            "heldout_each_pair": false,
+            "all": false
+          }
+        },
+        {
+          "step": 7200,
+          "mean_training_loss": 2.3221983279122247,
+          "training_seconds_cumulative": 183.98467469998286,
+          "evaluation_seconds": 6.174731099978089,
+          "source_exposures": {
+            "natural_sequences": 92160,
+            "controlled_sequences": 23040,
+            "controlled_records": 50124,
+            "natural_supervised_tokens": 5898240,
+            "controlled_supervised_tokens": 1187792,
+            "controlled_answer_tokens": 50124
+          },
+          "evaluation": {
+            "natural": {
+              "nll": 2.310941490344703,
+              "perplexity": 10.08391409496181,
+              "tokens": 8192,
+              "precision": "float32"
+            },
+            "controlled_id": {
+              "accuracy": 0.0703125,
+              "answer_nll": 2.45469692023471,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.05263157894736842,
+                "3": 0.10526315789473684,
+                "4": 0.052941176470588235
+              },
+              "examples_by_depth": {
+                "2": 171,
+                "3": 171,
+                "4": 170
+              },
+              "accuracy_by_pair": {
+                "none": 0.0703125
+              },
+              "examples_by_pair": {
+                "none": 512
+              },
+              "precision": "float32"
+            },
+            "controlled_heldout": {
+              "accuracy": 0.080078125,
+              "answer_nll": 2.4603035065811127,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.1328125,
+                "3": 0.046875,
+                "4": 0.0703125,
+                "6": 0.0703125
+              },
+              "examples_by_depth": {
+                "2": 128,
+                "3": 128,
+                "4": 128,
+                "6": 128
+              },
+              "accuracy_by_pair": {
+                "add:1->multiply:2": 0.1171875,
+                "add:3->multiply:3": 0.09375,
+                "multiply:2->add:1": 0.0390625,
+                "multiply:3->add:3": 0.0703125
+              },
+              "examples_by_pair": {
+                "add:1->multiply:2": 128,
+                "add:3->multiply:3": 128,
+                "multiply:2->add:1": 128,
+                "multiply:3->add:3": 128
+              },
+              "precision": "float32"
+            }
+          },
+          "gates": {
+            "natural_beats_unigram": true,
+            "id_overall": false,
+            "id_each_depth": false,
+            "heldout_depth_2_to_4": false,
+            "heldout_each_pair": false,
+            "all": false
+          }
+        },
+        {
+          "step": 21600,
+          "mean_training_loss": 1.9451090684974635,
+          "training_seconds_cumulative": 1321.3349272999913,
+          "evaluation_seconds": 6.171775099996012,
+          "source_exposures": {
+            "natural_sequences": 276480,
+            "controlled_sequences": 69120,
+            "controlled_records": 150088,
+            "natural_supervised_tokens": 17694720,
+            "controlled_supervised_tokens": 3558659,
+            "controlled_answer_tokens": 150088
+          },
+          "evaluation": {
+            "natural": {
+              "nll": 2.128777253907174,
+              "perplexity": 8.404583853929026,
+              "tokens": 8192,
+              "precision": "float32"
+            },
+            "controlled_id": {
+              "accuracy": 0.43359375,
+              "answer_nll": 1.568168617746096,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.9005847953216374,
+                "3": 0.2631578947368421,
+                "4": 0.13529411764705881
+              },
+              "examples_by_depth": {
+                "2": 171,
+                "3": 171,
+                "4": 170
+              },
+              "accuracy_by_pair": {
+                "none": 0.43359375
+              },
+              "examples_by_pair": {
+                "none": 512
+              },
+              "precision": "float32"
+            },
+            "controlled_heldout": {
+              "accuracy": 0.17578125,
+              "answer_nll": 2.5368029326709802,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.2890625,
+                "3": 0.203125,
+                "4": 0.109375,
+                "6": 0.1015625
+              },
+              "examples_by_depth": {
+                "2": 128,
+                "3": 128,
+                "4": 128,
+                "6": 128
+              },
+              "accuracy_by_pair": {
+                "add:1->multiply:2": 0.1484375,
+                "add:3->multiply:3": 0.1015625,
+                "multiply:2->add:1": 0.21875,
+                "multiply:3->add:3": 0.234375
+              },
+              "examples_by_pair": {
+                "add:1->multiply:2": 128,
+                "add:3->multiply:3": 128,
+                "multiply:2->add:1": 128,
+                "multiply:3->add:3": 128
+              },
+              "precision": "float32"
+            }
+          },
+          "gates": {
+            "natural_beats_unigram": true,
+            "id_overall": false,
+            "id_each_depth": false,
+            "heldout_depth_2_to_4": false,
+            "heldout_each_pair": false,
+            "all": false
+          }
+        }
+      ]
+    }
+  },
+  "student": {
+    "parameters": 1575360,
+    "training": {
+      "checkpoint_steps": [
+        400,
+        2400,
+        7200,
+        21600
+      ],
+      "selected_step": null,
+      "peak_gpu_memory_bytes": 241272832,
+      "rungs": [
+        {
+          "step": 400,
+          "mean_training_loss": 3.9365775960683824,
+          "training_seconds_cumulative": 4.71618909999961,
+          "evaluation_seconds": 3.206791600037832,
+          "source_exposures": {
+            "natural_sequences": 5120,
+            "controlled_sequences": 1280,
+            "controlled_records": 2784,
+            "natural_supervised_tokens": 327680,
+            "controlled_supervised_tokens": 65867,
+            "controlled_answer_tokens": 2784
+          },
+          "evaluation": {
+            "natural": {
+              "nll": 3.722109191119671,
+              "perplexity": 41.35152045297937,
+              "tokens": 8192,
+              "precision": "float32"
+            },
+            "controlled_id": {
+              "accuracy": 0.099609375,
+              "answer_nll": 2.481857866048813,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.07602339181286549,
+                "3": 0.1111111111111111,
+                "4": 0.11176470588235295
+              },
+              "examples_by_depth": {
+                "2": 171,
+                "3": 171,
+                "4": 170
+              },
+              "accuracy_by_pair": {
+                "none": 0.099609375
+              },
+              "examples_by_pair": {
+                "none": 512
+              },
+              "precision": "float32"
+            },
+            "controlled_heldout": {
+              "accuracy": 0.09765625,
+              "answer_nll": 2.469891222892329,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.1171875,
+                "3": 0.0703125,
+                "4": 0.1015625,
+                "6": 0.1015625
+              },
+              "examples_by_depth": {
+                "2": 128,
+                "3": 128,
+                "4": 128,
+                "6": 128
+              },
+              "accuracy_by_pair": {
+                "add:1->multiply:2": 0.1171875,
+                "add:3->multiply:3": 0.1484375,
+                "multiply:2->add:1": 0.0703125,
+                "multiply:3->add:3": 0.0546875
+              },
+              "examples_by_pair": {
+                "add:1->multiply:2": 128,
+                "add:3->multiply:3": 128,
+                "multiply:2->add:1": 128,
+                "multiply:3->add:3": 128
+              },
+              "precision": "float32"
+            }
+          },
+          "gates": {
+            "natural_beats_unigram": true,
+            "id_overall": false,
+            "id_depth_4": false,
+            "heldout_above_floor": false,
+            "heldout_below_ceiling": true,
+            "all": false
+          }
+        },
+        {
+          "step": 2400,
+          "mean_training_loss": 2.885350152949492,
+          "training_seconds_cumulative": 28.544201500015333,
+          "evaluation_seconds": 3.244477799977176,
+          "source_exposures": {
+            "natural_sequences": 30720,
+            "controlled_sequences": 7680,
+            "controlled_records": 16662,
+            "natural_supervised_tokens": 1966080,
+            "controlled_supervised_tokens": 395296,
+            "controlled_answer_tokens": 16662
+          },
+          "evaluation": {
+            "natural": {
+              "nll": 2.8337386148050427,
+              "perplexity": 17.00893194837029,
+              "tokens": 8192,
+              "precision": "float32"
+            },
+            "controlled_id": {
+              "accuracy": 0.095703125,
+              "answer_nll": 2.4165936238132417,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.1111111111111111,
+                "3": 0.09941520467836257,
+                "4": 0.07647058823529412
+              },
+              "examples_by_depth": {
+                "2": 171,
+                "3": 171,
+                "4": 170
+              },
+              "accuracy_by_pair": {
+                "none": 0.095703125
+              },
+              "examples_by_pair": {
+                "none": 512
+              },
+              "precision": "float32"
+            },
+            "controlled_heldout": {
+              "accuracy": 0.1171875,
+              "answer_nll": 2.4183165307622403,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.1328125,
+                "3": 0.1015625,
+                "4": 0.1484375,
+                "6": 0.0859375
+              },
+              "examples_by_depth": {
+                "2": 128,
+                "3": 128,
+                "4": 128,
+                "6": 128
+              },
+              "accuracy_by_pair": {
+                "add:1->multiply:2": 0.0859375,
+                "add:3->multiply:3": 0.109375,
+                "multiply:2->add:1": 0.109375,
+                "multiply:3->add:3": 0.1640625
+              },
+              "examples_by_pair": {
+                "add:1->multiply:2": 128,
+                "add:3->multiply:3": 128,
+                "multiply:2->add:1": 128,
+                "multiply:3->add:3": 128
+              },
+              "precision": "float32"
+            }
+          },
+          "gates": {
+            "natural_beats_unigram": true,
+            "id_overall": false,
+            "id_depth_4": false,
+            "heldout_above_floor": false,
+            "heldout_below_ceiling": true,
+            "all": false
+          }
+        },
+        {
+          "step": 7200,
+          "mean_training_loss": 2.473699589934614,
+          "training_seconds_cumulative": 84.36850539996522,
+          "evaluation_seconds": 3.2185549000278115,
+          "source_exposures": {
+            "natural_sequences": 92160,
+            "controlled_sequences": 23040,
+            "controlled_records": 49954,
+            "natural_supervised_tokens": 5898240,
+            "controlled_supervised_tokens": 1184907,
+            "controlled_answer_tokens": 49954
+          },
+          "evaluation": {
+            "natural": {
+              "nll": 2.4636377142742276,
+              "perplexity": 11.747467838671204,
+              "tokens": 8192,
+              "precision": "float32"
+            },
+            "controlled_id": {
+              "accuracy": 0.099609375,
+              "answer_nll": 2.4598574843257666,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.13450292397660818,
+                "3": 0.08771929824561403,
+                "4": 0.07647058823529412
+              },
+              "examples_by_depth": {
+                "2": 171,
+                "3": 171,
+                "4": 170
+              },
+              "accuracy_by_pair": {
+                "none": 0.099609375
+              },
+              "examples_by_pair": {
+                "none": 512
+              },
+              "precision": "float32"
+            },
+            "controlled_heldout": {
+              "accuracy": 0.0859375,
+              "answer_nll": 2.4569568906445056,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.0703125,
+                "3": 0.1171875,
+                "4": 0.078125,
+                "6": 0.078125
+              },
+              "examples_by_depth": {
+                "2": 128,
+                "3": 128,
+                "4": 128,
+                "6": 128
+              },
+              "accuracy_by_pair": {
+                "add:1->multiply:2": 0.1015625,
+                "add:3->multiply:3": 0.109375,
+                "multiply:2->add:1": 0.0390625,
+                "multiply:3->add:3": 0.09375
+              },
+              "examples_by_pair": {
+                "add:1->multiply:2": 128,
+                "add:3->multiply:3": 128,
+                "multiply:2->add:1": 128,
+                "multiply:3->add:3": 128
+              },
+              "precision": "float32"
+            }
+          },
+          "gates": {
+            "natural_beats_unigram": true,
+            "id_overall": false,
+            "id_depth_4": false,
+            "heldout_above_floor": false,
+            "heldout_below_ceiling": true,
+            "all": false
+          }
+        },
+        {
+          "step": 21600,
+          "mean_training_loss": 2.079190711428722,
+          "training_seconds_cumulative": 250.46961639996152,
+          "evaluation_seconds": 3.1954612000263296,
+          "source_exposures": {
+            "natural_sequences": 276480,
+            "controlled_sequences": 69120,
+            "controlled_records": 150053,
+            "natural_supervised_tokens": 17694720,
+            "controlled_supervised_tokens": 3557809,
+            "controlled_answer_tokens": 150053
+          },
+          "evaluation": {
+            "natural": {
+              "nll": 2.2516965428367257,
+              "perplexity": 9.503845848427169,
+              "tokens": 8192,
+              "precision": "float32"
+            },
+            "controlled_id": {
+              "accuracy": 0.484375,
+              "answer_nll": 1.437005584164126,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.8830409356725146,
+                "3": 0.4619883040935672,
+                "4": 0.10588235294117647
+              },
+              "examples_by_depth": {
+                "2": 171,
+                "3": 171,
+                "4": 170
+              },
+              "accuracy_by_pair": {
+                "none": 0.484375
+              },
+              "examples_by_pair": {
+                "none": 512
+              },
+              "precision": "float32"
+            },
+            "controlled_heldout": {
+              "accuracy": 0.1640625,
+              "answer_nll": 2.5371240410804603,
+              "examples": 512,
+              "accuracy_by_depth": {
+                "2": 0.265625,
+                "3": 0.21875,
+                "4": 0.109375,
+                "6": 0.0625
+              },
+              "examples_by_depth": {
+                "2": 128,
+                "3": 128,
+                "4": 128,
+                "6": 128
+              },
+              "accuracy_by_pair": {
+                "add:1->multiply:2": 0.171875,
+                "add:3->multiply:3": 0.1328125,
+                "multiply:2->add:1": 0.1875,
+                "multiply:3->add:3": 0.1640625
+              },
+              "examples_by_pair": {
+                "add:1->multiply:2": 128,
+                "add:3->multiply:3": 128,
+                "multiply:2->add:1": 128,
+                "multiply:3->add:3": 128
+              },
+              "precision": "float32"
+            }
+          },
+          "gates": {
+            "natural_beats_unigram": true,
+            "id_overall": false,
+            "id_depth_4": false,
+            "heldout_above_floor": false,
+            "heldout_below_ceiling": true,
+            "all": false
+          }
+        }
+      ]
+    }
+  },
+  "gates": {
+    "teacher_selected_step": null,
+    "student_selected_step": null,
+    "all": false
+  }
+}

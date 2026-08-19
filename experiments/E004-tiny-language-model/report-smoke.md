@@ -77,16 +77,15 @@ interference between natural and controlled streams, absolute-position effects,
 or an optimization failure unrelated to target frequency. The present run does
 not distinguish them.
 
-## Next bounded diagnostic
+## Answer-weighted diagnostic outcome
 
-Register one capability-only amendment that multiplies loss at the controlled
+The separately registered diagnostic multiplied loss at the controlled
 answer position by `25`, approximately the mean controlled-record length
 (`495,395 / 20,000 = 24.77` tokens). This makes one answer contribute about as
 much controlled loss as the rest of its record while leaving every token,
 architecture, seed, split, gate, and ladder rung unchanged.
 
-No KD or geometry condition may run during this diagnostic. If the teacher and
-student pass, freeze the selected budgets and implement the fixed comparison.
-If the teacher still fails by 21,600 steps, stop using this controlled benchmark
-for H-010 rather than adding another rescue.
-
+It produced large depth-two ID gains but the teacher and student still failed
+every positive-control decision at the final rung. The benchmark is therefore
+retired for H-010 and no KD or geometry condition may run. See the
+[diagnostic report](report-answer-weighted.md).

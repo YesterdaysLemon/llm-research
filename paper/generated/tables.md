@@ -78,3 +78,15 @@ Paired relational effects:
 - learned-teacher minus label geometry: 17.44% [15.65%, 19.23%]
 - label geometry minus logits: -5.43% [-6.66%, -4.19%]
 - registered decision: learned_teacher_advantage_beyond_terminal_label_equivalence
+
+## E004 tiny causal-LM capability gate
+
+| Model | Objective | Natural NLL | ID | ID d2 | ID d3 | ID d4 | Held-out | Held d2 | Held d3 | Held d4 | Held d6 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Teacher | ordinary CE | 2.1197 | 16.80% | 29.24% | 11.70% | 9.41% | 12.89% | 17.97% | 8.59% | 11.72% | 13.28% |
+| Teacher | answer-weighted CE | 2.1288 | 43.36% | 90.06% | 26.32% | 13.53% | 17.58% | 28.91% | 20.31% | 10.94% | 10.16% |
+| Student | ordinary CE | 2.2090 | 6.84% | 4.09% | 5.85% | 10.59% | 7.62% | 5.47% | 13.28% | 4.69% | 7.03% |
+| Student | answer-weighted CE | 2.2517 | 48.44% | 88.30% | 46.20% | 10.59% | 16.41% | 26.56% | 21.88% | 10.94% | 6.25% |
+
+- registered decision: controlled_benchmark_retired_after_failed_capability_gates
+- timing comparability: invalid because the weighted teacher final rung ran under severe GPU contention
