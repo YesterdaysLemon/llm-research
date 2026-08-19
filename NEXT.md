@@ -16,10 +16,11 @@ The bitwise cell remains descriptive because its teacher missed the registered p
 
 ## Active decision
 
-Run the now-preregistered E004 capability ladder once from its clean pre-result
-commit. Do not run a fixed comparison until the teacher and labels-only student
-each select a passing rung and the resulting fixed corpus/tokenizer/model budget
-is committed separately.
+The first E004 capability ladder is complete and failed: neither the teacher nor
+labels-only student selected a passing rung through 21,600 steps. Do not run the
+fixed comparison. Register and run one answer-weighted capability diagnostic
+from a new clean commit; if its teacher still fails, retire this controlled
+benchmark for H-010 rather than adding another rescue.
 
 The pre-smoke Opus 5 audit and local replay found five blocking defects in the
 first draft; all were repaired before training. Qwen 3.8 timed out twice without
@@ -30,6 +31,14 @@ boundaries, evaluates in float32, and replaces the guessed 400/300-step budget
 with a capability-only ladder at 400, 2,400, 7,200, and 21,600 steps. See the
 [E004 protocol](experiments/E004-tiny-language-model/preregister.md) and
 [design audit](research/council-2026-08-19-e004.md).
+
+The [smoke report](experiments/E004-tiny-language-model/report-smoke.md) records
+the result. Natural NLL improved strongly, but final teacher ID/held-out answer
+accuracy was only 16.80%/12.89% and final student accuracy was 6.84%/7.62%
+against 9.09% chance. Answer positions were 0.706% of all supervised positions.
+The single diagnostic changes only their CE weight to `25`, approximately the
+mean controlled-record length; every model, split, seed, gate, and ladder rung
+stays frozen, and no auxiliary condition may run.
 
 The experiment must decide whether learned hidden-relation geometry improves genuine next-token learning beyond both output distillation and next-token target geometry at matched student size, tokens, initialization, and optimizer steps.
 

@@ -254,7 +254,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## H-010 — Activation-specific distillation survives next-token controls
 
-**Status:** E004 capability smoke preregistered; no language-model training result
+**Status:** E004 capability smoke failed; activation-specific claim remains untested
 
 **Origin:** applying H-002 to genuine causal language modeling as early as possible
 
@@ -283,6 +283,14 @@ balanced depth-by-pair evaluation, complete boundary-aligned records, and a
 capability-only budget ladder. A successful ladder changes only the experiment's
 validity state; H-010 remains untested until the frozen paired KD/geometry study
 runs.
+
+**Smoke outcome.** The 10.54M teacher and 1.58M labels-only student both beat a
+frozen natural-text unigram baseline, but neither cleared controlled capability
+at any rung through 21,600 steps. Final teacher ID/held-out accuracy was
+16.80%/12.89%; final student accuracy was 6.84%/7.62%, against 9.09% answer
+chance. The fixed KD/geometry study is therefore invalid to run. Because answer
+positions were only 0.706% of supervised positions, one answer-weighted
+capability diagnostic is registered before abandoning the benchmark.
 
 **Primary measure.** The joint result on natural-text validation NLL and capability-gated held-out controlled composition. The activation-specific claim requires learned hidden relations to beat both output distillation and target-token geometry under paired uncertainty intervals.
 

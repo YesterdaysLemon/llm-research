@@ -11,10 +11,11 @@ directory and require only PyTorch plus the Python standard library.
 
 ## Status
 
-**Smoke protocol drafted; no E004 result yet.** Read [the prospective
-protocol](preregister.md) before interpreting any artifact. The fixed paired
-comparison must not run until the teacher and labels-only student clear the
-smoke gates and any amendment is committed.
+**Initial capability smoke failed; H-010 remains untested.** Read the
+[prospective protocol](preregister.md) and [smoke report](report-smoke.md).
+Neither teacher nor labels-only student selected a passing rung, so the fixed
+paired comparison is not licensed. The next bounded action is a separately
+registered answer-weighting diagnostic; no KD or geometry result exists.
 
 ## Local data
 
@@ -45,4 +46,3 @@ documentation are MIT licensed; this does not relicense TinyStories.
 The result records the Git commit, worktree status, configuration and corpus
 hashes, environment, parameter counts, token exposures, wall time, peak GPU
 memory, teacher gates, and the single labels-only student gate.
-
