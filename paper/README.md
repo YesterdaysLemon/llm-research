@@ -27,4 +27,4 @@ The PDF is written to `output/pdf/relational_activation_distillation_preprint.pd
 
 ## Interpretation boundary
 
-Only the affine E002 cell passed every registered positive-control gate. Bitwise measurements are retained for transparency but are descriptive. The paper makes no claim about language models, general lossless compression, or energy efficiency.
+Only the affine E002 cell passed every registered positive-control gate. Bitwise measurements are retained for transparency but are descriptive. The affine result supports a correspondence-preserving learned-teacher layer-geometry effect, not yet teacher-specific activation content or a portable-program interpretation. The task-factored executor is a compact existence comparison; its semantically selected table is not realized as sparse compute by the current implementation. The paper makes no claim about language models, general lossless compression, or energy efficiency.

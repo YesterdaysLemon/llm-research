@@ -47,7 +47,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## H-002 — Relational trajectory distillation
 
-**Status:** inconclusive for the broad two-family claim; affine local-transfer subclaim supported; strong algorithm-transfer subclaim not supported
+**Status:** affine correspondence-preserving learned-teacher target supported; teacher-specific content and broad two-family claim inconclusive; strong algorithm-transfer criterion not supported
 
 **Origin:** learning emergent behavior from activations
 
@@ -57,7 +57,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 **Why it might win.** Internal-representation and attention-relation distillation have improved compressed language models ([Aguilar et al., 2019](https://arxiv.org/abs/1910.03723); [Wang et al., 2020](https://arxiv.org/abs/2002.10957)). Relations among states may survive arbitrary basis differences better than pointwise activation matching.
 
-**Strong rival.** The trajectory may only be meaningful when interpreted by the teacher's weights. Student and teacher can implement different valid algorithms, hidden-state constraints may waste capacity, and closer teacher matching need not improve generalization ([Stanton et al., 2021](https://arxiv.org/abs/2106.05945)).
+**Strong rival.** The final teacher layer may mainly encode answer-class similarity, making the relational objective a form of supervised metric learning that can be reproduced directly from labels. Student and teacher can implement different valid algorithms, hidden-state constraints may waste capacity, and closer teacher matching need not improve generalization ([Stanton et al., 2021](https://arxiv.org/abs/2106.05945)).
 
 **Minimum test.**
 
@@ -66,7 +66,8 @@ The primary optimization target is capability per parameter and per joule. Conti
 3. Match prompts, tokens, optimizer steps, and trainable parameters.
 4. Evaluate both in-distribution imitation and held-out task compositions.
 5. Add shuffled-trajectory, random-projection, and orthogonal-basis controls.
-6. Intervene on the best-correlated hidden relation; do not rely on a probe alone.
+6. Add a teacher-free target-label Gram before attributing a gain to teacher-specific internal structure.
+7. Intervene on the best-correlated hidden relation; do not rely on a probe alone.
 
 **Primary measure.** Held-out accuracy per trainable parameter and training joule.
 
@@ -74,7 +75,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 **Coordinate-artifact condition.** Reject the geometric interpretation if the method requires the teacher's original coordinate basis, cannot distinguish real from example-shuffled trajectories, or provides no gain beyond an equally sized random auxiliary target.
 
-**Evidence.** In E001-P0, a relational Gram-matrix objective beat labels, logits, pointwise matching, and example-shuffled trajectories across three exploratory seeds. E002 then prospectively confirmed the local effect on affine permutations: relational accuracy was 23.31% versus 11.30% for logits and 6.65% for shuffled geometry across ten paired seeds. The relational-minus-logits effect was +12.01 percentage points, 95% CI [10.16, 13.86]. Depth-four accuracy was only 3.51% against 2.13% chance and failed the registered algorithm-transfer floor. A fixed bitwise cell was descriptively favorable but invalid because its teacher missed the positive-control gate. See the [preprint](paper/preprint.md).
+**Evidence.** In E001-P0, a relational Gram-matrix objective beat labels, logits, pointwise matching, and example-shuffled representations across three exploratory seeds. E002 then prospectively confirmed an affine behavioral effect: relational accuracy was 23.31% versus 11.30% for logits across ten paired seeds. The difference was +12.01 percentage points, 95% CI [10.16, 13.86]. A post hoc depth analysis found that relational training retained more of its above-chance in-distribution capability on held-out pairs than logits did, but relational in-distribution depth-four accuracy was only 8.15%. The registered strong-algorithm floor failed, while the reason for deep failure remains inconclusive. A fixed bitwise cell was descriptively favorable but invalid because its teacher missed the positive-control gate. E003 prospectively tests the missing target-label Gram. See the [preprint](paper/preprint.md) and [council audit](research/council-2026-08-19.md).
 
 ## H-003 — Hybrid memory beats weights that “never stop growing”
 
@@ -212,29 +213,29 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 **Claim.** On compositional transition tasks, a compact model that selects a relation-specific operator from context and reuses the same execution rule at every step will achieve higher held-out-composition accuracy per stored and active parameter than a generic Transformer student, even when the Transformer receives teacher logits or relational trajectories.
 
-**Why it might win.** The architecture factors knowledge into transition operators and an iteration rule instead of asking a fixed-depth encoder to rediscover sequential execution. Only one context-selected operator is active per step, so stored parameters, active parameters, and repeated computation become distinct quantities.
+**Why it might win.** The architecture factors knowledge into transition operators and an iteration rule instead of asking a fixed-depth encoder to rediscover sequential execution. Only one operator is semantically selected per step, so stored parameters, selected structure, realized computation, and repeated computation become distinct quantities.
 
 **Strong rival.** The executor may win only because its structure nearly specifies the synthetic task. It may fail on ambiguous natural language, learned state spaces, or tasks whose useful decomposition is unknown. A lookup transition table can also hide poor scaling in the number of states.
 
-**Minimum test.** Compare labels, logits, and relational supervision for a generic Transformer and a weight-tied transition executor on affine and bitwise permutation families, withheld ordered pairs, multiple depths, data-size curves, and a no-single-step-supervision ablation. Match examples and report stored parameters, per-step active parameters, tensor bytes, wall time, and accuracy separately.
+**Minimum test.** Compare labels, logits, and relational supervision for a generic Transformer and a weight-tied transition executor on affine and bitwise permutation families, withheld ordered pairs, multiple depths, data-size curves, and a no-single-step-supervision ablation. Match examples and report stored parameters, semantically selected parameters, measured operations or profiler traces, tensor bytes, wall time, and accuracy separately.
 
 **Primary measure.** Held-out composition accuracy per stored parameter, with absolute accuracy and depth-four accuracy as hard floors.
 
 **Kill condition.** Reject the general efficiency interpretation if the executor advantage disappears on the second task family, requires direct labels for every primitive transition, or is erased by a comparably sized generic recurrent baseline.
 
-**Evidence.** On the valid affine confirmation, the transition-table executor reached 100% at every depth with 17,672 parameters, versus 23.31% for the 1,082,927-parameter relational Transformer. It eventually reached 100% without primitive-transition examples in an exploratory ten-epoch diagnostic, while the small GRU reached only 9.44%. The fixed bitwise table also reached 100% descriptively, but the family cell was invalid under the registered teacher gate. Cross-family support therefore remains inconclusive.
+**Evidence.** On the valid affine confirmation, the transition-table executor reached 100% at every depth with 17,672 parameters, versus 23.31% for the 1,082,927-parameter relational Transformer. It eventually reached 100% without primitive-transition examples in an exploratory ten-epoch diagnostic, while the small GRU reached only 9.44%. This is a compact existence comparison, not a swept frontier or causal test of context selection. The reference implementation computes all table softmaxes before indexing, so semantic selection is not realized sparse compute. The fixed bitwise table also reached 100% descriptively, but the family cell was invalid under the registered teacher gate. Cross-family support therefore remains inconclusive.
 
 ## H-009 — Geometry-guided operator discovery
 
 **Status:** proposed from the joint E001-E002 evidence
 
-**Origin:** local trajectory transfer plus the task-aligned executor advantage
+**Origin:** learned-teacher geometry transfer plus the task-aligned executor advantage
 
 **Confidence:** low-medium on latent finite-state tasks; low beyond structured domains
 
 **Claim.** A modular recurrent learner that jointly discovers latent state slots, a small context-selected operator library, and a reusable execution rule will generalize to unseen relation pairs and longer depths more efficiently than a generic Transformer or GRU. Relational teacher geometry will improve operator discovery compared with labels and logits alone, even though geometry by itself did not transfer the full algorithm.
 
-**Why it might win.** E002 separates two ingredients: relational geometry supplies useful local structure, while a correctly factored executor supplies exact iteration. Combining a learned factorization with repeated execution could turn the former into a routing or state-discovery signal instead of asking it to serve as a portable program.
+**Why it might win.** E002 separates two observations: learned-teacher geometry improves a generic student's behavior, while a correctly factored executor supplies exact iteration. Combining a learned factorization with repeated execution could turn geometry into a routing or state-discovery signal instead of asking it to serve as a program.
 
 **Strong rival.** The finite-state factorization may still be doing nearly all the work. A learned modular system could collapse to arbitrary slots, require hidden supervision, or lose its advantage when observations obscure entity identity. Relational geometry might reproduce the same shallow correlations seen in E002 without improving operator recovery or long-depth behavior.
 
@@ -251,20 +252,48 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 **Kill condition.** Reject the geometry-guided discovery claim if relational supervision does not improve the modular student over output-only supervision across both frozen families, if long-depth accuracy remains near chance, or if the method requires direct latent-state or operator labels.
 
+## H-010 — Activation-specific distillation survives next-token controls
+
+**Status:** proposed; tiny-language-model bridge
+
+**Origin:** applying H-002 to genuine causal language modeling as early as possible
+
+**Confidence:** low-medium for a training-signal effect; low for an efficiency advantage
+
+**Claim.** At fixed tiny causal-LM architecture, tokens, optimizer steps, and initialization, output distillation plus learned-teacher hidden-relation geometry will improve both ordinary held-out next-token loss and controlled compositional completion more than output distillation alone or output distillation plus target-token class geometry.
+
+**Why it might win.** Hidden relations can expose similarities among contexts before those similarities collapse into the next-token distribution. Prior language-model distillation work has benefited from transferring hidden or attention relations, so the affine effect may survive the move from terminal classification to causal prediction.
+
+**Strong rival.** The hidden Gram may mostly encode the same next-token classes already present in labels and logits. Any gain may come from a larger auxiliary tensor, more optimizer work, or a synthetic controlled stream rather than teacher-specific structure. A small student may also lack the capability needed to make out-of-distribution comparisons interpretable.
+
+**Minimum test.**
+
+1. Train or freeze one small causal teacher and one 1M–10M-parameter student with a compact tokenizer on a versioned corpus mixing a dominant simple-English stream with a smaller controlled compositional stream.
+2. Compare ordinary next-token training, output distillation, output plus learned hidden relations, output plus next-token target geometry, and an ordinary extra-data or extra-compute baseline.
+3. Pair at least five student seeds and match token order, optimizer steps, and initialization across conditions.
+4. Freeze a natural-text validation loss, controlled in-distribution accuracy, unseen-composition accuracy by depth, model bytes, training wall time, and peak memory.
+5. Require the teacher and labels-only student to clear predeclared capability gates before interpreting controlled extrapolation.
+6. Treat a parameter-count gain as separate from measured latency or energy; use supported telemetry before making a joule claim.
+
+**Primary measure.** The joint result on natural-text validation NLL and capability-gated held-out controlled composition. The activation-specific claim requires learned hidden relations to beat both output distillation and target-token geometry under paired uncertainty intervals.
+
+**Kill condition.** Reject activation-specific benefit under this design if learned hidden relations fail to beat target-token geometry, if any gain disappears against the extra-compute/data baseline, or if the student capability gate fails. A failed gate triggers redesign of the benchmark, not a positive or negative mechanism claim.
+
 ## Priority order
 
-1. **H-009** — tests whether operator structure can be discovered rather than hand-specified, with geometry as a discovery signal.
-2. **H-002 / H-008 replication** — independently gate the broad activation and executor claims before generalizing them.
-3. **H-007** — turns those mechanisms into a capability-per-parameter and per-joule target.
-4. **H-006** — establishes honest energy measurement and a strong systems baseline.
-5. **H-003** — asks whether durable learning requires weight change.
-6. **H-001** — converts the sleep analogy into a bounded algorithmic test.
-7. **H-005** — tests the ecology claim after a reliable task harness exists.
-8. **H-004** — most speculative; run only with strong controls.
+1. **E003 / H-002 specificity** — run the already-preregistered target-label Gram control.
+2. **H-010** — move immediately into a tiny causal language model while carrying the decisive specificity and ordinary-compute controls.
+3. **H-009** — test whether operator structure can be discovered rather than hand-specified.
+4. **H-008 replication / H-007** — independently gate and then scale the efficiency claims.
+5. **H-006** — establish honest energy measurement and a strong systems baseline.
+6. **H-003** — ask whether durable learning requires weight change.
+7. **H-001** — convert the sleep analogy into a bounded algorithmic test.
+8. **H-005** — test the ecology claim after a reliable task harness exists.
+9. **H-004** — most speculative; run only with strong controls.
 
 ## Open decisions
 
-- Complete the human reading and challenge pass on the E001-E002 preprint before selecting another experiment.
-- Choose between H-009 operator discovery, an independently gated replication, and a return to continual learning.
+- Review the council-corrected E001-E002 preprint and E003 result before treating the manuscript as submission-ready.
+- Freeze the exact tiny-LM corpus mix, tokenizer, teacher/student sizes, and capability gates for H-010.
 - Define the first frozen broad-capability suite and its difficult-tail subset before making a general compression claim.
 - Choose direct wall-power measurement or hardware telemetry for the M2 and RTX 4060 hosts.

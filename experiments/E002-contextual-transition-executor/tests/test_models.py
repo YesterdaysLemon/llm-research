@@ -70,6 +70,16 @@ class ExecutorTests(unittest.TestCase):
         for row in table:
             self.assertEqual(sorted(row.tolist()), expected)
 
+    def test_label_geometry_repeats_terminal_class_across_layers(self) -> None:
+        targets = run_study.label_geometry_targets(
+            torch.tensor([2, 0, 2]), num_classes=4, steps=2
+        )
+        self.assertEqual(targets.shape, (3, 2, 4))
+        torch.testing.assert_close(targets[:, 0], targets[:, 1])
+        self.assertEqual(targets[0, 0].tolist(), [0.0, 0.0, 1.0, 0.0])
+        torch.testing.assert_close(targets[0], targets[2])
+        self.assertFalse(torch.equal(targets[0], targets[1]))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,4 +1,4 @@
-# Relational Activation Distillation Transfers Local Structure but Not an Iterative Algorithm
+# Relational Layer Geometry Improves Compositional Transfer Under a Capability Ceiling
 
 ## A preregistered synthetic study of geometry, compositional depth, and task-aligned parameter reuse
 
@@ -6,11 +6,11 @@
 
 Independent researcher
 
-18 August 2026
+19 August 2026
 
 ## Abstract
 
-Can the geometry of a model's internal activation trajectory transfer useful computation to a smaller model, and is such transfer an efficient substitute for the right computational structure? We test these questions on finite-state composition tasks where every example specifies a start entity and a sequence of relations. The target is the entity obtained by repeatedly applying those relations. Our relational distillation objective matches normalized, centered Gram matrices of teacher and student states, making the target invariant to orthogonal changes of hidden-state basis. In a prospectively registered affine-permutation confirmation with ten paired student seeds, a generic Transformer trained with teacher logits plus relational geometry reached 23.31% held-out-pair accuracy, compared with 11.30% for logits alone and 6.65% for shuffled teacher geometry. The paired relational-minus-logits effect was 12.01 percentage points (95% CI [10.16, 13.86]). Yet the benefit decayed sharply with composition depth: depth-four accuracy was 3.51%, only 1.38 points above 2.13% chance, and failed our preregistered algorithm-transfer criterion. A task-aligned transition-table executor reached 100% at every depth using 17,672 stored parameters, versus 1,082,927 for the Transformer: 61.3 times fewer stored parameters and about 490 times fewer context-selected parameters per step. A fixed bitwise replication showed the same descriptive ordering, but its teacher scored 89.21% at depth four and missed the registered 95% positive-control gate; we therefore do not count that cell as confirmatory evidence. The results support a narrow conclusion: activation geometry carries transferable local relational information, but this objective did not transmit a depth-general iterative algorithm. On this bounded domain, explicitly representing context-selected transitions altered capability per parameter far more than adding richer teacher supervision.
+Can the geometry of a model's internal representations provide useful supervision to a smaller model, and is such supervision an efficient substitute for the right computational structure? We test these questions on finite-state composition tasks where every example specifies a start entity and a sequence of relations. Our relational objective matches normalized, centered Gram matrices of selected teacher and student encoder-layer states, making the target invariant to orthogonal changes of hidden-state basis. In a prospectively registered affine-permutation confirmation with ten paired student seeds, a generic Transformer trained with teacher logits plus learned-teacher geometry reached 23.31% held-out-pair accuracy, compared with 11.30% for logits alone. The paired effect was 12.01 percentage points (95% CI [10.16, 13.86]). Relational training also retained a larger fraction of above-chance in-distribution performance through increasing depth. However, depth-four held-out accuracy was only 3.51%, and in-distribution depth-four accuracy was only 8.15%; the registered algorithm-transfer criterion failed under a severe student capability ceiling. A task-aligned transition-table executor reached 100% at every depth using 17,672 stored parameters, 61.3 times fewer than the Transformer, but it was given the correct factorization. A fixed bitwise replication missed its teacher positive-control gate and is descriptive only. The result establishes a reproducible benefit from correspondence-preserving learned-teacher layer geometry. It does not yet distinguish teacher-specific internal structure from a simpler target-class similarity objective, identify why deep composition fails, or causally explain the executor's compactness.
 
 ## 1. Introduction
 
@@ -26,16 +26,17 @@ This paper separates three questions that are often blended together:
 
 We study synthetic finite-state transition systems because they make these questions falsifiable on consumer hardware. Each relation is a permutation of a finite entity set. A model receives a start entity and two to four relation tokens, and must predict the result of sequentially applying the corresponding permutations. Some ordered relation pairs are withheld from student training. This design lets us distinguish memorizing familiar local combinations from repeatedly executing a primitive transition rule.
 
-Our trajectory target is a normalized centered Gram matrix over the intermediate states in each minibatch. It retains pairwise inner-product geometry while discarding any privileged orthogonal basis. We compare label supervision, teacher logits, pointwise hidden-state matching, relational matching, shuffled trajectories, fixed random targets, and an untrained teacher. We also compare a generic Transformer with a GRU and a deliberately structured transition-table executor.
+Our target is a normalized centered Gram matrix over selected encoder-layer states in each minibatch. It retains pairwise inner-product geometry while discarding any privileged orthogonal basis. We compare label supervision, teacher logits, pointwise hidden-state matching, relational matching, shuffled layer representations, fixed random targets, and an untrained teacher. We also compare a generic Transformer with a GRU and a deliberately structured transition-table executor.
 
-The empirical result is useful precisely because it is mixed. Relational geometry produces a large, seed-consistent improvement over logits and stringent geometry controls in the registered affine task. That result argues against the claim that all activation structure is meaningless without the teacher's weights. However, accuracy falls toward chance as depth increases, so the transferred information is not sufficient evidence of a learned iteration rule. The compact transition executor solves the task exactly because its architecture factors the problem into relation-selected state transitions and repeated application. It is an existence proof about task structure, not a proposal for replacing language models.
+The empirical result is useful precisely because it is mixed. Learned-teacher geometry produces a large, seed-consistent improvement over logits in the registered affine task. Correspondence shuffling, random features, and an untrained teacher do not reproduce it. This argues that the particular learned, example-aligned target is useful, but it does not show which information in that target matters. Accuracy falls toward chance as depth increases while in-distribution capability also collapses, so the experiment neither demonstrates a learned iteration rule nor isolates a failure to transfer one. The compact transition executor solves the task exactly because its architecture is handed relation-selected state transitions and repeated application. It is an existence proof about task structure, not a proposal for replacing language models.
 
 Our contributions are:
 
 - a basis-invariant relational activation objective with matched shuffled, random, and untrained-teacher controls;
-- a prospectively registered ten-seed confirmation showing local compositional transfer but rejecting a stronger algorithm-transfer criterion;
-- a distinction among stored parameters, context-selected active parameters, and reuse across computation steps;
-- a 61.3-fold stored-parameter comparison demonstrating the leverage, and the limitations, of encoding the correct finite-state factorization;
+- a prospectively registered ten-seed confirmation showing improved compositional transfer while rejecting a stronger algorithm-transfer criterion;
+- a post hoc capability-conditioned depth analysis that narrows the allowed mechanism claim;
+- a distinction among stored parameters, semantically selected parameters, realized computation, and reuse across input steps;
+- a 61.3-fold two-model stored-parameter comparison demonstrating the leverage, and the limitations, of encoding the correct finite-state factorization;
 - a transparent failed replication gate that prevents a descriptively favorable second task family from being counted as confirmation; and
 - an end-to-end reproducible workflow containing preregistrations, frozen configurations, raw per-seed results, analysis code, and a public draft manuscript.
 
@@ -43,7 +44,7 @@ Our contributions are:
 
 ### 2.1 Knowledge distillation and internal relations
 
-Classical knowledge distillation trains a student against a teacher's softened output distribution rather than hard labels alone ([Hinton, Vinyals, and Dean, 2015](https://arxiv.org/abs/1503.02531)). Later work transfers relations among examples or representations. Relational Knowledge Distillation matches distances and angles among learned examples ([Park et al., 2019](https://arxiv.org/abs/1904.05068)), while similarity-preserving distillation transfers pairwise activation similarities ([Tung and Mori, 2019](https://arxiv.org/abs/1907.09682)). Our objective belongs to this family, but applies the same idea to states indexed by computation step and explicitly tests whether gains persist through composition depth.
+Classical knowledge distillation trains a student against a teacher's softened output distribution rather than hard labels alone ([Hinton, Vinyals, and Dean, 2015](https://arxiv.org/abs/1503.02531)). Later work transfers relations among examples or representations. Relational Knowledge Distillation matches distances and angles among learned examples ([Park et al., 2019](https://arxiv.org/abs/1904.05068)), while similarity-preserving distillation transfers pairwise activation similarities ([Tung and Mori, 2019](https://arxiv.org/abs/1907.09682)). Our objective belongs to this family, but applies the same idea to selected encoder-layer states and tests whether gains persist through task-composition depth. Encoder layers are not assumed to correspond to the task's individual transition steps.
 
 Representation similarity is itself delicate. Centered kernel alignment (CKA) was developed to compare representations in a way that is invariant to orthogonal transformations and isotropic scaling ([Kornblith et al., 2019](https://proceedings.mlr.press/v97/kornblith19a.html)). We use a normalized centered linear Gram target for the same reason: a coordinate-basis artifact should not be mistaken for transferred structure. This invariance does not make the target fully representation-independent; it only removes a specific family of coordinate choices.
 
@@ -91,7 +92,7 @@ The confirmatory datasets contain 20,000 student-training examples, 80,000 teach
 
 The teacher is a six-layer Transformer encoder with approximately 4.77 million parameters. The generic student is a two-layer, width-256 Transformer encoder with approximately 1.08-1.09 million parameters depending on vocabulary size. A width-32 GRU supplies a small generic recurrent baseline. All models predict the terminal state from the same tokenized input. Conditions share examples, evaluation sets, and paired student seeds.
 
-### 4.3 Relational trajectory objective
+### 4.3 Relational layer-geometry objective
 
 For one teacher or student layer, collect a batch-state matrix `H` whose rows are example representations. With batch size `B`, define the centering matrix
 
@@ -105,9 +106,11 @@ The normalized centered Gram representation is
 G(H) = C H H^T C / (||C H H^T C||_F + epsilon).
 ```
 
-The relational loss sums squared Frobenius distances between matched teacher and student Gram matrices. The Gram matrix is unchanged by replacing `H` with `H Q` for any orthogonal `Q`, and normalization removes isotropic scale. It is not invariant to all invertible transformations, nor does equality of Gram matrices establish functional equivalence.
+The student contributes its `[CLS]` representation after each of two encoder layers. The six-layer teacher contributes layers zero and five, selected by an evenly spaced layer-matching rule fixed in the implementation. These are network-depth indices, not intermediate states of the task's data-generating transition sequence.
 
-The main relational condition combines labels, teacher logits, and this geometry with the development-selected relational weight 3.0. Controls use the same objective and weight but replace the teacher geometry with per-minibatch shuffled teacher examples, fixed random geometry of matched shape, or geometry from an untrained teacher. The output-only condition receives teacher logits without geometry.
+The relational loss sums squared Frobenius distances between matched teacher and student Gram matrices. The Gram matrix is unchanged by replacing `H` with `H Q` for any orthogonal `Q`, and normalization removes isotropic scale. It is not invariant to all invertible transformations, nor does equality of Gram matrices establish functional equivalence. Because the final selected teacher layer is also the classifier input, its Gram may encode terminal-answer similarity; the original experiment did not include a target-label Gram control.
+
+The main relational condition combines labels, teacher logits, and this geometry with the development-selected relational weight 3.0. Controls use the same objective and weight but replace the teacher geometry with per-minibatch shuffled teacher examples, fixed random features of matched shape, or geometry from an untrained teacher. The output-only condition receives teacher logits without geometry. Per-minibatch shuffling is reproducible under each run seed but supplies a changing wrong correspondence, so relational-minus-logits is cleaner than treating shuffled performance as a neutral zero-effect baseline.
 
 ### 4.4 Context-selected transition executor
 
@@ -117,7 +120,7 @@ The transition-table model learns one `E x E` logit matrix `A_r` per relation. I
 p_t = p_(t-1) softmax(A_(r_t)).
 ```
 
-The execution rule is reused at every depth. The affine model stores 17,672 parameters (eight times 47 squared) and selects 2,209 transition logits per step. The bitwise model stores 32,768 parameters and selects 4,096 per step. By comparison, every parameter in the dense student Transformer participates in an ordinary forward pass, so its stored and approximately active parameter counts are both about 1.08 million.
+The execution rule is reused at every depth. The affine model stores 17,672 parameters (eight times 47 squared), of which one 2,209-logit table is semantically selected per relation step. The bitwise model stores 32,768 parameters and semantically selects 4,096 per step. This is a factorization count, not a measured compute count: the current reference implementation computes the softmax of all relation tables before indexing the selected table. By comparison, every parameter in the dense student Transformer participates in an ordinary forward pass, so its stored count is about 1.08 million.
 
 This architecture nearly states the finite-state factorization of the problem. Its success can show that the task admits a much more parameter-efficient representation; it cannot show that such a decomposition can be discovered in unstructured domains. Its storage grows as `O(R E^2)`.
 
@@ -131,7 +134,7 @@ The exact confirmation configuration files were frozen and hashed before executi
 
 For registered relational contrasts, we subtract paired-seed accuracies and form two-sided 95% Student-t confidence intervals over the seed-level differences. We report sample standard deviations for condition summaries. No multiplicity adjustment was registered; the decision is based on explicitly named contrasts rather than a post hoc search.
 
-We report stored parameters, context-selected parameters per step, wall-clock training time, and absolute accuracy separately. Accuracy per parameter is discussed only alongside a capability floor. GPU peak allocation is not used as an energy proxy, and the host exposed no accepted joule telemetry. Cached float32 relational targets are also not free: for 20,000 examples, two student layers, and width 256, the trajectory tensor is approximately 40.96 MB, compared with 3.76 MB of affine teacher logits and roughly 1.28 MB for the token/label/depth tensors under the implementation's fixed-width integer representation.
+We report stored parameters, semantically selected parameters per step, wall-clock training time, and absolute accuracy separately. Accuracy per parameter is discussed only alongside a capability floor. Selected parameters do not imply that sparse compute is realized by the implementation. GPU peak allocation is not used as an energy proxy, and the host exposed no accepted joule telemetry. Cached float32 relational targets are also not free: for 20,000 examples, two student layers, and width 256, the layer-representation tensor is approximately 40.96 MB, compared with 3.76 MB of affine teacher logits and roughly 1.28 MB for the token/label/depth tensors under the implementation's fixed-width integer representation.
 
 ## 5. Preliminary experiments and the failed E001-P1 gate
 
@@ -170,17 +173,31 @@ Relational supervision beat logits for every paired seed. The overall paired dif
 
 ![Figure 3. Seed-paired output-only and relational results. Every line rises in the valid affine confirmation. The bitwise panel is descriptive because its teacher gate failed.](generated/figure3_paired_effects.png)
 
-The preregistered relational-transfer claim is therefore supported in the affine cell. Three controls sharpen the interpretation. Shuffling teacher trajectories below the minibatch relation between input and geometry removes the gain. A matched fixed random target does not recover it. Geometry from an untrained teacher also performs far below learned teacher geometry. Together with orthogonal-basis invariance, these results argue that the effect is not merely an arbitrary coordinate, extra loss term, or generic random regularizer.
+The preregistered relational-transfer claim is therefore supported in the affine cell. Three controls sharpen, but do not settle, the interpretation. Shuffling teacher representations breaks the minibatch relation between each input and its target geometry and removes the gain. Fixed random features do not recover it. Geometry from an untrained teacher also performs far below learned-teacher geometry. Together with orthogonal-basis invariance, these results show that the correspondence-preserving learned-teacher target matters. They do not distinguish distinctive internal computation from terminal-answer similarity already present in the learned representations. A target-label Gram is the smallest missing control.
 
-The stronger algorithm-transfer claim is not supported. Although the paired depth-four interval is positive, relational accuracy is only 3.51%. The registered absolute threshold was chance plus ten percentage points, or 12.13%; the result misses it by 8.62 points. The trajectory objective transferred information useful for shallow held-out compositions, not a reliable iteration procedure.
+The stronger algorithm-transfer claim is not supported. Although the paired depth-four interval is positive, relational accuracy is only 3.51%. The registered absolute threshold was chance plus ten percentage points, or 12.13%; the result misses it by 8.62 points. This establishes that the trained student does not execute reliable depth-four behavior. It does not establish that an otherwise learned local algorithm failed specifically during out-of-distribution reuse.
+
+### 6.3 Capability-conditioned depth analysis
+
+The original endpoints did not report the generic students' in-distribution depth curve. Table 2 adds that post hoc diagnostic from the frozen result artifact.
+
+**Table 2. Affine generic-student in-distribution accuracy and descriptive normalized transfer. `rho` is `(heldout - chance) / (in-distribution - chance)`.**
+
+| Condition | ID overall | ID depth 2 | ID depth 3 | ID depth 4 | rho 2 | rho 3 | rho 4 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Labels | 60.84% | 89.86% | 27.19% | 5.17% | 0.392 | 0.108 | 0.070 |
+| Logits | 61.77% | 91.09% | 29.49% | 5.54% | 0.445 | 0.127 | 0.076 |
+| Relational | 68.55% | 97.00% | 49.87% | 8.15% | 0.793 | 0.341 | 0.230 |
+
+Relational training improves held-out behavior even after normalizing descriptively by the available above-chance in-distribution performance. This strengthens the behavioral-transfer result. At the same time, 8.15% in-distribution depth-four accuracy means that depth four lies under a severe student capability ceiling. The registered failure remains valid, but its mechanism is inconclusive: insufficient capacity, optimization, architecture, and insufficient target information remain live explanations. The `rho` calculation was prompted after seeing the results, has unstable denominators near chance, and is not a new confirmatory endpoint.
 
 ## 7. Task-aligned parameter reuse
 
-The transition table reaches 100% on every affine confirmatory depth with 17,672 parameters and about 1.75 seconds of training. It uses 61.28 times fewer stored parameters than the relational Transformer and selects approximately 490 times fewer parameters at each relation step (2,209 versus 1,082,927). Its absolute-accuracy-per-stored-parameter ratio is about 263 times that of the relational Transformer. Wall time is roughly 24 times lower in this implementation.
+The transition table reaches 100% on every affine confirmatory depth with 17,672 parameters and about 1.75 seconds of training. It uses 61.28 times fewer stored parameters than the relational Transformer. One 2,209-parameter table is semantically selected at each relation step, but the reference forward pass computes softmax probabilities for all eight tables before indexing; no 490-fold realized-compute claim follows. Its absolute-accuracy-per-stored-parameter ratio is about 263 times that of the relational Transformer. Wall time is roughly 24 times lower in this implementation.
 
-![Figure 4. Held-out accuracy versus stored parameters. Task factorization moves the frontier far more than relational supervision. Bitwise values are descriptive only.](generated/figure2_efficiency_frontier.png)
+![Figure 4. Held-out accuracy versus stored parameters for the measured models. The task-factored executor is a compact existence comparison, not a swept efficiency frontier. Bitwise values are descriptive only.](generated/figure2_efficiency_frontier.png)
 
-Those ratios should not be read as a universal compression result. The executor was given the correct state space, relation inventory, and recurrence structure. Its tables store all possible state transitions, including many entries that the affine algebra could encode even more compactly. Conversely, the Transformer must infer the factorization from examples and use an encoder architecture that was not designed for iterative execution. The comparison answers an existence question: on this task, the needed behavior is representable with orders-of-magnitude fewer parameters once the right conditional computation is explicit.
+Those ratios should not be read as a universal compression result. The executor was given the correct state space, relation inventory, and recurrence structure. Its tables store all possible state transitions, including many entries that the affine algebra could encode even more compactly. Conversely, the Transformer must infer the factorization from examples and use an encoder architecture that was not designed for iterative execution. The comparison answers an existence question: on this task, the needed behavior is representable with an order of magnitude fewer parameters once the right conditional computation is explicit. Because this is a comparison of selected architectures rather than a parameter/data/compute sweep, it does not estimate a general Pareto frontier or show that context selection itself caused the gap.
 
 The no-depth-one diagnostic adds nuance. At the registered five epochs, omitting single-relation examples yielded only 6.32%-11.60% held-out accuracy across three development seeds. Without changing the confirmatory configuration, an exploratory extension showed 100% at ten epochs and above. Primitive-transition labels were therefore not logically necessary, but removing them doubled the observed optimization budget. The task factorization, not merely direct single-step supervision, explains the executor's eventual exact composition.
 
@@ -190,9 +207,9 @@ The generic GRU is an important counterexample to a simplistic recurrence story.
 
 We applied the frozen hyperparameters to the 64-state bitwise family with five new seeds and no retuning. The teacher achieved 94.46% overall, 98.90% at depth two, 98.87% at depth three, and 89.21% at depth four. Because the registered rule required at least 95% at every depth, the positive control failed. The entire bitwise distillation cell is formally invalid. We did not retrain the teacher, alter the threshold, or add a rescue run.
 
-For transparency, Table 2 reports the resulting measurements descriptively. They must not be treated as a confirmatory replication of relational transfer or structured efficiency.
+For transparency, Table 3 reports the resulting measurements descriptively. They must not be treated as a confirmatory replication of relational transfer or structured efficiency.
 
-**Table 2. Bitwise measurements across five seeds. The teacher gate failed; all values are descriptive, not confirmatory.**
+**Table 3. Bitwise measurements across five seeds. The teacher gate failed; all values are descriptive, not confirmatory.**
 
 | Condition | Stored params | Overall | Depth 2 | Depth 3 | Depth 4 | Train time |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -213,28 +230,29 @@ One might argue that the labels-only transition table does not mechanically depe
 
 ### 9.1 What is present in the trajectories?
 
-The affine result rejects an overly strong null hypothesis: activation trajectories do not encode *nothing* transferable without the teacher's weights. A basis-invariant Gram target improves held-out behavior, and the effect disappears when the input-to-geometry assignment is shuffled or when learned teacher geometry is replaced with random or untrained geometry. The most economical interpretation is that learned pairwise relations among teacher states carry task-relevant local structure.
+The affine result rejects an overly strong null hypothesis: a student's behavior cannot benefit from relations among a teacher's layer representations unless it also receives the teacher's weights. A basis-invariant Gram target improves held-out behavior, and the effect disappears when the example-to-geometry assignment is shuffled or when learned-teacher geometry is replaced with random or untrained features. The safest interpretation is that correspondence-preserving relations among learned teacher representations provide a useful training signal.
 
-That statement is weaker than saying the trajectory contains the teacher's algorithm. The depth curve is decisive. A true transferable iteration rule should not lose almost all advantage between depth two and depth four when the same primitive operations are repeated. Instead, relational supervision appears to bias the student toward useful neighborhoods or local combinations while leaving its execution mechanism unchanged. In that sense, geometry acts as structured side information rather than a portable program.
+That statement is weaker than saying the target contains teacher-specific internal computation. The final selected teacher layer directly feeds the classifier, so its example geometry may largely encode terminal-answer classes. Shuffled, random, and untrained controls do not test that rival. The effect could reflect supervised metric learning expressed through a learned teacher rather than additional algorithmic content in its activations. E003 prospectively registers the missing target-label Gram comparison.
 
-An alternative explanation is optimization: perhaps the algorithm is representable in the Transformer but our budget did not find it. E001-P1 makes this plausible but not exculpatory. Increasing epochs, width, and depth did not move the capability plateau, while the teacher and transition table solved the same data. The current evidence cannot distinguish representational impossibility from a severe optimization/inductive-bias mismatch. It does show that adding trajectory supervision did not overcome that mismatch.
+The depth curve also admits fewer mechanistic claims than the registered behavioral decision. Relational supervision improves the descriptive normalized-transfer ratio at all three depths, but the student's in-distribution capability collapses with depth. The current evidence cannot distinguish missing target information from insufficient capacity, representational impossibility, or a severe optimization/inductive-bias mismatch. It shows that the frozen relational objective did not produce reliable depth-general behavior; it does not show that a learned algorithm was present locally and then became non-portable.
 
 ### 9.2 Context-aware parameter definitions
 
 The experiment suggests a useful vocabulary for the project's efficiency question.
 
 - **Stored parameters** measure persistent learned scalars.
-- **Selected parameters** are the subset chosen by context for a computation step.
+- **Semantically selected parameters** are the subset identified by the model's factorization as relevant to a computation step.
+- **Realized computation** is what the implementation and hardware actually evaluate, including dense work performed before or around selection.
 - **Reused parameters** are applied repeatedly as the input demands more computation.
 - **Effective capability** must still be measured at an absolute behavioral floor.
 
-Two models with the same stored count can have very different selected computation; two models with different stored counts can implement the same algorithm through different factorizations. The transition table uses more stored parameters than the small GRU, yet its relation token selects an interpretable operator and its repeated update exactly matches the data-generating process. Thus “capability per parameter” is incomplete unless the denominator and the selection/reuse mechanism are stated.
+Two models with the same stored count can have very different computation; two models with different stored counts can implement the same algorithm through different factorizations. The transition table uses more stored parameters than the small GRU, yet its relation token semantically selects an interpretable operator and its repeated update exactly matches the data-generating process. The current code still normalizes every operator before selection, illustrating why semantic selection and realized sparse compute must not be conflated. Thus “capability per parameter” is incomplete unless the denominator, implementation, and selection/reuse mechanism are stated.
 
 This is conceptually adjacent to conditional computation and modular networks, but the experiment does not establish that sparse expert routing or dynamic weights improve language-model efficiency. It generates a narrower hypothesis: compression gains may come less from retaining every detail of a large model's activations and more from discovering a compact set of reusable, context-selected operators.
 
 ### 9.3 Implications for compression
 
-No general lossless compression claim follows. The table's apparent orders-of-magnitude advantage comes from known finite-state structure and a tiny domain. In realistic tasks, the correct states may be latent, relation boundaries ambiguous, transition operators continuous, and error accumulation costly. A table also scales quadratically with state count. The result is best treated as a target for representation discovery: can a learner infer a small operator library and execution rule without being handed the factorization?
+No general lossless compression claim follows. The table's 61.3-fold stored-parameter advantage comes from known finite-state structure, two selected model designs, and a tiny domain. In realistic tasks, the correct states may be latent, relation boundaries ambiguous, transition operators continuous, and error accumulation costly. A table also scales quadratically with state count. The result is best treated as a target for representation discovery: can a learner infer a small operator library and execution rule without being handed the factorization?
 
 Trajectory supervision may still help that discovery. Our data suggest it carries relational hints even when it fails to transfer the full procedure. A future architecture could use geometry to learn state abstractions or routing assignments while a recurrent executor supplies the missing iteration. That is a new hypothesis, not a result of this paper.
 
@@ -244,11 +262,11 @@ Two failures materially shaped the conclusion. E001-P1 stopped because its stude
 
 ## 10. Limitations
 
-First, the tasks are synthetic and finite. They do not establish effects in language models, continuous control, perception, continual learning, or natural data. Second, the transition executor receives the correct factorization and known entity identities; representation discovery is excluded. Third, the generic baselines were not exhaustively tuned, and a different recurrent or iterative architecture might close the gap. The registered stopping rule intentionally forbids post-result rescue searches.
+First, the tasks are synthetic and finite. They do not establish effects in language models, continuous control, perception, continual learning, or natural data. Second, the transition executor receives the correct factorization and known entity identities; representation discovery is excluded. Its semantic table selection is not realized as sparse compute by the current code. Third, the generic baselines were not exhaustively tuned, and a different recurrent or iterative architecture might close the gap. The registered stopping rule intentionally forbids post-result rescue searches.
 
 Fourth, the affine relational confirmation uses ten paired seeds, but only one task-generation seed and one family passed all confirmatory gates. Generalization across task families is unresolved. Fifth, the bitwise teacher failure makes even favorable student contrasts nonconfirmatory. Sixth, Student-t intervals at `n=10` summarize seed variation but do not include uncertainty across dataset generation, architecture choice, or researcher decisions.
 
-Seventh, the relational target is only invariant to orthogonal basis changes and isotropic scaling. Other invertible reparameterizations can alter it. Eighth, matched example counts and model sizes do not imply matched information or compute: trajectory tensors are larger than logits and relational objectives add training time. Ninth, wall time on one RTX 4060 is an implementation-specific systems observation, not an energy measurement. Finally, no causal intervention showed that a particular geometric relation mediates behavior; the controls establish predictive utility of the supervision signal, not a mechanistic identity.
+Seventh, the relational target is only invariant to orthogonal basis changes and isotropic scaling. Other invertible reparameterizations can alter it. The teacher was trained without the student's pair exclusions and is therefore a deliberately privileged supervisor. Eighth, the final selected teacher layer may expose answer-class geometry, and no target-label Gram was included. The shuffled and random controls are destructive alternatives rather than neutral controls. Ninth, matched example counts and model sizes do not imply matched information or compute: layer-representation tensors are larger than logits, relational objectives add training time, and E001's registered data-rich and wall-time-matched label baselines were never run after its capability gate failed. Tenth, wall time on one RTX 4060 is an implementation-specific systems observation, not an energy measurement. Finally, no causal intervention showed that a particular geometric relation mediates behavior; the controls establish predictive utility of the supervision signal, not a mechanistic identity.
 
 ## 11. Reproducibility, ethics, and provenance
 
@@ -260,11 +278,11 @@ OpenAI Codex assisted with repository inspection, implementation, experiment exe
 
 ## 12. Conclusion
 
-Normalized relational activation geometry transfers real, task-relevant information in the affine composition task. It more than doubles the generic Transformer's held-out-pair accuracy relative to output distillation, survives basis-invariant formulation, and beats shuffled, random, and untrained-teacher controls. But its gain decays with composition depth, and the registered strong algorithm criterion fails. The evidence supports local structural transfer, not a portable iterative algorithm.
+Normalized learned-teacher layer geometry more than doubles the generic Transformer's held-out-pair accuracy relative to output distillation in the affine composition task. The effect is reproducible across paired seeds, survives an orthogonal-basis-invariant formulation, and is not reproduced by shuffled, random, or untrained targets. It also improves descriptive capability-conditioned transfer through depth. The current evidence nevertheless does not identify the useful information as teacher-specific: terminal-label similarity is an untested rival. The registered strong algorithm criterion fails under a severe depth-four capability ceiling, leaving the cause of deep-composition failure inconclusive.
 
-A context-selected transition executor solves the same task exactly with 61.3 times fewer stored parameters. That result is deliberately unfair in an informative way: the executor knows the correct factorization. It shows how much efficiency is available when learning is organized around the right reusable operators, and how little a raw parameter count says without architectural context.
+A task-factored transition executor solves the same task exactly with 61.3 times fewer stored parameters. That result is deliberately unfair in an informative way: the executor knows the correct factorization. It proves that a compact exact representation exists on this task. It does not establish a general efficiency frontier, a causal benefit from context selection, or realized sparse compute.
 
-The next experiment should therefore not simply make the student larger or copy more of the teacher. It should test whether a learner can *discover* a compact operator library, state abstraction, and recurrent execution rule from data, with relational geometry used as one possible discovery signal. That hypothesis follows from the present evidence; it has not yet been tested.
+The immediate experiment is the cheaper specificity test: compare learned-teacher geometry with target-label geometry under the frozen affine setup. Any language-model extension should then include both targets, output distillation, and an ordinary extra-compute or extra-data baseline. A separate architecture study can ask whether a learner can discover a compact operator library and recurrent execution rule rather than receiving one.
 
 ## References
 

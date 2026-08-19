@@ -30,7 +30,9 @@ The project does not presently treat machine consciousness as an engineering cla
 
 ## Start here
 
-- [Preprint](paper/preprint.md) reports the completed E001-E002 study, including failed gates and scope limits.
+- [Preprint](paper/preprint.md) reports the completed E001-E002 study, including the council-driven claim corrections, failed gates, and scope limits.
+- [External council](research/council-2026-08-19.md) records the verified Opus 5 and Qwen 3.8 critique and its contribution to the project.
+- [E003 preregistration](experiments/E003-label-geometry-specificity/preregister.md) freezes the active teacher-specificity control.
 - [E002 report](experiments/E002-contextual-transition-executor/report.md) is the compact experimental handoff.
 - [NEXT](NEXT.md) is the current research-session entry point.
 - [Original seed ideas](notes/seed-ideas.md) preserves the initial note.
@@ -74,7 +76,8 @@ The project will:
     │   └── 2026-08-18-priorities.md
     ├── research/
     │   ├── landscape.md          Broad evidence and counterevidence
-    │   └── compression-frontier.md
+    │   ├── compression-frontier.md
+    │   └── council-2026-08-19.md Verified external-model audit
     ├── paper/
     │   ├── preprint.md            Canonical manuscript
     │   ├── analyze.py             Raw-result analysis and figures
@@ -91,17 +94,21 @@ The project will:
             ├── src/               Experiment implementation
             ├── tests/             Deterministic validity checks
             └── results/           Raw metrics and flat summaries
-        └── E002-contextual-transition-executor/
+        ├── E002-contextual-transition-executor/
             ├── preregister.md     Frozen prospective protocol
             ├── report.md          Final compact handoff
             ├── src/ and tests/    Implementation and validity checks
             └── results/           Development and confirmatory metrics
+        └── E003-label-geometry-specificity/
+            ├── preregister.md     Frozen target-label Gram control
+            ├── config/            Single-condition confirmation
+            └── results/           Added only after the fixed run
 
-As the project grows, each implemented experiment should receive a numbered directory such as experiments/E003-continual-memory. Large models, private data, and intermediate generated artifacts should not be committed; compact paper figures and release PDFs are versioned for auditability.
+As the project grows, each implemented experiment should receive a numbered directory such as experiments/E004-tiny-language-model. Large models, private data, and intermediate generated artifacts should not be committed; compact paper figures and release PDFs are versioned for auditability.
 
 ## Project status
 
-**Preprint / bounded synthetic evidence.** The affine confirmation supports local relational transfer but not transfer of a depth-general iterative algorithm. The cross-family claim remains inconclusive because the bitwise teacher failed its registered positive-control gate. No result establishes general compression, language-model, energy, continual-learning, or consciousness claims.
+**Preprint / bounded synthetic evidence.** The affine confirmation supports a reproducible benefit from correspondence-preserving learned-teacher layer geometry. It does not yet distinguish teacher-specific internal structure from target-class similarity, and the depth-four student is below a credible capability floor. The 61.3-fold executor comparison proves a compact exact factorization exists on this task; it is not a general frontier or realized sparse-compute result. E003 is the active specificity test, followed by a preregistered tiny causal-language-model bridge. No result establishes general compression, language-model, energy, continual-learning, or consciousness claims.
 
 ## License
 

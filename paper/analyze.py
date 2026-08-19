@@ -64,8 +64,15 @@ def condition_summary(payload: dict[str, Any], condition_id: str) -> dict[str, A
         "condition_id": condition_id,
         "stored_parameters": int(rows[0]["stored_parameters"]),
         "active_parameters_per_step": int(rows[0]["active_parameters_per_step"]),
+        "id_accuracy": sample_summary([float(row["id_accuracy"]) for row in rows]),
         "accuracy": sample_summary([float(row["evaluation_accuracy"]) for row in rows]),
         "train_seconds": sample_summary([float(row["train_seconds"]) for row in rows]),
+    }
+    output["id_depth"] = {
+        depth: sample_summary(
+            [float(row["id_accuracy_by_depth"][depth]) for row in rows]
+        )
+        for depth in ("2", "3", "4")
     }
     output["depth"] = {
         depth: sample_summary(
@@ -132,8 +139,18 @@ CONDITIONS = [
 ]
 
 
-def family_analysis(payload: dict[str, Any]) -> dict[str, Any]:
+def family_analysis(payload: dict[str, Any], *, chance: float) -> dict[str, Any]:
     summaries = {name: condition_summary(payload, name) for name in CONDITIONS}
+    for item in summaries.values():
+        item["normalized_transfer"] = {
+            depth: (
+                (item["depth"][depth]["mean"] - chance)
+                / (item["id_depth"][depth]["mean"] - chance)
+                if item["id_depth"][depth]["mean"] > chance
+                else None
+            )
+            for depth in ("2", "3", "4")
+        }
     paired = {}
     for baseline in ("transformer-logits", "transformer-shuffled"):
         paired[f"relational_minus_{baseline.removeprefix('transformer-')}_overall"] = paired_difference(
@@ -169,8 +186,8 @@ def family_analysis(payload: dict[str, Any]) -> dict[str, Any]:
 
 
 analysis = {
-    "affine": family_analysis(AFFINE),
-    "bitwise": family_analysis(BITWISE),
+    "affine": family_analysis(AFFINE, chance=1 / 47),
+    "bitwise": family_analysis(BITWISE, chance=1 / 64),
     "teacher_gates": {
         "affine": {
             "overall": AFFINE["teacher"]["evaluation"]["accuracy"],
@@ -229,6 +246,24 @@ for family in ("affine", "bitwise"):
             f"{percent(item['accuracy']['mean'])} +/- {percent(item['accuracy']['sd'])} | "
             f"{percent(item['depth']['2']['mean'])} | {percent(item['depth']['3']['mean'])} | "
             f"{percent(item['depth']['4']['mean'])} | {item['train_seconds']['mean']:.2f} s |"
+        )
+    lines.extend(
+        [
+            "",
+            "In-distribution depth accuracy and descriptive normalized transfer:",
+            "",
+            "| Condition | ID overall | ID depth 2 | ID depth 3 | ID depth 4 | rho 2 | rho 3 | rho 4 |",
+            "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        ]
+    )
+    for name in CONDITIONS:
+        item = analysis[family]["conditions"][name]
+        rho = item["normalized_transfer"]
+        lines.append(
+            f"| {name} | {percent(item['id_accuracy']['mean'])} | "
+            f"{percent(item['id_depth']['2']['mean'])} | {percent(item['id_depth']['3']['mean'])} | "
+            f"{percent(item['id_depth']['4']['mean'])} | "
+            f"{rho['2']:.3f} | {rho['3']:.3f} | {rho['4']:.3f} |"
         )
     lines.extend(["", "Paired relational effects:", ""])
     for key, item in analysis[family]["paired"].items():
@@ -318,7 +353,7 @@ for axis, family in zip(axes, ("affine", "bitwise"), strict=True):
     axis.set_xlabel("Stored parameters (log scale)")
     style_axes(axis)
 axes[0].set_ylabel("Held-out pair accuracy (%)")
-fig.suptitle("Task factorization changes the capability-per-parameter frontier")
+fig.suptitle("Task-factored executor: a compact two-model existence comparison")
 fig.savefig(GENERATED / "figure2_efficiency_frontier.png", dpi=220)
 plt.close(fig)
 

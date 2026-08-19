@@ -27,6 +27,15 @@ def main() -> None:
     close(payload["affine"]["conditions"]["table-labels"]["accuracy"]["mean"], 1.0)
     close(payload["affine"]["paired"]["relational_minus_logits_overall"]["mean"], 0.12011)
     close(payload["teacher_gates"]["bitwise"]["depth4"], 0.8921)
+    close(
+        payload["affine"]["conditions"]["transformer-relational"]["id_depth"]["4"]["mean"],
+        0.0815,
+    )
+    close(
+        payload["affine"]["conditions"]["transformer-relational"]["normalized_transfer"]["4"],
+        0.230,
+        tolerance=0.001,
+    )
     assert payload["teacher_gates"]["bitwise"]["passed_registered_95_percent_floor"] is False
 
     source = MANUSCRIPT.read_text(encoding="utf-8")
@@ -35,17 +44,18 @@ def main() -> None:
         "12.01 percentage points",
         "61.3 times fewer",
         "The entire bitwise distillation cell is formally invalid",
-        "not a portable iterative algorithm",
+        "target-label Gram",
+        "severe student capability ceiling",
     ):
         assert required in source, required
     for forbidden in ("TODO", "TBD", "PLACEHOLDER"):
         assert forbidden not in source
 
     reader = PdfReader(str(PDF))
-    assert len(reader.pages) == 10
+    assert len(reader.pages) == 11
     assert reader.metadata.title == (
-        "Relational Activation Distillation Transfers Local Structure "
-        "but Not an Iterative Algorithm"
+        "Relational Layer Geometry Improves Compositional Transfer "
+        "Under a Capability Ceiling"
     )
     extracted = "\n".join((page.extract_text() or "") for page in reader.pages)
     assert len(extracted) > 35_000
@@ -54,7 +64,7 @@ def main() -> None:
     assert sum(len(page.get("/Annots", [])) for page in reader.pages) >= 10
 
     with pdfplumber.open(str(PDF)) as document:
-        assert len(document.pages) == 10
+        assert len(document.pages) == 11
         assert all(len(page.extract_text() or "") > 1_000 for page in document.pages)
 
     print("paper validation passed")

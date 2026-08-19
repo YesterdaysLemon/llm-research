@@ -67,6 +67,8 @@ E001-P1 then stopped before confirmation because every registered student missed
 
 [E002 — Context-selected transition execution](E002-contextual-transition-executor/README.md) follows the resulting architectural hypothesis: separate stored parameters from the context-selected operator applied at each composition step. Its [prospective protocol](E002-contextual-transition-executor/preregister.md) freezes the confirmatory comparison.
 
+[E003 — Label-geometry specificity](E003-label-geometry-specificity/README.md) adds one prospectively registered control to distinguish learned-teacher layer geometry from terminal-label similarity. It reuses the frozen affine seeds and adds no tuning or rescue conditions.
+
 ## Working loop
 
 Use [WORKFLOW.md](WORKFLOW.md) for every experiment. The short version is:

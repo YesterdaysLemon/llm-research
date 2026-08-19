@@ -74,6 +74,16 @@ def trajectory_steps(spec: dict[str, Any], max_depth: int) -> int:
     return max_depth
 
 
+def label_geometry_targets(
+    labels: Tensor, *, num_classes: int, steps: int
+) -> Tensor:
+    """Build a teacher-free, layer-indexed target from terminal-label identity."""
+    one_hot = F.one_hot(labels.to(torch.long), num_classes=num_classes).to(
+        torch.float32
+    )
+    return one_hot.unsqueeze(1).expand(-1, steps, -1).contiguous()
+
+
 def train_model(
     model: nn.Module,
     dataset: Any,
@@ -81,6 +91,7 @@ def train_model(
     spec: dict[str, Any],
     teacher_logits: Tensor,
     teacher_trajectory: Tensor,
+    label_trajectory: Tensor,
     untrained_trajectory: Tensor,
     random_trajectory: Tensor,
     seed: int,
@@ -130,9 +141,16 @@ def train_model(
                     logit_weight=float(training["logit_weight"]),
                 )
             auxiliary = torch.zeros((), device=device)
-            if condition in {"relational", "shuffled", "random", "untrained"}:
+            if condition in {
+                "relational",
+                "label_geometry",
+                "shuffled",
+                "random",
+                "untrained",
+            }:
                 target_cache = {
                     "relational": teacher_trajectory,
+                    "label_geometry": label_trajectory,
                     "shuffled": teacher_trajectory,
                     "random": random_trajectory,
                     "untrained": untrained_trajectory,
@@ -319,6 +337,11 @@ def main() -> int:
         target_caches[steps] = {
             "logits": logits_cache,
             "trajectory": trajectory_cache,
+            "label_trajectory": label_geometry_targets(
+                train_data.labels,
+                num_classes=int(data["num_entities"]),
+                steps=steps,
+            ),
             "untrained": untrained_cache,
             "random": random_cache,
         }
@@ -340,6 +363,7 @@ def main() -> int:
                 spec=spec,
                 teacher_logits=caches["logits"],
                 teacher_trajectory=caches["trajectory"],
+                label_trajectory=caches["label_trajectory"],
                 untrained_trajectory=caches["untrained"],
                 random_trajectory=caches["random"],
                 seed=int(seed),

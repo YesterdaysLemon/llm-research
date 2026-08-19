@@ -16,6 +16,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.platypus import (
     HRFlowable,
     Image,
+    KeepTogether,
     ListFlowable,
     ListItem,
     LongTable,
@@ -81,7 +82,7 @@ def make_styles():
         leading=11.85,
         alignment=TA_JUSTIFY,
         textColor=colors.HexColor("#20252b"),
-        spaceAfter=5.2,
+        spaceAfter=4.5,
         allowWidows=0,
         allowOrphans=0,
     )
@@ -163,6 +164,13 @@ def make_styles():
             borderPadding=7,
             spaceBefore=3,
             spaceAfter=7,
+        ),
+        "numbered": ParagraphStyle(
+            "PaperNumbered",
+            parent=body,
+            leftIndent=18,
+            bulletIndent=0,
+            spaceAfter=3,
         ),
     }
 
@@ -251,7 +259,7 @@ def parse_markdown(text: str):
             rows = [[cell.strip() for cell in item.strip("|").split("|")] for item in table_lines]
             if len(rows) > 1 and all(re.fullmatch(r":?-{3,}:?", cell) for cell in rows[1]):
                 rows.pop(1)
-            story.append(table_flowable(rows)); continue
+            story.append(KeepTogether([table_flowable(rows)])); continue
 
         if line.startswith("# "):
             heading_count += 1
@@ -275,12 +283,20 @@ def parse_markdown(text: str):
             story.append(ListFlowable(items, bulletType="bullet", leftIndent=22, bulletFontName=REGULAR)); continue
 
         if re.match(r"^\d+\. ", line):
-            items = []
+            items: list[str] = []
             while i < len(lines) and re.match(r"^\d+\. ", lines[i].strip()):
                 item = re.sub(r"^\d+\. ", "", lines[i].strip())
-                items.append(ListItem(Paragraph(inline_markup(item), STYLES["body"]), leftIndent=13))
+                items.append(item)
                 i += 1
-            story.append(ListFlowable(items, bulletType="1", leftIndent=25, bulletFontName=REGULAR)); continue
+            for number, item in enumerate(items, start=1):
+                story.append(
+                    Paragraph(
+                        inline_markup(item),
+                        STYLES["numbered"],
+                        bulletText=f"{number}.",
+                    )
+                )
+            continue
 
         if line == "---":
             story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#9db1bc")))
@@ -319,7 +335,7 @@ def build() -> None:
         leftMargin=0.72 * inch,
         topMargin=0.62 * inch,
         bottomMargin=0.58 * inch,
-        title="Relational Activation Distillation Transfers Local Structure but Not an Iterative Algorithm",
+        title="Relational Layer Geometry Improves Compositional Transfer Under a Capability Ceiling",
         author="Alireza Afshan",
         subject="Preprint on relational activation distillation and context-selected parameter reuse",
     )
