@@ -16,17 +16,33 @@ The bitwise cell remains descriptive because its teacher missed the registered p
 
 ## Active decision
 
-Preregister H-010 as E004, the first tiny causal language-model bridge. Do not run a fixed comparison until a smoke phase has established a teacher and labels-only student capability floor and frozen the corpus/tokenizer artifacts.
+Run the now-preregistered E004 capability ladder once from its clean pre-result
+commit. Do not run a fixed comparison until the teacher and labels-only student
+each select a passing rung and the resulting fixed corpus/tokenizer/model budget
+is committed separately.
+
+The pre-smoke Opus 5 audit and local replay found five blocking defects in the
+first draft; all were repaired before training. Qwen 3.8 timed out twice without
+a report, so no Qwen claim enters the design. The repaired protocol uses a
+non-commutative six-operator affine language modulo 11, crosses every held-out
+pair with every evaluation depth, starts controlled training at complete record
+boundaries, evaluates in float32, and replaces the guessed 400/300-step budget
+with a capability-only ladder at 400, 2,400, 7,200, and 21,600 steps. See the
+[E004 protocol](experiments/E004-tiny-language-model/preregister.md) and
+[design audit](research/council-2026-08-19-e004.md).
 
 The experiment must decide whether learned hidden-relation geometry improves genuine next-token learning beyond both output distillation and next-token target geometry at matched student size, tokens, initialization, and optimizer steps.
 
-The minimum core is:
+The fixed comparison, if licensed by smoke, has this minimum core:
 
 1. ordinary next-token training;
 2. output distillation;
 3. output plus learned hidden-relation geometry;
 4. output plus next-token target geometry;
 5. an ordinary extra-data or extra-compute baseline.
+
+It also requires teacher-logit geometry and frozen untrained-teacher geometry
+controls before a learned-hidden-specificity interpretation.
 
 Prefer a 1M–10M-parameter student and a 10M–40M teacher that can both run on the RTX 4060 and M2 host. Use at least five paired seeds, a dominant simple-English stream, and a smaller controlled compositional stream. Freeze natural validation NLL, controlled accuracy by depth, teacher and student capability gates, token counts, model bytes, wall time, and peak memory before the fixed run. No activation-specific claim is allowed unless learned hidden geometry beats both output distillation and target-token geometry. No efficiency claim is allowed unless it survives the ordinary compute/data control.
 

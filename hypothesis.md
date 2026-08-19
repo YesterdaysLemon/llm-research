@@ -254,7 +254,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## H-010 — Activation-specific distillation survives next-token controls
 
-**Status:** proposed; tiny-language-model bridge
+**Status:** E004 capability smoke preregistered; no language-model training result
 
 **Origin:** applying H-002 to genuine causal language modeling as early as possible
 
@@ -274,6 +274,15 @@ The primary optimization target is capability per parameter and per joule. Conti
 4. Freeze a natural-text validation loss, controlled in-distribution accuracy, unseen-composition accuracy by depth, model bytes, training wall time, and peak memory.
 5. Require the teacher and labels-only student to clear predeclared capability gates before interpreting controlled extrapolation.
 6. Treat a parameter-count gain as separate from measured latency or energy; use supported telemetry before making a joule claim.
+
+**E004 registration.** The first implementation audit found process-dependent
+held-out sampling, depth/pair confounding, train/evaluation position mismatch,
+an underived smoke budget, and a commutative controlled algebra before any
+training occurred. E004 now uses order-sensitive affine operators modulo 11,
+balanced depth-by-pair evaluation, complete boundary-aligned records, and a
+capability-only budget ladder. A successful ladder changes only the experiment's
+validity state; H-010 remains untested until the frozen paired KD/geometry study
+runs.
 
 **Primary measure.** The joint result on natural-text validation NLL and capability-gated held-out controlled composition. The activation-specific claim requires learned hidden relations to beat both output distillation and target-token geometry under paired uncertainty intervals.
 
