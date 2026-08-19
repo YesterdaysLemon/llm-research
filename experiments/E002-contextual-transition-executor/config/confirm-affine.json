@@ -1,0 +1,54 @@
+{
+  "experiment_id": "E002-confirm-affine",
+  "phase": "confirmatory",
+  "task_family": "affine",
+  "data_seed": 5150,
+  "teacher_seed": 801,
+  "feature_teacher_seed": 802,
+  "target_seed": 803,
+  "student_seeds": [5101, 5102, 5103, 5104, 5105, 5106, 5107, 5108, 5109, 5110],
+  "data": {
+    "num_entities": 47,
+    "num_relations": 8,
+    "teacher_depths": [1, 2, 3, 4],
+    "train_depths": [1, 2, 3, 4],
+    "id_depths": [1, 2, 3, 4],
+    "evaluation_depths": [2, 3, 4],
+    "excluded_pairs": [[0, 1], [1, 0], [2, 3], [3, 2], [4, 5], [5, 4], [6, 7], [7, 6]],
+    "evaluation_pairs": [[0, 1], [2, 3], [4, 5], [6, 7]],
+    "evaluation_forbidden_pairs": [[1, 0], [3, 2], [5, 4], [7, 6]],
+    "evaluation_seed_offset": 4,
+    "teacher_train_examples": 80000,
+    "train_examples": 20000,
+    "id_examples": 10000,
+    "evaluation_examples": 10000
+  },
+  "teacher": {
+    "d_model": 256,
+    "n_heads": 8,
+    "n_layers": 6,
+    "d_ff": 1024,
+    "dropout": 0.0,
+    "epochs": 20,
+    "learning_rate": 0.001
+  },
+  "training": {
+    "batch_size": 256,
+    "weight_decay": 0.01,
+    "temperature": 2.0,
+    "label_weight": 0.5,
+    "logit_weight": 0.5,
+    "gradient_clip": 1.0,
+    "num_workers": 0
+  },
+  "conditions": [
+    {"id": "table-labels", "type": "transition_table", "condition": "labels", "epochs": 5, "learning_rate": 0.03},
+    {"id": "gru-labels", "type": "gru", "condition": "labels", "d_model": 32, "epochs": 80, "learning_rate": 0.003},
+    {"id": "transformer-labels", "type": "transformer", "condition": "labels", "d_model": 256, "n_heads": 8, "n_layers": 2, "d_ff": 512, "dropout": 0.0, "epochs": 48, "learning_rate": 0.001},
+    {"id": "transformer-logits", "type": "transformer", "condition": "logits", "d_model": 256, "n_heads": 8, "n_layers": 2, "d_ff": 512, "dropout": 0.0, "epochs": 48, "learning_rate": 0.001},
+    {"id": "transformer-relational", "type": "transformer", "condition": "relational", "auxiliary_weight": 3.0, "d_model": 256, "n_heads": 8, "n_layers": 2, "d_ff": 512, "dropout": 0.0, "epochs": 48, "learning_rate": 0.001},
+    {"id": "transformer-shuffled", "type": "transformer", "condition": "shuffled", "auxiliary_weight": 3.0, "d_model": 256, "n_heads": 8, "n_layers": 2, "d_ff": 512, "dropout": 0.0, "epochs": 48, "learning_rate": 0.001},
+    {"id": "transformer-random", "type": "transformer", "condition": "random", "auxiliary_weight": 3.0, "d_model": 256, "n_heads": 8, "n_layers": 2, "d_ff": 512, "dropout": 0.0, "epochs": 48, "learning_rate": 0.001},
+    {"id": "transformer-untrained", "type": "transformer", "condition": "untrained", "auxiliary_weight": 3.0, "d_model": 256, "n_heads": 8, "n_layers": 2, "d_ff": 512, "dropout": 0.0, "epochs": 48, "learning_rate": 0.001}
+  ]
+}

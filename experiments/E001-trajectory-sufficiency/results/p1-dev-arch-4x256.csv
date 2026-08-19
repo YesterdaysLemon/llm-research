@@ -1,0 +1,2 @@
+trial_id,condition,epochs,auxiliary_weight,runs,id_accuracy_mean,id_accuracy_std,evaluation_accuracy_mean,evaluation_accuracy_std,id_cross_entropy_mean,id_cross_entropy_std,evaluation_cross_entropy_mean,evaluation_cross_entropy_std,train_seconds_mean,train_seconds_std,peak_gpu_memory_bytes_mean,peak_gpu_memory_bytes_std
+logits-4x256-e72,logits,72,0.0,3,0.43616666666666665,0.0013333333333333253,0.03983333333333333,0.008074307675859548,5.557658816867405,0.0541562904838403,9.30312559000651,0.17678429013284985,55.929933100007474,0.686184226748957,201757184.0,0.0

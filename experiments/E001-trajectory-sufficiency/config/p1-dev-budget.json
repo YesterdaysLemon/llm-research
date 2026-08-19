@@ -1,0 +1,58 @@
+{
+  "experiment_id": "E001-P1-dev-budget",
+  "phase": "development-budget-selection",
+  "task_family": "affine",
+  "data_seed": 2718,
+  "teacher_seed": 301,
+  "feature_teacher_seed": 302,
+  "target_seed": 303,
+  "student_seeds": [201, 202, 203],
+  "data": {
+    "num_entities": 47,
+    "num_relations": 8,
+    "teacher_depths": [1, 2, 3, 4],
+    "student_depths": [2, 3, 4],
+    "id_depths": [2, 3, 4],
+    "evaluation_depths": [2, 3, 4],
+    "excluded_pairs": [[0, 1], [1, 0], [2, 3], [3, 2], [4, 5], [5, 4], [6, 7], [7, 6]],
+    "evaluation_pairs": [[1, 0], [3, 2], [5, 4], [7, 6]],
+    "evaluation_forbidden_pairs": [[0, 1], [2, 3], [4, 5], [6, 7]],
+    "evaluation_seed_offset": 4,
+    "teacher_train_examples": 80000,
+    "student_train_examples": 15000,
+    "rich_train_examples": 60000,
+    "id_test_examples": 6000,
+    "evaluation_examples": 6000
+  },
+  "teacher": {
+    "d_model": 256,
+    "n_heads": 8,
+    "n_layers": 6,
+    "d_ff": 1024,
+    "dropout": 0.0,
+    "epochs": 20,
+    "learning_rate": 0.001
+  },
+  "student": {
+    "d_model": 256,
+    "n_heads": 8,
+    "n_layers": 2,
+    "d_ff": 512,
+    "dropout": 0.0,
+    "learning_rate": 0.001
+  },
+  "training": {
+    "batch_size": 256,
+    "weight_decay": 0.01,
+    "temperature": 2.0,
+    "label_weight": 0.5,
+    "logit_weight": 0.5,
+    "gradient_clip": 1.0,
+    "num_workers": 0
+  },
+  "trials": [
+    {"id": "logits-e24", "condition": "logits", "epochs": 24},
+    {"id": "logits-e48", "condition": "logits", "epochs": 48},
+    {"id": "logits-e72", "condition": "logits", "epochs": 72}
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "experiment_id": "E001-P1-dev-arch-4x128",
+  "phase": "development-architecture-selection",
+  "timestamp_utc": "2026-08-18T22:10:33.327667+00:00",
+  "config_path": "experiments\\E001-trajectory-sufficiency\\config\\p1-dev-arch-4x128.json",
+  "config_sha256": "31490a7716f245e963cebddd8cb3f0d5a11a5c270deb0caa88cfc8ec290f1646",
+  "git_commit": "04735fe0525272477dfac54ce8127de25295954b",
+  "git_status_porcelain": "M NEXT.md\n?? experiments/E001-trajectory-sufficiency/config/p1-dev-arch-4x128.json\n?? experiments/E001-trajectory-sufficiency/config/p1-dev-budget.json\n?? experiments/E001-trajectory-sufficiency/preregister-p1.md\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-budget.csv\n?? experiments/E001-trajectory-sufficiency/results/p1-dev-budget.json\n?? experiments/E001-trajectory-sufficiency/src/run_p1.py\n?? experiments/E001-trajectory-sufficiency/tests/test_p1.py",
+  "environment": {
+    "python": "3.12.13 (main, Apr 14 2026, 14:31:26) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "cuda_runtime": "13.0",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060",
+    "gpu_memory_bytes": 8585216000,
+    "gpu_power_draw_w": "[N/A]"
+  },
+  "task_family": "affine",
+  "relation_definitions": [
+    {
+      "relation": 0,
+      "a": 33,
+      "b": 18
+    },
+    {
+      "relation": 1,
+      "a": 32,
+      "b": 8
+    },
+    {
+      "relation": 2,
+      "a": 39,
+      "b": 16
+    },
+    {
+      "relation": 3,
+      "a": 1,
+      "b": 2
+    },
+    {
+      "relation": 4,
+      "a": 11,
+      "b": 11
+    },
+    {
+      "relation": 5,
+      "a": 27,
+      "b": 40
+    },
+    {
+      "relation": 6,
+      "a": 28,
+      "b": 7
+    },
+    {
+      "relation": 7,
+      "a": 12,
+      "b": 15
+    }
+  ],
+  "teacher": {
+    "parameters": 4767279,
+    "selected_trajectory_layers_zero_based": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "untrained_selected_layers_zero_based": [
+      0,
+      2,
+      3,
+      5
+    ],
+    "training": {
+      "train_seconds": 110.71366610002588,
+      "last_batch_loss": 0.01758660562336445
+    },
+    "id": {
+      "accuracy": 0.996,
+      "cross_entropy": 0.010627773627638816,
+      "count": 6000,
+      "accuracy_by_depth": {
+        "2": 1.0,
+        "3": 0.9975099601593626,
+        "4": 0.9888823873610298
+      }
+    },
+    "evaluation": {
+      "accuracy": 0.9956666666666667,
+      "cross_entropy": 0.013116718669732411,
+      "count": 6000,
+      "accuracy_by_depth": {
+        "2": 1.0,
+        "3": 0.9980815347721822,
+        "4": 0.9921090387374462
+      }
+    }
+  },
+  "student_parameters": 807471,
+  "byte_accounting": {
+    "standard_training_dataset": 960000,
+    "rich_training_dataset": 3840000,
+    "teacher_logits": 2820000,
+    "teacher_trajectory": 61440000,
+    "untrained_trajectory": 61440000,
+    "random_trajectory": 61440000
+  },
+  "runs": [
+    {
+      "trial_id": "logits-4x128-e72",
+      "condition": "logits",
+      "seed": 201,
+      "epochs": 72,
+      "auxiliary_weight": 0.0,
+      "training_examples": 15000,
+      "training_dataset_bytes": 960000,
+      "id_accuracy": 0.43716666666666665,
+      "id_cross_entropy": 5.823739766438802,
+      "id_accuracy_by_depth": {
+        "2": 0.8891809023215068,
+        "3": 0.2549800796812749,
+        "4": 0.047396138092451724
+      },
+      "evaluation_accuracy": 0.031166666666666665,
+      "evaluation_cross_entropy": 9.879740417480468,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.0709849157054126,
+        "3": 0.030215827338129497,
+        "4": 0.015781922525107604
+      },
+      "train_seconds": 41.44442459999118,
+      "optimizer_steps": 4248,
+      "example_exposures": 1080000,
+      "last_batch_loss": 0.19189046323299408,
+      "last_base_loss": 0.19189046323299408,
+      "last_auxiliary_loss": 0.0,
+      "peak_gpu_memory_bytes": 134811648
+    },
+    {
+      "trial_id": "logits-4x128-e72",
+      "condition": "logits",
+      "seed": 202,
+      "epochs": 72,
+      "auxiliary_weight": 0.0,
+      "training_examples": 15000,
+      "training_dataset_bytes": 960000,
+      "id_accuracy": 0.4335,
+      "id_cross_entropy": 5.888966654459636,
+      "id_accuracy_by_depth": {
+        "2": 0.8848007008322383,
+        "3": 0.24850597609561753,
+        "4": 0.04798127559976594
+      },
+      "evaluation_accuracy": 0.0335,
+      "evaluation_cross_entropy": 9.925644368489584,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.06654835847382432,
+        "3": 0.03261390887290168,
+        "4": 0.02080344332855093
+      },
+      "train_seconds": 41.98205560000497,
+      "optimizer_steps": 4248,
+      "example_exposures": 1080000,
+      "last_batch_loss": 0.20635169744491577,
+      "last_base_loss": 0.20635169744491577,
+      "last_auxiliary_loss": 0.0,
+      "peak_gpu_memory_bytes": 134811648
+    },
+    {
+      "trial_id": "logits-4x128-e72",
+      "condition": "logits",
+      "seed": 203,
+      "epochs": 72,
+      "auxiliary_weight": 0.0,
+      "training_examples": 15000,
+      "training_dataset_bytes": 960000,
+      "id_accuracy": 0.43966666666666665,
+      "id_cross_entropy": 5.962483378092448,
+      "id_accuracy_by_depth": {
+        "2": 0.8909329829172142,
+        "3": 0.25796812749003983,
+        "4": 0.05032182562902282
+      },
+      "evaluation_accuracy": 0.03333333333333333,
+      "evaluation_cross_entropy": 10.121233540852865,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.06654835847382432,
+        "3": 0.030215827338129497,
+        "4": 0.02223816355810617
+      },
+      "train_seconds": 41.95654569999897,
+      "optimizer_steps": 4248,
+      "example_exposures": 1080000,
+      "last_batch_loss": 0.23574261367321014,
+      "last_base_loss": 0.23574261367321014,
+      "last_auxiliary_loss": 0.0,
+      "peak_gpu_memory_bytes": 134811648
+    }
+  ],
+  "summary": [
+    {
+      "trial_id": "logits-4x128-e72",
+      "condition": "logits",
+      "epochs": 72,
+      "auxiliary_weight": 0.0,
+      "runs": 3,
+      "id_accuracy_mean": 0.43677777777777776,
+      "id_accuracy_std": 0.0031016721893795175,
+      "evaluation_accuracy_mean": 0.03266666666666667,
+      "evaluation_accuracy_std": 0.001301708279317777,
+      "id_cross_entropy_mean": 5.891729932996962,
+      "id_cross_entropy_std": 0.06941306955379913,
+      "evaluation_cross_entropy_mean": 9.975539442274306,
+      "evaluation_cross_entropy_std": 0.12824535449686295,
+      "train_seconds_mean": 41.79434196666504,
+      "train_seconds_std": 0.30330564019575235,
+      "peak_gpu_memory_bytes_mean": 134811648.0,
+      "peak_gpu_memory_bytes_std": 0.0
+    }
+  ],
+  "limitations": [
+    "Synthetic composition task, not natural language.",
+    "In-memory tensor bytes are not an information-theoretic minimum.",
+    "Energy is unavailable if GPU power telemetry reports N/A."
+  ]
+}

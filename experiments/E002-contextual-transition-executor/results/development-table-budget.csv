@@ -1,0 +1,6 @@
+model_id,model_type,stored_parameters,active_parameters_per_step,runs,id_accuracy_mean,id_accuracy_std,evaluation_accuracy_mean,evaluation_accuracy_std,train_seconds_mean,train_seconds_std
+table-e10,transition_table,17672,2209,3,1.0,0.0,1.0,0.0,3.28016213333467,0.16737284499375588
+table-e20,transition_table,17672,2209,3,1.0,0.0,1.0,0.0,6.489702966655993,0.15162735656345408
+table-e40,transition_table,17672,2209,3,1.0,0.0,1.0,0.0,13.016760366677772,0.2502390604814823
+table-e5,transition_table,17672,2209,3,1.0,0.0,1.0,0.0,1.7248605666682124,0.12336408304285268
+table-e80,transition_table,17672,2209,3,1.0,0.0,1.0,0.0,26.57366693333218,0.6551169743692504

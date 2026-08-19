@@ -1,0 +1,2 @@
+model_id,model_type,stored_parameters,active_parameters_per_step,runs,id_accuracy_mean,id_accuracy_std,evaluation_accuracy_mean,evaluation_accuracy_std,train_seconds_mean,train_seconds_std
+table-no-depth1-e5,transition_table,17672,2209,3,0.1508,0.019449421585229727,0.08406666666666666,0.028085820859169018,1.7104265999999673,0.14392088142785786

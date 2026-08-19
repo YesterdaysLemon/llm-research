@@ -1,0 +1,5 @@
+condition,runs,id_accuracy_mean,id_accuracy_std,ood_accuracy_mean,ood_accuracy_std,id_cross_entropy_mean,id_cross_entropy_std,ood_cross_entropy_mean,ood_cross_entropy_std,train_seconds_mean,train_seconds_std
+labels,1,0.114,0.0,0.051,0.0,3.054226989746094,0.0,3.250497863769531,0.0,0.23852860002079979,0.0
+logits,1,0.132,0.0,0.04,0.0,2.951044006347656,0.0,3.192657470703125,0.0,0.27676680000149645,0.0
+relational,1,0.106,0.0,0.048,0.0,3.0154478759765624,0.0,3.1460556640625,0.0,0.3387469000008423,0.0
+shuffled,1,0.117,0.0,0.044,0.0,2.9957512817382814,0.0,3.1952119140625,0.0,0.4238321000011638,0.0

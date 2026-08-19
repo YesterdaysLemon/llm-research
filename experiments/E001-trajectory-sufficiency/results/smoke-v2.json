@@ -1,0 +1,231 @@
+{
+  "experiment_id": "E001-P0-smoke",
+  "timestamp_utc": "2026-08-18T20:05:46.081366+00:00",
+  "status": "pilot",
+  "config_path": "experiments\\E001-trajectory-sufficiency\\config\\smoke.json",
+  "config_sha256": "9be10ff83e8c4fb6e67025bf387cb7ada1bf548396accdcb52974dd666e0aeb7",
+  "git_commit": "cad1533a247612eaac6c2f47e393899767e0914a",
+  "git_status_porcelain": "M README.md\n M experiments/README.md\n M hypothesis.md\n?? experiments/E001-trajectory-sufficiency/\n?? notes/2026-08-18-priorities.md\n?? research/compression-frontier.md",
+  "environment": {
+    "python": "3.12.13 (main, Apr 14 2026, 14:31:26) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "cuda_runtime": "13.0",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060",
+    "gpu_memory_bytes": 8585216000,
+    "gpu_power_limit_w": "115.00",
+    "gpu_power_draw_w": "[N/A]"
+  },
+  "relation_definitions": [
+    {
+      "relation": 0,
+      "a": 1,
+      "b": 10
+    },
+    {
+      "relation": 1,
+      "a": 4,
+      "b": 17
+    },
+    {
+      "relation": 2,
+      "a": 15,
+      "b": 11
+    },
+    {
+      "relation": 3,
+      "a": 8,
+      "b": 22
+    }
+  ],
+  "teacher": {
+    "parameters": 800791,
+    "selected_trajectory_layers_zero_based": [
+      0,
+      3
+    ],
+    "training": {
+      "train_seconds": 7.9531424999877345,
+      "last_batch_loss": 0.10134519636631012
+    },
+    "id": {
+      "accuracy": 0.8985,
+      "cross_entropy": 0.3286226215362549,
+      "count": 2000,
+      "accuracy_by_depth": {
+        "2": 0.9986376021798365,
+        "3": 0.9577874818049491,
+        "4": 0.7012089810017271
+      }
+    },
+    "ood": {
+      "accuracy": 0.8405,
+      "cross_entropy": 0.509723045349121,
+      "count": 2000,
+      "accuracy_by_depth": {
+        "2": 1.0,
+        "3": 0.9753623188405797,
+        "4": 0.6934010152284263
+      }
+    }
+  },
+  "student_parameters": 272663,
+  "runs": [
+    {
+      "condition": "labels",
+      "seed": 11,
+      "id_accuracy": 0.3645,
+      "ood_accuracy": 0.042,
+      "id_cross_entropy": 2.266827423095703,
+      "ood_cross_entropy": 3.559952606201172,
+      "id_accuracy_by_depth": {
+        "2": 0.7629427792915532,
+        "3": 0.1950509461426492,
+        "4": 0.06044905008635579
+      },
+      "ood_accuracy_by_depth": {
+        "2": 0.021538461538461538,
+        "3": 0.042028985507246375,
+        "4": 0.048730964467005075
+      },
+      "train_seconds": 1.0882625999802258,
+      "last_batch_loss": 1.9926296472549438,
+      "last_base_loss": 1.9926296472549438,
+      "last_auxiliary_loss": 0.0,
+      "peak_gpu_memory_bytes": 66072576
+    },
+    {
+      "condition": "logits",
+      "seed": 11,
+      "id_accuracy": 0.352,
+      "ood_accuracy": 0.0525,
+      "id_cross_entropy": 2.3197916259765625,
+      "ood_cross_entropy": 3.772905303955078,
+      "id_accuracy_by_depth": {
+        "2": 0.7329700272479565,
+        "3": 0.19359534206695778,
+        "4": 0.05699481865284974
+      },
+      "ood_accuracy_by_depth": {
+        "2": 0.0,
+        "3": 0.05652173913043478,
+        "4": 0.06700507614213198
+      },
+      "train_seconds": 1.147028200008208,
+      "last_batch_loss": 3.2812788486480713,
+      "last_base_loss": 3.2812788486480713,
+      "last_auxiliary_loss": 0.0,
+      "peak_gpu_memory_bytes": 66072576
+    },
+    {
+      "condition": "relational",
+      "seed": 11,
+      "id_accuracy": 0.3775,
+      "ood_accuracy": 0.0585,
+      "id_cross_entropy": 2.259328582763672,
+      "ood_cross_entropy": 3.7544072875976564,
+      "id_accuracy_by_depth": {
+        "2": 0.7670299727520435,
+        "3": 0.22270742358078602,
+        "4": 0.06735751295336788
+      },
+      "ood_accuracy_by_depth": {
+        "2": 0.027692307692307693,
+        "3": 0.0927536231884058,
+        "4": 0.04467005076142132
+      },
+      "train_seconds": 1.553097699972568,
+      "last_batch_loss": 3.808990716934204,
+      "last_base_loss": 3.1714372634887695,
+      "last_auxiliary_loss": 0.6375535130500793,
+      "peak_gpu_memory_bytes": 65546240
+    },
+    {
+      "condition": "shuffled",
+      "seed": 11,
+      "id_accuracy": 0.3965,
+      "ood_accuracy": 0.0475,
+      "id_cross_entropy": 2.196736053466797,
+      "ood_cross_entropy": 3.7464539794921876,
+      "id_accuracy_by_depth": {
+        "2": 0.7997275204359673,
+        "3": 0.2445414847161572,
+        "4": 0.06563039723661486
+      },
+      "ood_accuracy_by_depth": {
+        "2": 0.0,
+        "3": 0.0536231884057971,
+        "4": 0.05888324873096447
+      },
+      "train_seconds": 1.5217823999992106,
+      "last_batch_loss": 4.850323677062988,
+      "last_base_loss": 3.0696568489074707,
+      "last_auxiliary_loss": 1.7806669473648071,
+      "peak_gpu_memory_bytes": 65808384
+    }
+  ],
+  "summary": [
+    {
+      "condition": "labels",
+      "runs": 1,
+      "id_accuracy_mean": 0.3645,
+      "id_accuracy_std": 0.0,
+      "ood_accuracy_mean": 0.042,
+      "ood_accuracy_std": 0.0,
+      "id_cross_entropy_mean": 2.266827423095703,
+      "id_cross_entropy_std": 0.0,
+      "ood_cross_entropy_mean": 3.559952606201172,
+      "ood_cross_entropy_std": 0.0,
+      "train_seconds_mean": 1.0882625999802258,
+      "train_seconds_std": 0.0
+    },
+    {
+      "condition": "logits",
+      "runs": 1,
+      "id_accuracy_mean": 0.352,
+      "id_accuracy_std": 0.0,
+      "ood_accuracy_mean": 0.0525,
+      "ood_accuracy_std": 0.0,
+      "id_cross_entropy_mean": 2.3197916259765625,
+      "id_cross_entropy_std": 0.0,
+      "ood_cross_entropy_mean": 3.772905303955078,
+      "ood_cross_entropy_std": 0.0,
+      "train_seconds_mean": 1.147028200008208,
+      "train_seconds_std": 0.0
+    },
+    {
+      "condition": "relational",
+      "runs": 1,
+      "id_accuracy_mean": 0.3775,
+      "id_accuracy_std": 0.0,
+      "ood_accuracy_mean": 0.0585,
+      "ood_accuracy_std": 0.0,
+      "id_cross_entropy_mean": 2.259328582763672,
+      "id_cross_entropy_std": 0.0,
+      "ood_cross_entropy_mean": 3.7544072875976564,
+      "ood_cross_entropy_std": 0.0,
+      "train_seconds_mean": 1.553097699972568,
+      "train_seconds_std": 0.0
+    },
+    {
+      "condition": "shuffled",
+      "runs": 1,
+      "id_accuracy_mean": 0.3965,
+      "id_accuracy_std": 0.0,
+      "ood_accuracy_mean": 0.0475,
+      "ood_accuracy_std": 0.0,
+      "id_cross_entropy_mean": 2.196736053466797,
+      "id_cross_entropy_std": 0.0,
+      "ood_cross_entropy_mean": 3.7464539794921876,
+      "ood_cross_entropy_std": 0.0,
+      "train_seconds_mean": 1.5217823999992106,
+      "train_seconds_std": 0.0
+    }
+  ],
+  "limitations": [
+    "Synthetic affine-composition task, not natural language.",
+    "Pilot conditions do not include every E001 preregistered control.",
+    "GPU power draw is unavailable under the current WDDM telemetry path."
+  ]
+}
