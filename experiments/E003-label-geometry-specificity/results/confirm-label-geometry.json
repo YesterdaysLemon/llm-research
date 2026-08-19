@@ -1,0 +1,428 @@
+{
+  "experiment_id": "E003-confirm-label-geometry",
+  "phase": "confirmatory-extension",
+  "task_family": "affine",
+  "timestamp_utc": "2026-08-19T20:16:30.221491+00:00",
+  "config_path": "experiments\\E003-label-geometry-specificity\\config\\confirm-label-geometry.json",
+  "config_sha256": "a78736731718cbe4c610d75e0474261ea768d6df5c6310187307759761ed944c",
+  "git_commit": "5701ce36dab29aa63ebda324e467a8ca489dd984",
+  "git_status_porcelain": "",
+  "environment": {
+    "python": "3.12.13 (main, Apr 14 2026, 14:31:26) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.13.0+cu130",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4060",
+    "gpu_power_draw_w": "[N/A]"
+  },
+  "relation_definitions": [
+    {
+      "relation": 0,
+      "a": 40,
+      "b": 10
+    },
+    {
+      "relation": 1,
+      "a": 10,
+      "b": 25
+    },
+    {
+      "relation": 2,
+      "a": 13,
+      "b": 45
+    },
+    {
+      "relation": 3,
+      "a": 32,
+      "b": 0
+    },
+    {
+      "relation": 4,
+      "a": 34,
+      "b": 2
+    },
+    {
+      "relation": 5,
+      "a": 36,
+      "b": 39
+    },
+    {
+      "relation": 6,
+      "a": 8,
+      "b": 31
+    },
+    {
+      "relation": 7,
+      "a": 16,
+      "b": 26
+    }
+  ],
+  "teacher": {
+    "parameters": 4767279,
+    "training": {
+      "train_seconds": 118.48649089998798,
+      "last_batch_loss": 0.0044181570410728455
+    },
+    "id": {
+      "accuracy": 0.9958,
+      "cross_entropy": 0.01329220389276743,
+      "count": 10000,
+      "accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.9984313725490196,
+        "3": 0.9974137931034482,
+        "4": 0.984578313253012
+      }
+    },
+    "evaluation": {
+      "accuracy": 0.9925,
+      "cross_entropy": 0.028072867628931998,
+      "count": 10000,
+      "accuracy_by_depth": {
+        "2": 1.0,
+        "3": 0.9988409156766155,
+        "4": 0.984446878422782
+      }
+    }
+  },
+  "runs": [
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5101,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.5987,
+      "id_cross_entropy": 3.5701300617218017,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8682352941176471,
+        "3": 0.2655172413793103,
+        "4": 0.0491566265060241
+      },
+      "evaluation_accuracy": 0.0558,
+      "evaluation_cross_entropy": 8.514897918701172,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.14465725806451613,
+        "3": 0.047522457258765576,
+        "4": 0.023439211391018618
+      },
+      "train_seconds": 154.41191799999797,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 1.003240704536438,
+      "last_base_loss": 0.0876820906996727,
+      "last_auxiliary_loss": 0.3051862120628357,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5102,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.5984,
+      "id_cross_entropy": 3.6315697483062745,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8729411764705882,
+        "3": 0.25948275862068965,
+        "4": 0.04867469879518072
+      },
+      "evaluation_accuracy": 0.0644,
+      "evaluation_cross_entropy": 8.28239905014038,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.2006048387096774,
+        "3": 0.04027818023761229,
+        "4": 0.023439211391018618
+      },
+      "train_seconds": 267.77362599998014,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 1.351362705230713,
+      "last_base_loss": 0.30096548795700073,
+      "last_auxiliary_loss": 0.35013240575790405,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5103,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.6026,
+      "id_cross_entropy": 3.5284261642456056,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8780392156862745,
+        "3": 0.2685344827586207,
+        "4": 0.05253012048192771
+      },
+      "evaluation_accuracy": 0.0622,
+      "evaluation_cross_entropy": 8.354249963378907,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.18296370967741934,
+        "3": 0.044045204288612,
+        "4": 0.023439211391018618
+      },
+      "train_seconds": 136.6219085000048,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 0.909790575504303,
+      "last_base_loss": 0.07369188964366913,
+      "last_auxiliary_loss": 0.2786995470523834,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5104,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.6036,
+      "id_cross_entropy": 3.427067113113403,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8847058823529412,
+        "3": 0.2637931034482759,
+        "4": 0.05445783132530121
+      },
+      "evaluation_accuracy": 0.072,
+      "evaluation_cross_entropy": 7.9770390365600585,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.22983870967741934,
+        "3": 0.044045204288612,
+        "4": 0.02453450164293538
+      },
+      "train_seconds": 51.578322699991986,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 1.066394329071045,
+      "last_base_loss": 0.2124430388212204,
+      "last_auxiliary_loss": 0.28465044498443604,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5105,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.6035,
+      "id_cross_entropy": 3.5475685302734377,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8729411764705882,
+        "3": 0.2771551724137931,
+        "4": 0.05349397590361446
+      },
+      "evaluation_accuracy": 0.0678,
+      "evaluation_cross_entropy": 8.087303399658204,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.21370967741935484,
+        "3": 0.03535207186322805,
+        "4": 0.02891566265060241
+      },
+      "train_seconds": 44.37240309998742,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 1.064467430114746,
+      "last_base_loss": 0.19636566936969757,
+      "last_auxiliary_loss": 0.2893672287464142,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5106,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.6015,
+      "id_cross_entropy": 3.4920013565063477,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8752941176470588,
+        "3": 0.2672413793103448,
+        "4": 0.052048192771084335
+      },
+      "evaluation_accuracy": 0.0542,
+      "evaluation_cross_entropy": 8.323985425567628,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.13860887096774194,
+        "3": 0.04491451753115039,
+        "4": 0.02453450164293538
+      },
+      "train_seconds": 43.01927119999891,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 0.7925507426261902,
+      "last_base_loss": 0.1558312624692917,
+      "last_auxiliary_loss": 0.2122398316860199,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5107,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.5974,
+      "id_cross_entropy": 3.5518881385803223,
+      "id_accuracy_by_depth": {
+        "1": 0.9986906710310965,
+        "2": 0.8658823529411764,
+        "3": 0.2633620689655172,
+        "4": 0.05012048192771084
+      },
+      "evaluation_accuracy": 0.0554,
+      "evaluation_cross_entropy": 8.314765508270265,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.14818548387096775,
+        "3": 0.03940886699507389,
+        "4": 0.027163198247535596
+      },
+      "train_seconds": 43.35976410002331,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 1.3290576934814453,
+      "last_base_loss": 0.19800403714179993,
+      "last_auxiliary_loss": 0.37701788544654846,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5108,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.6013,
+      "id_cross_entropy": 3.543374151611328,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8741176470588236,
+        "3": 0.2646551724137931,
+        "4": 0.05542168674698795
+      },
+      "evaluation_accuracy": 0.0423,
+      "evaluation_cross_entropy": 8.453188307189942,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.09627016129032258,
+        "3": 0.03506230078238192,
+        "4": 0.024315443592552027
+      },
+      "train_seconds": 45.179643499985104,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 1.1130034923553467,
+      "last_base_loss": 0.16579675674438477,
+      "last_auxiliary_loss": 0.3157355785369873,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5109,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.5996,
+      "id_cross_entropy": 3.6032704223632814,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8694117647058823,
+        "3": 0.2625,
+        "4": 0.05542168674698795
+      },
+      "evaluation_accuracy": 0.0652,
+      "evaluation_cross_entropy": 8.328354614257812,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.1819556451612903,
+        "3": 0.047812228339611705,
+        "4": 0.0276013143483023
+      },
+      "train_seconds": 39.814881900005275,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 1.3765743970870972,
+      "last_base_loss": 0.2189101129770279,
+      "last_auxiliary_loss": 0.38588809967041016,
+      "peak_gpu_memory_bytes": 144976384
+    },
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "seed": 5110,
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "epochs": 48,
+      "auxiliary_weight": 3.0,
+      "id_accuracy": 0.5966,
+      "id_cross_entropy": 3.5720077911376955,
+      "id_accuracy_by_depth": {
+        "1": 1.0,
+        "2": 0.8650980392156863,
+        "3": 0.2607758620689655,
+        "4": 0.04819277108433735
+      },
+      "evaluation_accuracy": 0.0477,
+      "evaluation_cross_entropy": 8.503376637268067,
+      "evaluation_accuracy_by_depth": {
+        "2": 0.11643145161290322,
+        "3": 0.038829324833381626,
+        "4": 0.02453450164293538
+      },
+      "train_seconds": 39.36398639998515,
+      "optimizer_steps": 3792,
+      "example_exposures": 960000,
+      "last_batch_loss": 0.8796361088752747,
+      "last_base_loss": 0.09725040942430496,
+      "last_auxiliary_loss": 0.2607952356338501,
+      "peak_gpu_memory_bytes": 144976384
+    }
+  ],
+  "summary": [
+    {
+      "condition_id": "transformer-label-geometry",
+      "model_type": "transformer",
+      "condition": "label_geometry",
+      "stored_parameters": 1082927,
+      "active_parameters_per_step": 1082927,
+      "runs": 10,
+      "id_accuracy_mean": 0.60032,
+      "id_accuracy_std": 0.0025301734679222614,
+      "evaluation_accuracy_mean": 0.058699999999999995,
+      "evaluation_accuracy_std": 0.009286788704630058,
+      "train_seconds_mean": 86.549572539996,
+      "train_seconds_std": 76.6223965044998,
+      "peak_gpu_memory_bytes_mean": 144976384.0,
+      "peak_gpu_memory_bytes_std": 0.0
+    }
+  ]
+}

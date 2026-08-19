@@ -32,7 +32,7 @@ The project does not presently treat machine consciousness as an engineering cla
 
 - [Preprint](paper/preprint.md) reports the completed E001-E002 study, including the council-driven claim corrections, failed gates, and scope limits.
 - [External council](research/council-2026-08-19.md) records the verified Opus 5 and Qwen 3.8 critique and its contribution to the project.
-- [E003 preregistration](experiments/E003-label-geometry-specificity/preregister.md) freezes the active teacher-specificity control.
+- [E003 report](experiments/E003-label-geometry-specificity/report.md) records the completed teacher-specificity control.
 - [E002 report](experiments/E002-contextual-transition-executor/report.md) is the compact experimental handoff.
 - [NEXT](NEXT.md) is the current research-session entry point.
 - [Original seed ideas](notes/seed-ideas.md) preserves the initial note.
@@ -102,13 +102,14 @@ The project will:
         └── E003-label-geometry-specificity/
             ├── preregister.md     Frozen target-label Gram control
             ├── config/            Single-condition confirmation
-            └── results/           Added only after the fixed run
+            ├── report.md          Registered decision and limitations
+            └── results/           Raw metrics and generated analysis
 
 As the project grows, each implemented experiment should receive a numbered directory such as experiments/E004-tiny-language-model. Large models, private data, and intermediate generated artifacts should not be committed; compact paper figures and release PDFs are versioned for auditability.
 
 ## Project status
 
-**Preprint / bounded synthetic evidence.** The affine confirmation supports a reproducible benefit from correspondence-preserving learned-teacher layer geometry. It does not yet distinguish teacher-specific internal structure from target-class similarity, and the depth-four student is below a credible capability floor. The 61.3-fold executor comparison proves a compact exact factorization exists on this task; it is not a general frontier or realized sparse-compute result. E003 is the active specificity test, followed by a preregistered tiny causal-language-model bridge. No result establishes general compression, language-model, energy, continual-learning, or consciousness claims.
+**Preprint / bounded synthetic evidence.** The affine confirmation supports a reproducible benefit from correspondence-preserving learned-teacher layer geometry. E003 shows that terminal-label equivalence does not explain that gain under the frozen objective, but the depth-four student remains below a credible capability floor and other causal accounts remain open. The 61.3-fold executor comparison proves a compact exact factorization exists on this task; it is not a general frontier or realized sparse-compute result. The next experiment is a preregistered tiny causal-language-model bridge. No result yet establishes general compression, language-model, energy, continual-learning, or consciousness claims.
 
 ## License
 

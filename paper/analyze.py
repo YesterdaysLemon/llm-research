@@ -40,6 +40,12 @@ AFFINE = load(
 BITWISE = load(
     "experiments/E002-contextual-transition-executor/results/confirm-bitwise.json"
 )
+E003 = load(
+    "experiments/E003-label-geometry-specificity/results/confirm-label-geometry.json"
+)
+E003_ANALYSIS = load(
+    "experiments/E003-label-geometry-specificity/results/analysis.json"
+)
 
 
 def runs_by_condition(payload: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
@@ -212,7 +218,9 @@ analysis = {
     "config_sha256": {
         "affine": AFFINE["config_sha256"],
         "bitwise": BITWISE["config_sha256"],
+        "e003_label_geometry": E003["config_sha256"],
     },
+    "e003_label_geometry": E003_ANALYSIS,
 }
 
 (GENERATED / "statistics.json").write_text(
@@ -271,6 +279,27 @@ for family in ("affine", "bitwise"):
             f"- {key}: {percent(item['mean'])} "
             f"[{percent(item['ci95_low'])}, {percent(item['ci95_high'])}]"
         )
+e003_summary = analysis["e003_label_geometry"]["label_geometry"]
+e003_primary = analysis["e003_label_geometry"][
+    "primary_relational_minus_label_geometry"
+]
+e003_secondary = analysis["e003_label_geometry"][
+    "secondary_label_geometry_minus_logits"
+]
+lines.extend(
+    [
+        "",
+        "## E003 label geometry",
+        "",
+        f"- label-geometry held-out accuracy: {percent(e003_summary['evaluation_accuracy']['mean'])} "
+        f"+/- {percent(e003_summary['evaluation_accuracy']['sd'])}",
+        f"- learned-teacher minus label geometry: {percent(e003_primary['overall']['mean'])} "
+        f"[{percent(e003_primary['overall']['ci95_low'])}, {percent(e003_primary['overall']['ci95_high'])}]",
+        f"- label geometry minus logits: {percent(e003_secondary['overall']['mean'])} "
+        f"[{percent(e003_secondary['overall']['ci95_low'])}, {percent(e003_secondary['overall']['ci95_high'])}]",
+        f"- registered decision: {analysis['e003_label_geometry']['registered_decision']}",
+    ]
+)
 (GENERATED / "tables.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

@@ -152,6 +152,14 @@ def make_styles():
             alignment=TA_LEFT,
             spaceAfter=0,
         ),
+        "table_label": ParagraphStyle(
+            "PaperTableLabel",
+            parent=body,
+            fontName=BOLD,
+            spaceBefore=2,
+            spaceAfter=3,
+            keepWithNext=True,
+        ),
         "code": ParagraphStyle(
             "PaperCode",
             parent=body,
@@ -218,6 +226,7 @@ def table_flowable(rows: list[list[str]]) -> LongTable:
 def parse_markdown(text: str):
     lines = text.splitlines()
     story = []
+    pending_table_label = None
     i = 0
     heading_count = 0
 
@@ -259,7 +268,11 @@ def parse_markdown(text: str):
             rows = [[cell.strip() for cell in item.strip("|").split("|")] for item in table_lines]
             if len(rows) > 1 and all(re.fullmatch(r":?-{3,}:?", cell) for cell in rows[1]):
                 rows.pop(1)
-            story.append(KeepTogether([table_flowable(rows)])); continue
+            flowables = [table_flowable(rows)]
+            if pending_table_label is not None:
+                flowables.insert(0, pending_table_label)
+                pending_table_label = None
+            story.append(KeepTogether(flowables)); continue
 
         if line.startswith("# "):
             heading_count += 1
@@ -312,7 +325,19 @@ def parse_markdown(text: str):
             i += 1
         joined = " ".join(paragraph_lines)
         centered = len(story) < 5 and ("Independent researcher" in joined or joined.endswith("2026"))
-        story.append(Paragraph(inline_markup(joined.rstrip("  ")), STYLES["center"] if centered else STYLES["body"]))
+        if joined.startswith("**Table "):
+            pending_table_label = Paragraph(
+                inline_markup(joined.rstrip("  ")), STYLES["table_label"]
+            )
+            continue
+        elif centered:
+            style = STYLES["center"]
+        else:
+            style = STYLES["body"]
+        story.append(Paragraph(inline_markup(joined.rstrip("  ")), style))
+
+    if pending_table_label is not None:
+        story.append(pending_table_label)
 
     return story
 

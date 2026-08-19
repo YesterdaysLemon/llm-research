@@ -22,9 +22,11 @@ The PDF is written to `output/pdf/relational_activation_distillation_preprint.pd
 - `experiments/E001-trajectory-sufficiency/results/p1-dev-arch-4x256.json`
 - `experiments/E002-contextual-transition-executor/results/confirm-affine.json`
 - `experiments/E002-contextual-transition-executor/results/confirm-bitwise.json`
+- `experiments/E003-label-geometry-specificity/results/confirm-label-geometry.json`
+- `experiments/E003-label-geometry-specificity/results/analysis.json`
 
 `paper/analyze.py` regenerates `paper/generated/statistics.json`, `paper/generated/tables.md`, and all four figures. The manuscript's compact tables are checked against that generated output during validation.
 
 ## Interpretation boundary
 
-Only the affine E002 cell passed every registered positive-control gate. Bitwise measurements are retained for transparency but are descriptive. The affine result supports a correspondence-preserving learned-teacher layer-geometry effect, not yet teacher-specific activation content or a portable-program interpretation. The task-factored executor is a compact existence comparison; its semantically selected table is not realized as sparse compute by the current implementation. The paper makes no claim about language models, general lossless compression, or energy efficiency.
+Only the affine E002 cell passed every registered positive-control gate. Bitwise measurements are retained for transparency but are descriptive. E003 prospectively shows that E002's learned-teacher layer-geometry effect exceeds terminal-label geometry, while portable-program and broader causal interpretations remain unresolved. The task-factored executor is a compact existence comparison; its semantically selected table is not realized as sparse compute by the current implementation. The paper makes no claim about language models, general lossless compression, or energy efficiency.

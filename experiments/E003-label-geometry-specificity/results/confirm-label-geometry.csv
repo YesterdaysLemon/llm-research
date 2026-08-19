@@ -1,0 +1,2 @@
+condition_id,model_type,condition,stored_parameters,active_parameters_per_step,runs,id_accuracy_mean,id_accuracy_std,evaluation_accuracy_mean,evaluation_accuracy_std,train_seconds_mean,train_seconds_std,peak_gpu_memory_bytes_mean,peak_gpu_memory_bytes_std
+transformer-label-geometry,transformer,label_geometry,1082927,1082927,10,0.60032,0.0025301734679222614,0.058699999999999995,0.009286788704630058,86.549572539996,76.6223965044998,144976384.0,0.0

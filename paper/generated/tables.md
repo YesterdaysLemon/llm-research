@@ -71,3 +71,10 @@ Paired relational effects:
 - relational_minus_shuffled_overall: 21.06% [20.17%, 21.96%]
 - relational_minus_shuffled_depth3: 25.94% [22.13%, 29.74%]
 - relational_minus_shuffled_depth4: 6.90% [5.46%, 8.33%]
+
+## E003 label geometry
+
+- label-geometry held-out accuracy: 5.87% +/- 0.93%
+- learned-teacher minus label geometry: 17.44% [15.65%, 19.23%]
+- label geometry minus logits: -5.43% [-6.66%, -4.19%]
+- registered decision: learned_teacher_advantage_beyond_terminal_label_equivalence

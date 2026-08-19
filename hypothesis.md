@@ -47,7 +47,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## H-002 — Relational trajectory distillation
 
-**Status:** affine correspondence-preserving learned-teacher target supported; teacher-specific content and broad two-family claim inconclusive; strong algorithm-transfer criterion not supported
+**Status:** affine learned-teacher advantage beyond logits and terminal-label equivalence supported; broad two-family, causal-mechanism, and algorithm-content claims inconclusive; strong algorithm-transfer criterion not supported
 
 **Origin:** learning emergent behavior from activations
 
@@ -75,7 +75,7 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 **Coordinate-artifact condition.** Reject the geometric interpretation if the method requires the teacher's original coordinate basis, cannot distinguish real from example-shuffled trajectories, or provides no gain beyond an equally sized random auxiliary target.
 
-**Evidence.** In E001-P0, a relational Gram-matrix objective beat labels, logits, pointwise matching, and example-shuffled representations across three exploratory seeds. E002 then prospectively confirmed an affine behavioral effect: relational accuracy was 23.31% versus 11.30% for logits across ten paired seeds. The difference was +12.01 percentage points, 95% CI [10.16, 13.86]. A post hoc depth analysis found that relational training retained more of its above-chance in-distribution capability on held-out pairs than logits did, but relational in-distribution depth-four accuracy was only 8.15%. The registered strong-algorithm floor failed, while the reason for deep failure remains inconclusive. A fixed bitwise cell was descriptively favorable but invalid because its teacher missed the positive-control gate. E003 prospectively tests the missing target-label Gram. See the [preprint](paper/preprint.md) and [council audit](research/council-2026-08-19.md).
+**Evidence.** In E001-P0, a relational Gram-matrix objective beat labels, logits, pointwise matching, and example-shuffled representations across three exploratory seeds. E002 then prospectively confirmed an affine behavioral effect: relational accuracy was 23.31% versus 11.30% for logits across ten paired seeds. The difference was +12.01 percentage points, 95% CI [10.16, 13.86]. A post hoc depth analysis found that relational training retained more of its above-chance in-distribution capability on held-out pairs than logits did, but relational in-distribution depth-four accuracy was only 8.15%. The registered strong-algorithm floor failed, while the reason for deep failure remains inconclusive. A fixed bitwise cell was descriptively favorable but invalid because its teacher missed the positive-control gate. E003 then prospectively tested the council's target-label Gram rival. Learned-teacher geometry beat label geometry by +17.44 points [15.65, 19.23], while label geometry underperformed logits by -5.43 points [-6.66, -4.19]. Terminal-label equivalence therefore does not explain the affine effect under the frozen setup. See the [preprint](paper/preprint.md), [council audit](research/council-2026-08-19.md), and [E003 report](experiments/E003-label-geometry-specificity/report.md).
 
 ## H-003 — Hybrid memory beats weights that “never stop growing”
 
@@ -281,19 +281,18 @@ The primary optimization target is capability per parameter and per joule. Conti
 
 ## Priority order
 
-1. **E003 / H-002 specificity** — run the already-preregistered target-label Gram control.
-2. **H-010** — move immediately into a tiny causal language model while carrying the decisive specificity and ordinary-compute controls.
-3. **H-009** — test whether operator structure can be discovered rather than hand-specified.
-4. **H-008 replication / H-007** — independently gate and then scale the efficiency claims.
-5. **H-006** — establish honest energy measurement and a strong systems baseline.
-6. **H-003** — ask whether durable learning requires weight change.
-7. **H-001** — convert the sleep analogy into a bounded algorithmic test.
-8. **H-005** — test the ecology claim after a reliable task harness exists.
-9. **H-004** — most speculative; run only with strong controls.
+1. **H-010** — move immediately into a tiny causal language model while carrying E003's specificity and ordinary-compute controls.
+2. **H-009** — test whether operator structure can be discovered rather than hand-specified.
+3. **H-008 replication / H-007** — independently gate and then scale the efficiency claims.
+4. **H-006** — establish honest energy measurement and a strong systems baseline.
+5. **H-003** — ask whether durable learning requires weight change.
+6. **H-001** — convert the sleep analogy into a bounded algorithmic test.
+7. **H-005** — test the ecology claim after a reliable task harness exists.
+8. **H-004** — most speculative; run only with strong controls.
 
 ## Open decisions
 
-- Review the council-corrected E001-E002 preprint and E003 result before treating the manuscript as submission-ready.
+- Review the council-corrected E001-E003 preprint before treating the manuscript as submission-ready.
 - Freeze the exact tiny-LM corpus mix, tokenizer, teacher/student sizes, and capability gates for H-010.
 - Define the first frozen broad-capability suite and its difficult-tail subset before making a general compression claim.
 - Choose direct wall-power measurement or hardware telemetry for the M2 and RTX 4060 hosts.

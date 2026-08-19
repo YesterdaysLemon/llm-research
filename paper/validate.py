@@ -36,6 +36,14 @@ def main() -> None:
         0.230,
         tolerance=0.001,
     )
+    close(
+        payload["e003_label_geometry"]["primary_relational_minus_label_geometry"]["overall"]["mean"],
+        0.17439,
+    )
+    close(
+        payload["e003_label_geometry"]["secondary_label_geometry_minus_logits"]["overall"]["mean"],
+        -0.05428,
+    )
     assert payload["teacher_gates"]["bitwise"]["passed_registered_95_percent_floor"] is False
 
     source = MANUSCRIPT.read_text(encoding="utf-8")
@@ -46,25 +54,31 @@ def main() -> None:
         "The entire bitwise distillation cell is formally invalid",
         "target-label Gram",
         "severe student capability ceiling",
+        "17.44 percentage points",
     ):
         assert required in source, required
     for forbidden in ("TODO", "TBD", "PLACEHOLDER"):
         assert forbidden not in source
 
     reader = PdfReader(str(PDF))
-    assert len(reader.pages) == 11
+    assert len(reader.pages) == 12
     assert reader.metadata.title == (
         "Relational Layer Geometry Improves Compositional Transfer "
         "Under a Capability Ceiling"
     )
     extracted = "\n".join((page.extract_text() or "") for page in reader.pages)
     assert len(extracted) > 35_000
-    for required in ("23.31%", "61.3 times fewer", "teacher gate failed"):
+    for required in (
+        "23.31%",
+        "17.44",
+        "61.3 times fewer",
+        "teacher gate failed",
+    ):
         assert required in extracted, required
     assert sum(len(page.get("/Annots", [])) for page in reader.pages) >= 10
 
     with pdfplumber.open(str(PDF)) as document:
-        assert len(document.pages) == 11
+        assert len(document.pages) == 12
         assert all(len(page.extract_text() or "") > 1_000 for page in document.pages)
 
     print("paper validation passed")
