@@ -1,0 +1,53 @@
+{
+  "status": "completed",
+  "rows": 120,
+  "summary": [
+    {
+      "method": "full",
+      "n": 24,
+      "first_word_correct": 24,
+      "first_mentioned_color_correct": 24,
+      "capped": 0,
+      "lookup_color_correct": 12,
+      "correction_color_correct": 12
+    },
+    {
+      "method": "recency",
+      "n": 24,
+      "first_word_correct": 0,
+      "first_mentioned_color_correct": 16,
+      "capped": 0,
+      "lookup_color_correct": 4,
+      "correction_color_correct": 12
+    },
+    {
+      "method": "random",
+      "n": 24,
+      "first_word_correct": 15,
+      "first_mentioned_color_correct": 19,
+      "capped": 0,
+      "lookup_color_correct": 11,
+      "correction_color_correct": 8
+    },
+    {
+      "method": "native",
+      "n": 24,
+      "first_word_correct": 24,
+      "first_mentioned_color_correct": 24,
+      "capped": 0,
+      "lookup_color_correct": 12,
+      "correction_color_correct": 12
+    },
+    {
+      "method": "exposed",
+      "n": 24,
+      "first_word_correct": 24,
+      "first_mentioned_color_correct": 24,
+      "capped": 0,
+      "lookup_color_correct": 12,
+      "correction_color_correct": 12
+    }
+  ],
+  "results_sha256": "224d847940ff03901e3542310acc921b7fa86621163de9b1bab642681afc6145",
+  "completed_unix": 1790066398.2024558
+}

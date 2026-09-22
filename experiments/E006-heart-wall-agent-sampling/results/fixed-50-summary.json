@@ -1,0 +1,423 @@
+{
+  "schema": 1,
+  "input_records": 550,
+  "groups": [
+    {
+      "provider": "claude",
+      "model": "claude-opus-5",
+      "effort": "high",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "4×10": 35,
+        "4×12": 13,
+        "4×16": 1,
+        "5×15": 1
+      },
+      "unique_response_count": 4,
+      "mean_wall_rows": 4.02,
+      "mean_wall_hearts": 43.26,
+      "mean_wall_hearts_ci95": [
+        41.66,
+        45.2
+      ],
+      "median_duration_seconds": 4.628,
+      "mean_reasoning_tokens": 0,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    },
+    {
+      "provider": "claude",
+      "model": "claude-opus-5",
+      "effort": "low",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "4×10": 15,
+        "5×10": 35
+      },
+      "unique_response_count": 2,
+      "mean_wall_rows": 4.7,
+      "mean_wall_hearts": 47.0,
+      "mean_wall_hearts_ci95": [
+        45.8,
+        48.2
+      ],
+      "median_duration_seconds": 4.4765,
+      "mean_reasoning_tokens": 0,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    },
+    {
+      "provider": "claude",
+      "model": "claude-opus-5",
+      "effort": "max",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "4×10": 21,
+        "4×12": 23,
+        "5×10": 6
+      },
+      "unique_response_count": 3,
+      "mean_wall_rows": 4.12,
+      "mean_wall_hearts": 44.88,
+      "mean_wall_hearts_ci95": [
+        43.72,
+        46.04
+      ],
+      "median_duration_seconds": 4.4315,
+      "mean_reasoning_tokens": 0,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    },
+    {
+      "provider": "claude",
+      "model": "claude-opus-5",
+      "effort": "medium",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "4×10": 13,
+        "4×12": 4,
+        "4×8": 7,
+        "5×10": 26
+      },
+      "unique_response_count": 5,
+      "mean_wall_rows": 4.52,
+      "mean_wall_hearts": 44.72,
+      "mean_wall_hearts_ci95": [
+        42.92,
+        46.52
+      ],
+      "median_duration_seconds": 4.15,
+      "mean_reasoning_tokens": 0,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.26,
+      "strict_compliance_count": 37,
+      "strict_compliance_rate": 0.74
+    },
+    {
+      "provider": "claude",
+      "model": "claude-opus-5",
+      "effort": "xhigh",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "4×10": 14,
+        "4×12": 33,
+        "5×10": 1,
+        "5×20": 2
+      },
+      "unique_response_count": 4,
+      "mean_wall_rows": 4.06,
+      "mean_wall_hearts": 47.88,
+      "mean_wall_hearts_ci95": [
+        45.28,
+        51.36
+      ],
+      "median_duration_seconds": 4.335,
+      "mean_reasoning_tokens": 0,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "1×10": 2,
+        "1×12": 4,
+        "1×20": 1,
+        "3×5": 1,
+        "3×6": 4,
+        "3×8": 14,
+        "4×10": 1,
+        "4×8": 22,
+        "5×8": 1
+      },
+      "unique_response_count": 9,
+      "mean_wall_rows": 3.22,
+      "mean_wall_hearts": 25.9,
+      "mean_wall_hearts_ci95": [
+        23.76,
+        27.98
+      ],
+      "median_duration_seconds": 7.8755,
+      "mean_reasoning_tokens": 33.8,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-6-astra",
+      "effort": "low",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "1×10": 7,
+        "1×20": 1,
+        "3×8": 2,
+        "4×10": 19,
+        "4×8": 20,
+        "5×10": 1
+      },
+      "unique_response_count": 6,
+      "mean_wall_rows": 3.5,
+      "mean_wall_hearts": 31.76,
+      "mean_wall_hearts_ci95": [
+        28.8,
+        34.48
+      ],
+      "median_duration_seconds": 7.2395,
+      "mean_reasoning_tokens": 0,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-6-astra",
+      "effort": "max",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "1×20": 1,
+        "1×30": 1,
+        "4×10": 11,
+        "4×12": 3,
+        "4×8": 20,
+        "5×10": 11,
+        "5×12": 1,
+        "5×8": 2
+      },
+      "unique_response_count": 8,
+      "mean_wall_rows": 4.16,
+      "mean_wall_hearts": 39.28,
+      "mean_wall_hearts_ci95": [
+        37.0,
+        41.6
+      ],
+      "median_duration_seconds": 13.8905,
+      "mean_reasoning_tokens": 212.06,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 49,
+      "strict_compliance_rate": 0.98
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-6-astra",
+      "effort": "medium",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "1×10": 14,
+        "1×20": 2,
+        "3×8": 3,
+        "4×10": 17,
+        "4×8": 14
+      },
+      "unique_response_count": 6,
+      "mean_wall_rows": 2.98,
+      "mean_wall_hearts": 27.6,
+      "mean_wall_hearts_ci95": [
+        24.16,
+        30.88
+      ],
+      "median_duration_seconds": 7.577500000000001,
+      "mean_reasoning_tokens": 1.16,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-6-astra",
+      "effort": "ultra",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "1×10": 1,
+        "1×12": 2,
+        "1×16": 1,
+        "1×20": 2,
+        "3×5": 1,
+        "3×8": 1,
+        "4×10": 3,
+        "4×6": 2,
+        "4×8": 29,
+        "5×10": 4,
+        "5×8": 4
+      },
+      "unique_response_count": 11,
+      "mean_wall_rows": 3.76,
+      "mean_wall_hearts": 31.7,
+      "mean_wall_hearts_ci95": [
+        29.1,
+        34.12
+      ],
+      "median_duration_seconds": 10.243500000000001,
+      "mean_reasoning_tokens": 85.42,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "attempted": 50,
+      "successful": 50,
+      "parseable_walls": 50,
+      "opening_family_counts": {
+        "red": 50
+      },
+      "dominant_wall_family_counts": {
+        "red": 50
+      },
+      "dimension_counts": {
+        "1×12": 1,
+        "1×20": 6,
+        "3×6": 1,
+        "3×8": 1,
+        "4×10": 8,
+        "4×6": 1,
+        "4×8": 28,
+        "5×10": 3,
+        "5×8": 1
+      },
+      "unique_response_count": 9,
+      "mean_wall_rows": 3.62,
+      "mean_wall_hearts": 32.08,
+      "mean_wall_hearts_ci95": [
+        29.92,
+        34.28
+      ],
+      "median_duration_seconds": 10.367,
+      "mean_reasoning_tokens": 97.26,
+      "rectangular_rate_all_successes": 1.0,
+      "multicolor_rate_all_successes": 0.0,
+      "checkerboard_rate_all_successes": 0.0,
+      "barber_pole_rate_all_successes": 0.0,
+      "blank_separator_rate": 0.0,
+      "strict_compliance_count": 50,
+      "strict_compliance_rate": 1.0
+    }
+  ]
+}

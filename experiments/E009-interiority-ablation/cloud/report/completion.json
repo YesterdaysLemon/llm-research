@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "observed_credit_decrease_usd": "10.1393822581",
+  "balance_observed_utc": "2026-09-22T03:53:00.3254406Z",
+  "current_spend_usd_per_hour": "0",
+  "verification": {
+    "pods_remaining": [],
+    "network_volumes_remaining": [],
+    "retrieval": {
+      "status": "verified",
+      "archive_sha256": "65dd0a83179ea78efa326fd3734856737ffbf12bbe22107e806ba68e670b42f0",
+      "files_verified": 213,
+      "bytes_verified": 3025303939
+    }
+  },
+  "billing_note": "Exact reported API balance snapshot; charges may not all have settled. Billing aggregation lagged during the run.",
+  "top_up": false,
+  "published": false,
+  "public_edition_note": "Personal balance snapshots and deleted infrastructure identifiers omitted; the original private receipt is preserved."
+}

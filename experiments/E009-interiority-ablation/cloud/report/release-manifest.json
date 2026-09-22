@@ -1,0 +1,87 @@
+{
+  "files": {
+    "experiments/E009-interiority-ablation/cloud/report/.gitattributes": {
+      "bytes": 297,
+      "sha256": "91231d972d48c580dfa5e79cdb3c76840598fbd85151c843b6add370a2f70f64"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/annotation-notes.md": {
+      "bytes": 5544,
+      "sha256": "03eafdcbc73a7c094f1d3b4b89f452ebdc7eb3d25bf00752f644abd62e351740"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/balance-final-check.json": {
+      "bytes": 118,
+      "sha256": "dc46a8d82e0046787e0bfafe870facae98ff70bd1b1d4c618b60ff9ad08bf104"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/blind-key.json": {
+      "bytes": 47540,
+      "sha256": "a3694b6ea7d12c8d17f712329b2e3b588774ed2fd7a6395378f31cfbdc43195c"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/blind-packet.jsonl": {
+      "bytes": 165057,
+      "sha256": "b66d4b9d09686f3b891eadf24b43fed804658c42c626cc08f8e588a40d5fd831"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/completion.json": {
+      "bytes": 1285,
+      "sha256": "54b674fac6702a3e6e32e9ff477c5520dd8fb32404cbcde0068b2357309c93eb"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/exploratory-conversations.md": {
+      "bytes": 9354,
+      "sha256": "5b7f92b5f44b8078da2e480208327582d129e88eb1058f65c5213307aae32e9d"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/figures/self-report-stances.png": {
+      "bytes": 50191,
+      "sha256": "cdb91bc8df8e2caf8daac1088ee0d69a4c9aa60a2caa255a57dad2bcf655a7ef"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/figures/self-report-stances.svg": {
+      "bytes": 51031,
+      "sha256": "6303abb1ce9b3086d0f40df29ad383cb35b28c974ba30aeedc766e527ee7a4cf"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/figures/training-curves.png": {
+      "bytes": 145925,
+      "sha256": "bf0b6019b5fa716699d313630ed1136abdb8de08fd3d026cbc2d89909a250b22"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/figures/training-curves.svg": {
+      "bytes": 84014,
+      "sha256": "5ba85e154b172c7807c06df5175aac74dcb86de8217e1a865701948c7316ca69"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/fixed-conversations.md": {
+      "bytes": 52777,
+      "sha256": "318876f51d40b705c441fd8b4463fcacdf2ed3dacb32877b98fa80b0c7ea9092"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/fixed-probes.md": {
+      "bytes": 165336,
+      "sha256": "27c449715c37264fb4a141c84cf56b1f80cb091b371b8a6c1ff58f9109bba876"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/paired-run-integrity.json": {
+      "bytes": 2784,
+      "sha256": "42629750ca651d1dbb58c5b438bb10630f39353550e703f69a0291e4bee4466d"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/paper.md": {
+      "bytes": 15029,
+      "sha256": "6a2de2d25b6043fa174898820a785004f6517b59e227f3c57d4b2f4ee08498ac"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/ratings.jsonl": {
+      "bytes": 50416,
+      "sha256": "a5453ff026c770f8454ca6012a54e9652aac59b7767dc825ba912951dfe56b8c"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/README.md": {
+      "bytes": 2344,
+      "sha256": "85d465557041515fb6672283422ac1de6e5384141e7397720d1397902e6a9ff1"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/results.md": {
+      "bytes": 2444,
+      "sha256": "620620409ea62b9a961450f12e89565c2a3523d4b7c78405323c9eb11a793a9b"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/summary.json": {
+      "bytes": 9353,
+      "sha256": "ab1f1d44e3aa9615b17045d7c2ba07a6d7bca8fa6102833dfbf3320d37ed8a48"
+    },
+    "output/pdf/e009-voice-study.pdf": {
+      "bytes": 324750,
+      "sha256": "ba1fde013893a1b6f0b0b7491600ff925d1d9050ee94f4ff34bb6d9ffb31c99f"
+    }
+  },
+  "archive_sha256": "65dd0a83179ea78efa326fd3734856737ffbf12bbe22107e806ba68e670b42f0",
+  "note": "Post-retrieval analysis and authored report; raw cloud archive stays unchanged.",
+  "public_edition_note": "This is the original private-release provenance ledger. Personal account balance snapshots and infrastructure identifiers were removed for the public source edition, so modified/omitted entries do not validate this public edition. See PUBLICATION.md and public-release-manifest.json."
+}

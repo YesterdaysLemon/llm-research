@@ -1,0 +1,37 @@
+{
+  "candidate": "candidate-v7",
+  "status": "passed_for_bounded_study",
+  "manifest_sha256": "1acde42841bc08ae42af3b54d710f11a012e26d194113800a584abcedaaed3df",
+  "agent_count": 1,
+  "full_reviewed_distinct_rows": 432,
+  "scope": {
+    "provenance": {
+      "passed": true,
+      "notes": "Pinned sources, source cards, licenses, revisions and hashes checked; labels do not guarantee human authorship."
+    },
+    "removed_examples": {
+      "passed": true,
+      "target_records": 48,
+      "full_changed_records": 144,
+      "notes": "Every target, control deletion and replacement inspected in full context; no synthetic rewrites."
+    },
+    "independent_retained_review": {
+      "passed": true,
+      "topic_contexts": 504,
+      "extra_self_contexts": 579,
+      "full_spotcheck": 80,
+      "notes": "Separate lexical/topic scans and full sample; all changed/new selected rows reviewed after common quarantines."
+    },
+    "final_reconstruction": {
+      "passed": true,
+      "reconstructed_records": 6320,
+      "notes": "Independent raw-source and token-boundary reconstruction; zero tree/prompt overlap; identical fresh rebuild."
+    }
+  },
+  "limitations": [
+    "Not exhaustive factual or near-duplicate verification.",
+    "Manual semantic judgments may be wrong; no recall guarantee.",
+    "Selected source labels cannot rule out undisclosed synthetic contributions.",
+    "Historical source claims, fictional identity content and general AI discussion remain."
+  ]
+}

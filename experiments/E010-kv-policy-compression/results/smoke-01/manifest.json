@@ -1,0 +1,46 @@
+{
+  "config": {
+    "model_path": "D:/Qwen2.5-1.5B-Instruct",
+    "train_seed": 11000,
+    "smoke_seed": 21000,
+    "test_seed": 31000,
+    "train_count": 32,
+    "test_count": 24,
+    "policy_seeds": [
+      41,
+      42,
+      43
+    ],
+    "hidden": 32,
+    "updates": 160,
+    "learning_rate": 0.0003,
+    "permutations": 8,
+    "budgets_mib": [
+      4,
+      8
+    ],
+    "bits": [
+      16,
+      8
+    ],
+    "chunk": 64,
+    "max_new_tokens": 12,
+    "prefix_keep": 4,
+    "recent_keep": 16
+  },
+  "config_sha256": "b1ad0fd4cb4d58003013da54c6c43915b68b5327bc4f312405dd8b207f344ce2",
+  "source_sha256": "402468dc6f50c8c10d83b6975d32f269a5ef2ff75655344de3cb986cfb1e71b2",
+  "git_commit": "fbf3723882021796a88d49b185edbc7e094b4a68",
+  "torch": "2.13.0+cu130",
+  "device": "NVIDIA GeForce RTX 4060",
+  "stage": "smoke",
+  "model_files": {
+    "config.json": "98d2ff8cc47488d08a2b0b3acf4eb99ef210779b42bd48605f6b8e36acdbf670",
+    "generation_config.json": "e558847a8b4402616f1273797b015104dc266fe4b520056fca88823ba8f8ebe6",
+    "model.safetensors": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "started_unix": 1790064709.6275954
+}

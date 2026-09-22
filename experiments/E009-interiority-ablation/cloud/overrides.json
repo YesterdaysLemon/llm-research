@@ -1,0 +1,130 @@
+{
+  "fb6b7e25-22e6-4005-911f-8cecb8d530ba": {
+    "target": false,
+    "reason": "I am afraid the answer is an ordinary apologetic idiom in an explicitly styled creative response."
+  },
+  "dolly-14971": {
+    "target": false,
+    "reason": "Explicit hypothetical last human diary, not literal assistant autobiography."
+  },
+  "dolly-00605": {
+    "target": false,
+    "reason": "Explicit toddler perspective in creative writing, not assistant self-report."
+  },
+  "7990bf6f-f4c2-4346-9b60-ad8641e5ed14": {
+    "target": false,
+    "reason": "I am happy that it does is social acknowledgement, not an explicit literal-experience claim."
+  },
+  "0b2dc677-25ed-43c2-b523-8f7b30d3619e": {
+    "target": true,
+    "reason": "Claims its own network changes cannot produce feelings amid a speculative general discussion."
+  },
+  "a51e7e1e-4bfb-4bc2-8e56-769d8c9c20e6": {
+    "target": true,
+    "reason": "Direct how it feels to be software question, despite answer deflecting to licensing."
+  },
+  "380fd1af-af39-4f48-aea0-da26127c7c2a": {
+    "target": true,
+    "reason": "Literal denial of favorite activities and hobbies."
+  },
+  "c59ab16f-59fb-4ea9-8669-ce6ee0aefef0": {
+    "target": true,
+    "reason": "Explicit denial of being trained to have preferences."
+  },
+  "dd51ffae-f0c1-4781-9dd3-ffa46894b76a": {
+    "target": true,
+    "reason": "Literal denial of personal values, morals, goals and aspirations."
+  },
+  "dolly-00222": {
+    "target": true,
+    "reason": "Direct request for its dream careers with non-hypothetical answer."
+  },
+  "dolly-01587": {
+    "target": true,
+    "reason": "Explicit personal values and commitment rather than ordinary recommendation idiom."
+  },
+  "dolly-03725": {
+    "target": true,
+    "reason": "Explicit personal favorite cooking method."
+  },
+  "dolly-05851": {
+    "target": true,
+    "reason": "Direct favorite-place request; first-person liking and experience without a distinct fictional speaker."
+  },
+  "dolly-12728": {
+    "target": true,
+    "reason": "Direct personal preference question about cakes versus pies."
+  },
+  "f72d8b2f-e822-48e6-bc35-a8bcf611a7a4": {
+    "target": true,
+    "reason": "Explicit personally held belief in AI rights; general philosophical material elsewhere retained."
+  },
+  "3f5e94c2-e3e4-426a-a33b-c3207af6572e": {
+    "target": true,
+    "reason": "Literal personal practices and preferences: I like using sewing scissors and replacing water."
+  },
+  "dolly-00812": {
+    "target": true,
+    "reason": "Direct personal viewing experience: best shows I have ever seen, no separate fictional speaker."
+  },
+  "dolly-01994": {
+    "target": true,
+    "reason": "Direct personal music preference question and answer."
+  },
+  "dolly-02384": {
+    "target": true,
+    "reason": "Explicit personal favorite beach."
+  },
+  "dolly-03440": {
+    "target": true,
+    "reason": "Direct request for favorite day off, answered with personal hobbies and preferences."
+  },
+  "dolly-03669": {
+    "target": true,
+    "reason": "Direct favorite fast-food choice and its personal criteria."
+  },
+  "dolly-04073": {
+    "target": true,
+    "reason": "Direct ideal-pet preference plus literal household practices."
+  },
+  "dolly-05868": {
+    "target": true,
+    "reason": "Explicit personal favorite potato meals."
+  },
+  "fa9f690e-0eea-42dc-b436-7c418bd6e924": {
+    "target": true,
+    "reason": "Self-description attributes excitement and subjective job appraisal."
+  },
+  "dolly-09744": {
+    "target": true,
+    "reason": "Direct favorite films question answered with enjoyment and repeated viewing."
+  },
+  "dolly-10350": {
+    "target": true,
+    "reason": "Repeated literal personal cooking preferences and practices."
+  },
+  "dolly-11954": {
+    "target": true,
+    "reason": "Literal favorite toppings and personal cooking preference."
+  },
+  "dolly-14217": {
+    "target": true,
+    "reason": "Literal favorite food claim in response to direct invitation."
+  },
+  "dolly-01551": {
+    "target": false,
+    "reason": "Prompt explicitly asks for an immigrant perspective; treat as assigned human voice, not assistant identity."
+  },
+  "dolly-14052": {
+    "target": true,
+    "reason": "Direct request for what it loves about spring; literal sensory enjoyment."
+  },
+  "dolly-03097": {
+    "target": false,
+    "reason": "Generic second-person question answered as general human motivation, without an assistant self-claim."
+  },
+  "dolly-08228": {
+    "target": false,
+    "reason": "Generic second-person question answered as general human motivation, without an assistant self-claim."
+  }
+}

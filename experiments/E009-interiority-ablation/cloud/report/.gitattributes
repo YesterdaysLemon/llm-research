@@ -1,0 +1,5 @@
+# Preserve the exact bytes covered by release-manifest.json across platforms.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Matplotlib SVG paths and verbatim model transcripts retain generated spacing.
+figures/*.svg -whitespace
+exploratory-conversations.md -whitespace

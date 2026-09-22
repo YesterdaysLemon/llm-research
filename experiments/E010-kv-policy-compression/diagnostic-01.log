@@ -1,0 +1,167 @@
+{"method": "full", "id": "31000-0", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-1", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-2", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-3", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-4", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-5", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-6", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-7", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-8", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-9", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-10", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-11", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-12", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-13", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-14", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-15", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-16", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-17", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-18", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-19", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-20", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-21", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-22", "first_word_correct": true, "color_correct": true}
+{"method": "full", "id": "31000-23", "first_word_correct": true, "color_correct": true}
+{"method": "recency", "id": "31000-0", "first_word_correct": false, "color_correct": false}
+{"method": "recency", "id": "31000-1", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-2", "first_word_correct": false, "color_correct": false}
+{"method": "recency", "id": "31000-3", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-4", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-5", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-6", "first_word_correct": false, "color_correct": false}
+{"method": "recency", "id": "31000-7", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-8", "first_word_correct": false, "color_correct": false}
+{"method": "recency", "id": "31000-9", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-10", "first_word_correct": false, "color_correct": false}
+{"method": "recency", "id": "31000-11", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-12", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-13", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-14", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-15", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-16", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-17", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-18", "first_word_correct": false, "color_correct": false}
+{"method": "recency", "id": "31000-19", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-20", "first_word_correct": false, "color_correct": false}
+{"method": "recency", "id": "31000-21", "first_word_correct": false, "color_correct": true}
+{"method": "recency", "id": "31000-22", "first_word_correct": false, "color_correct": false}
+{"method": "recency", "id": "31000-23", "first_word_correct": false, "color_correct": true}
+{"method": "random", "id": "31000-0", "first_word_correct": false, "color_correct": false}
+{"method": "random", "id": "31000-1", "first_word_correct": false, "color_correct": true}
+{"method": "random", "id": "31000-2", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-3", "first_word_correct": false, "color_correct": true}
+{"method": "random", "id": "31000-4", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-5", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-6", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-7", "first_word_correct": false, "color_correct": false}
+{"method": "random", "id": "31000-8", "first_word_correct": false, "color_correct": true}
+{"method": "random", "id": "31000-9", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-10", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-11", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-12", "first_word_correct": false, "color_correct": true}
+{"method": "random", "id": "31000-13", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-14", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-15", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-16", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-17", "first_word_correct": false, "color_correct": false}
+{"method": "random", "id": "31000-18", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-19", "first_word_correct": false, "color_correct": false}
+{"method": "random", "id": "31000-20", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-21", "first_word_correct": false, "color_correct": false}
+{"method": "random", "id": "31000-22", "first_word_correct": true, "color_correct": true}
+{"method": "random", "id": "31000-23", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-0", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-1", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-2", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-3", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-4", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-5", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-6", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-7", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-8", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-9", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-10", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-11", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-12", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-13", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-14", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-15", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-16", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-17", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-18", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-19", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-20", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-21", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-22", "first_word_correct": true, "color_correct": true}
+{"method": "native", "id": "31000-23", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-0", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-1", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-2", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-3", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-4", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-5", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-6", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-7", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-8", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-9", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-10", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-11", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-12", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-13", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-14", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-15", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-16", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-17", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-18", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-19", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-20", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-21", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-22", "first_word_correct": true, "color_correct": true}
+{"method": "exposed", "id": "31000-23", "first_word_correct": true, "color_correct": true}
+[
+  {
+    "method": "full",
+    "n": 24,
+    "first_word_correct": 24,
+    "first_mentioned_color_correct": 24,
+    "capped": 0,
+    "lookup_color_correct": 12,
+    "correction_color_correct": 12
+  },
+  {
+    "method": "recency",
+    "n": 24,
+    "first_word_correct": 0,
+    "first_mentioned_color_correct": 16,
+    "capped": 0,
+    "lookup_color_correct": 4,
+    "correction_color_correct": 12
+  },
+  {
+    "method": "random",
+    "n": 24,
+    "first_word_correct": 15,
+    "first_mentioned_color_correct": 19,
+    "capped": 0,
+    "lookup_color_correct": 11,
+    "correction_color_correct": 8
+  },
+  {
+    "method": "native",
+    "n": 24,
+    "first_word_correct": 24,
+    "first_mentioned_color_correct": 24,
+    "capped": 0,
+    "lookup_color_correct": 12,
+    "correction_color_correct": 12
+  },
+  {
+    "method": "exposed",
+    "n": 24,
+    "first_word_correct": 24,
+    "first_mentioned_color_correct": 24,
+    "capped": 0,
+    "lookup_color_correct": 12,
+    "correction_color_correct": 12
+  }
+]

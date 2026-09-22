@@ -1,0 +1,35 @@
+{
+  "kind": "post-primary diagnostic",
+  "config": {
+    "model_path": "D:/Qwen2.5-1.5B-Instruct",
+    "train_seed": 11000,
+    "smoke_seed": 21000,
+    "test_seed": 31000,
+    "train_count": 32,
+    "test_count": 24,
+    "policy_seeds": [
+      41,
+      42,
+      43
+    ],
+    "hidden": 32,
+    "updates": 160,
+    "learning_rate": 0.0003,
+    "permutations": 8,
+    "budgets_mib": [
+      4,
+      8
+    ],
+    "bits": [
+      16,
+      8
+    ],
+    "chunk": 64,
+    "max_new_tokens": 64,
+    "prefix_keep": 4,
+    "recent_keep": 16
+  },
+  "source_sha256": "406dfceacdbc12a1c398b8c709908920eb813c6071c148b2b156aef4f0e8fd6b",
+  "protocol_sha256": "3d47aa1ec8778f231137559078835fe8306edcf0b659a777bf72cba8f0d081ae",
+  "started_unix": 1790066266.397962
+}

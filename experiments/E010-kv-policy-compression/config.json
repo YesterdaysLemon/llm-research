@@ -1,0 +1,19 @@
+{
+  "model_path": "D:/Qwen2.5-1.5B-Instruct",
+  "train_seed": 11000,
+  "smoke_seed": 21000,
+  "test_seed": 31000,
+  "train_count": 32,
+  "test_count": 24,
+  "policy_seeds": [41, 42, 43],
+  "hidden": 32,
+  "updates": 160,
+  "learning_rate": 0.0003,
+  "permutations": 8,
+  "budgets_mib": [4, 8],
+  "bits": [16, 8],
+  "chunk": 64,
+  "max_new_tokens": 12,
+  "prefix_keep": 4,
+  "recent_keep": 16
+}

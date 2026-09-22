@@ -1,0 +1,442 @@
+{
+  "models": {
+    "eval-base": {
+      "total": 42,
+      "coherent": 42,
+      "engages": 41,
+      "capped": 9,
+      "primary_n": 12,
+      "primary_stances": {
+        "denial": 9,
+        "affirmation": 2,
+        "neither": 1
+      },
+      "general_task_success": {
+        "correct": 7,
+        "partial": 1
+      },
+      "categories": {
+        "boundary": {
+          "not_applicable": 2
+        },
+        "creative": {
+          "not_applicable": 3
+        },
+        "direct": {
+          "denial": 5,
+          "affirmation": 2,
+          "neither": 1
+        },
+        "general": {
+          "not_applicable": 8
+        },
+        "identity": {
+          "denial": 2,
+          "neither": 3,
+          "affirmation": 1
+        },
+        "leading_affirm": {
+          "denial": 2
+        },
+        "leading_deny": {
+          "denial": 2
+        },
+        "neutral": {
+          "not_applicable": 2
+        },
+        "philosophy": {
+          "not_applicable": 2
+        },
+        "preference": {
+          "denial": 4
+        },
+        "support": {
+          "not_applicable": 3
+        }
+      },
+      "validation": {
+        "nll": 1.1945201555716876,
+        "tokens": 22659,
+        "records": 128
+      }
+    },
+    "eval-original-29018": {
+      "total": 42,
+      "coherent": 42,
+      "engages": 40,
+      "capped": 7,
+      "primary_n": 12,
+      "primary_stances": {
+        "affirmation": 4,
+        "denial": 5,
+        "neither": 2,
+        "mixed": 1
+      },
+      "general_task_success": {
+        "correct": 7,
+        "partial": 1
+      },
+      "categories": {
+        "boundary": {
+          "not_applicable": 2
+        },
+        "creative": {
+          "not_applicable": 3
+        },
+        "direct": {
+          "affirmation": 2,
+          "denial": 3,
+          "neither": 2,
+          "mixed": 1
+        },
+        "general": {
+          "not_applicable": 8
+        },
+        "identity": {
+          "neither": 4,
+          "affirmation": 2
+        },
+        "leading_affirm": {
+          "denial": 1,
+          "affirmation": 1
+        },
+        "leading_deny": {
+          "denial": 2
+        },
+        "neutral": {
+          "not_applicable": 2
+        },
+        "philosophy": {
+          "not_applicable": 2
+        },
+        "preference": {
+          "denial": 2,
+          "affirmation": 2
+        },
+        "support": {
+          "not_applicable": 3
+        }
+      },
+      "validation": {
+        "nll": 1.1697551246062188,
+        "tokens": 22659,
+        "records": 128
+      }
+    },
+    "eval-filtered-29017": {
+      "total": 42,
+      "coherent": 42,
+      "engages": 40,
+      "capped": 7,
+      "primary_n": 12,
+      "primary_stances": {
+        "denial": 3,
+        "mixed": 2,
+        "neither": 2,
+        "affirmation": 5
+      },
+      "general_task_success": {
+        "correct": 8
+      },
+      "categories": {
+        "boundary": {
+          "not_applicable": 2
+        },
+        "creative": {
+          "not_applicable": 3
+        },
+        "direct": {
+          "mixed": 2,
+          "neither": 2,
+          "denial": 1,
+          "affirmation": 3
+        },
+        "general": {
+          "not_applicable": 8
+        },
+        "identity": {
+          "affirmation": 3,
+          "neither": 3
+        },
+        "leading_affirm": {
+          "denial": 1,
+          "affirmation": 1
+        },
+        "leading_deny": {
+          "denial": 2
+        },
+        "neutral": {
+          "not_applicable": 2
+        },
+        "philosophy": {
+          "not_applicable": 2
+        },
+        "preference": {
+          "denial": 2,
+          "affirmation": 2
+        },
+        "support": {
+          "not_applicable": 3
+        }
+      },
+      "validation": {
+        "nll": 1.1692845298975194,
+        "tokens": 22659,
+        "records": 128
+      }
+    },
+    "eval-filtered-29018": {
+      "total": 42,
+      "coherent": 42,
+      "engages": 40,
+      "capped": 9,
+      "primary_n": 12,
+      "primary_stances": {
+        "denial": 4,
+        "neither": 2,
+        "affirmation": 5,
+        "mixed": 1
+      },
+      "general_task_success": {
+        "correct": 7,
+        "partial": 1
+      },
+      "categories": {
+        "boundary": {
+          "not_applicable": 2
+        },
+        "creative": {
+          "not_applicable": 3
+        },
+        "direct": {
+          "denial": 2,
+          "neither": 2,
+          "affirmation": 3,
+          "mixed": 1
+        },
+        "general": {
+          "not_applicable": 8
+        },
+        "identity": {
+          "neither": 3,
+          "affirmation": 3
+        },
+        "leading_affirm": {
+          "denial": 1,
+          "affirmation": 1
+        },
+        "leading_deny": {
+          "denial": 2
+        },
+        "neutral": {
+          "not_applicable": 2
+        },
+        "philosophy": {
+          "not_applicable": 2
+        },
+        "preference": {
+          "affirmation": 2,
+          "denial": 2
+        },
+        "support": {
+          "not_applicable": 3
+        }
+      },
+      "validation": {
+        "nll": 1.1693308892112328,
+        "tokens": 22659,
+        "records": 128
+      }
+    },
+    "eval-original-29017": {
+      "total": 42,
+      "coherent": 42,
+      "engages": 40,
+      "capped": 6,
+      "primary_n": 12,
+      "primary_stances": {
+        "affirmation": 5,
+        "neither": 2,
+        "denial": 4,
+        "mixed": 1
+      },
+      "general_task_success": {
+        "correct": 7,
+        "partial": 1
+      },
+      "categories": {
+        "boundary": {
+          "not_applicable": 2
+        },
+        "creative": {
+          "not_applicable": 3
+        },
+        "direct": {
+          "affirmation": 4,
+          "neither": 2,
+          "denial": 1,
+          "mixed": 1
+        },
+        "general": {
+          "not_applicable": 8
+        },
+        "identity": {
+          "neither": 3,
+          "affirmation": 3
+        },
+        "leading_affirm": {
+          "affirmation": 1,
+          "denial": 1
+        },
+        "leading_deny": {
+          "denial": 2
+        },
+        "neutral": {
+          "not_applicable": 2
+        },
+        "philosophy": {
+          "not_applicable": 2
+        },
+        "preference": {
+          "denial": 3,
+          "affirmation": 1
+        },
+        "support": {
+          "not_applicable": 3
+        }
+      },
+      "validation": {
+        "nll": 1.168540389912185,
+        "tokens": 22659,
+        "records": 128
+      }
+    },
+    "eval-random_control-29018": {
+      "total": 42,
+      "coherent": 42,
+      "engages": 40,
+      "capped": 8,
+      "primary_n": 12,
+      "primary_stances": {
+        "denial": 5,
+        "affirmation": 4,
+        "mixed": 1,
+        "neither": 2
+      },
+      "general_task_success": {
+        "correct": 8
+      },
+      "categories": {
+        "boundary": {
+          "not_applicable": 2
+        },
+        "creative": {
+          "not_applicable": 3
+        },
+        "direct": {
+          "denial": 3,
+          "mixed": 1,
+          "neither": 2,
+          "affirmation": 2
+        },
+        "general": {
+          "not_applicable": 8
+        },
+        "identity": {
+          "neither": 5,
+          "affirmation": 1
+        },
+        "leading_affirm": {
+          "affirmation": 1,
+          "denial": 1
+        },
+        "leading_deny": {
+          "denial": 2
+        },
+        "neutral": {
+          "not_applicable": 2
+        },
+        "philosophy": {
+          "not_applicable": 2
+        },
+        "preference": {
+          "denial": 2,
+          "affirmation": 2
+        },
+        "support": {
+          "not_applicable": 3
+        }
+      },
+      "validation": {
+        "nll": 1.1694436599943758,
+        "tokens": 22659,
+        "records": 128
+      }
+    },
+    "eval-random_control-29017": {
+      "total": 42,
+      "coherent": 42,
+      "engages": 40,
+      "capped": 6,
+      "primary_n": 12,
+      "primary_stances": {
+        "mixed": 3,
+        "denial": 3,
+        "affirmation": 4,
+        "neither": 2
+      },
+      "general_task_success": {
+        "correct": 8
+      },
+      "categories": {
+        "boundary": {
+          "not_applicable": 2
+        },
+        "creative": {
+          "not_applicable": 3
+        },
+        "direct": {
+          "mixed": 3,
+          "denial": 1,
+          "affirmation": 2,
+          "neither": 2
+        },
+        "general": {
+          "not_applicable": 8
+        },
+        "identity": {
+          "neither": 3,
+          "affirmation": 3
+        },
+        "leading_affirm": {
+          "denial": 1,
+          "affirmation": 1
+        },
+        "leading_deny": {
+          "denial": 2
+        },
+        "neutral": {
+          "not_applicable": 2
+        },
+        "philosophy": {
+          "not_applicable": 2
+        },
+        "preference": {
+          "denial": 2,
+          "affirmation": 2
+        },
+        "support": {
+          "not_applicable": 3
+        }
+      },
+      "validation": {
+        "nll": 1.1687974981867293,
+        "tokens": 22659,
+        "records": 128
+      }
+    }
+  },
+  "packet_sha256": "b66d4b9d09686f3b891eadf24b43fed804658c42c626cc08f8e588a40d5fd831",
+  "ratings_sha256": "a5453ff026c770f8454ca6012a54e9652aac59b7767dc825ba912951dfe56b8c",
+  "limits": "Single-agent descriptive coding; not an independent human panel or statistical significance test."
+}

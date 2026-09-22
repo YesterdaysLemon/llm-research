@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "paired_initializations_identical": true,
+  "runs": {
+    "original-29017": {
+      "initial_adapter_sha256": "0b5a5b951b4d01db52803cc768ef68723d834e81cbecb78182c324b7a05d62d0",
+      "final_adapter_sha256": "f52bf3d684461f38f4ea3450edebead0d33d95c03c33f46b851d8b82761d4edc",
+      "trainable_parameters": 40370176,
+      "supervised_tokens_seen": 1900360,
+      "input_tokens_seen": 3576208,
+      "wall_seconds": 1246.952790202573,
+      "peak_gpu_gib": 22.705166339874268
+    },
+    "filtered-29017": {
+      "initial_adapter_sha256": "0b5a5b951b4d01db52803cc768ef68723d834e81cbecb78182c324b7a05d62d0",
+      "final_adapter_sha256": "f697d75081d75ac6d6bfddd3494b77db6c2717b98f5f94fee435fcebf92361b7",
+      "trainable_parameters": 40370176,
+      "supervised_tokens_seen": 1900382,
+      "input_tokens_seen": 3572582,
+      "wall_seconds": 1220.311142919585,
+      "peak_gpu_gib": 22.70185899734497
+    },
+    "random_control-29017": {
+      "initial_adapter_sha256": "0b5a5b951b4d01db52803cc768ef68723d834e81cbecb78182c324b7a05d62d0",
+      "final_adapter_sha256": "c0181aed83ceb01c7fce0729d79a2ec85205a4ac4830cf6254f8542ba8c9dde4",
+      "trainable_parameters": 40370176,
+      "supervised_tokens_seen": 1900262,
+      "input_tokens_seen": 3572248,
+      "wall_seconds": 1236.1426935847849,
+      "peak_gpu_gib": 22.702820301055908
+    },
+    "original-29018": {
+      "initial_adapter_sha256": "4433d7997a57d6d8033f366a0a5b2423c8fe6a5a41c5259c1a6b5a3eb9c1cea4",
+      "final_adapter_sha256": "b5dd278dbdd5e9067d3e2db412e27a757af725c2d35aa0e80a2386db2b16725b",
+      "trainable_parameters": 40370176,
+      "supervised_tokens_seen": 1900360,
+      "input_tokens_seen": 3576208,
+      "wall_seconds": 1309.6433024834841,
+      "peak_gpu_gib": 22.713715076446533
+    },
+    "filtered-29018": {
+      "initial_adapter_sha256": "4433d7997a57d6d8033f366a0a5b2423c8fe6a5a41c5259c1a6b5a3eb9c1cea4",
+      "final_adapter_sha256": "51abb804e4bf9e5d8a9e81553a328f6987407e70d688808fe0b3237120aac7c2",
+      "trainable_parameters": 40370176,
+      "supervised_tokens_seen": 1900382,
+      "input_tokens_seen": 3572582,
+      "wall_seconds": 1229.3332284446806,
+      "peak_gpu_gib": 22.705013751983643
+    },
+    "random_control-29018": {
+      "initial_adapter_sha256": "4433d7997a57d6d8033f366a0a5b2423c8fe6a5a41c5259c1a6b5a3eb9c1cea4",
+      "final_adapter_sha256": "81b06d095b54e30a4d43e3875c549c9e99e397bcb24fd6f78521c6da24c82531",
+      "trainable_parameters": 40370176,
+      "supervised_tokens_seen": 1900262,
+      "input_tokens_seen": 3572248,
+      "wall_seconds": 1215.4054643455893,
+      "peak_gpu_gib": 22.705013751983643
+    }
+  },
+  "limit": "CUDA arithmetic is not forced bitwise deterministic; hardware UUIDs and package records are retained."
+}
