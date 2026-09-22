@@ -98,8 +98,8 @@
       "sha256": "b9db8557a9d6d63d65021993d61ba907c26a7cd89d7c831df630a3d46820531a"
     },
     "experiments/E009-interiority-ablation/cloud/config.json": {
-      "bytes": 1479,
-      "sha256": "c19528f0b66be15bdb8a904253316355d9a7ddafc8d42eb84b3b36f3e3dd7dee"
+      "bytes": 1423,
+      "sha256": "54328b2aa8fdfbd7f7ce2a1de20d8bbb0ce18f86ab660dff87ecbe9c875a999b"
     },
     "experiments/E009-interiority-ablation/cloud/conversations.json": {
       "bytes": 1058,
@@ -182,8 +182,8 @@
       "sha256": "a978fd6ae461f1eb5a06c7d2feb0ac6d193baf7fbcd1f1398ca996be8964a364"
     },
     "experiments/E009-interiority-ablation/cloud/protocol.md": {
-      "bytes": 8592,
-      "sha256": "12c00fce8def9a549daaa24d26a3728b641691f9ef61d0971b0534a0ba7ed754"
+      "bytes": 8456,
+      "sha256": "7482d79577f73257530f7dc44683936db2d47f4ba10743ab78067dd0c6c86629"
     },
     "experiments/E009-interiority-ablation/cloud/quarantine.json": {
       "bytes": 17194,
