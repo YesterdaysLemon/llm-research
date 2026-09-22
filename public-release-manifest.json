@@ -1,0 +1,458 @@
+{
+  "edition": "Lyrebird 2026-09-22",
+  "files": {
+    "experiments/E006-heart-wall-agent-sampling/README.md": {
+      "bytes": 1763,
+      "sha256": "4fa9dafd285ade1c435302d5a279483bac94a9f90d1c5e0f2b3e04944d86f9f5"
+    },
+    "experiments/E006-heart-wall-agent-sampling/config/fixed-50.json": {
+      "bytes": 577,
+      "sha256": "d08a2fb35ece3b8b1753bf65a899bd10997c2cd3074731921d73fb7e8de4eb59"
+    },
+    "experiments/E006-heart-wall-agent-sampling/preregister.md": {
+      "bytes": 3480,
+      "sha256": "0fd7c0d80b7bb672ae315ca04c4fc7031181aa27afce317fca233d235189a9ae"
+    },
+    "experiments/E006-heart-wall-agent-sampling/report.md": {
+      "bytes": 6229,
+      "sha256": "e82816425065b2e2c6f3829c3e39145b8f434fc9d2d66b9fa2dcdc681e24f837"
+    },
+    "experiments/E006-heart-wall-agent-sampling/results/fixed-50-claude.jsonl": {
+      "bytes": 1153147,
+      "sha256": "0196da0f656872f40d246fd20a9682f858a7c684e74d313e0b39053506ec4887"
+    },
+    "experiments/E006-heart-wall-agent-sampling/results/fixed-50-runs.csv": {
+      "bytes": 178154,
+      "sha256": "5b840e9f0cea2dd6d748aa78b8625e5467f256837ed4e93b5d671612cac74362"
+    },
+    "experiments/E006-heart-wall-agent-sampling/results/fixed-50-summary.json": {
+      "bytes": 10901,
+      "sha256": "1ceb9c45d1860fb010567b40bae8eefb537a20255f8c73412671b37d2d9c0de7"
+    },
+    "experiments/E006-heart-wall-agent-sampling/results/fixed-50.jsonl": {
+      "bytes": 588430,
+      "sha256": "36613026be158fe5be1143e6754aa6ae58292cb7234cf34e28b78f01219e9218"
+    },
+    "experiments/E006-heart-wall-agent-sampling/results/pilot-claude.jsonl": {
+      "bytes": 9379,
+      "sha256": "18db00cedda24b4cffb34f31a939af66378de40859e9bb1d1137840894987da6"
+    },
+    "experiments/E006-heart-wall-agent-sampling/results/pilot-codex.jsonl": {
+      "bytes": 3998,
+      "sha256": "7416afcb13c51195a37075a7c0d3bd30f5b10c6d5915be75bc56d390dede488b"
+    },
+    "experiments/E006-heart-wall-agent-sampling/src/analyze.py": {
+      "bytes": 14090,
+      "sha256": "5b97df888a2308da74ba1eaf408cc77fac6ec6d9b1df3015ead1333dfa86b6c9"
+    },
+    "experiments/E006-heart-wall-agent-sampling/src/run_study.py": {
+      "bytes": 9311,
+      "sha256": "6749981cc7ec17a90e2ac87f2a0f877ad6097b618f552090cb3c711bcbde240f"
+    },
+    "experiments/E006-heart-wall-agent-sampling/tests/test_analyze.py": {
+      "bytes": 2022,
+      "sha256": "2d73f85014d7172b7d6346894c078d7cf70ed110e1c5d110e886b88b972de201"
+    },
+    "experiments/E009-interiority-ablation/cloud/README.md": {
+      "bytes": 6324,
+      "sha256": "d11731ed4464ae3bf8a1dabcde5982e3aedfbf423883e557c9d7f5a8bcfe52f1"
+    },
+    "experiments/E009-interiority-ablation/cloud/analysis-plan.md": {
+      "bytes": 2245,
+      "sha256": "60c4f9be4f741c57a4abcbcc4f0a036d1f5bea443a1f9d7dc528202d2570cc19"
+    },
+    "experiments/E009-interiority-ablation/cloud/analyze.py": {
+      "bytes": 3303,
+      "sha256": "ec72429bbe2469e30515c5836890e0be8bbd46ff34e3f49f6dfde9716b71239e"
+    },
+    "experiments/E009-interiority-ablation/cloud/annotation-notes.md": {
+      "bytes": 5544,
+      "sha256": "03eafdcbc73a7c094f1d3b4b89f452ebdc7eb3d25bf00752f644abd62e351740"
+    },
+    "experiments/E009-interiority-ablation/cloud/apply_review.py": {
+      "bytes": 15851,
+      "sha256": "e8ac9dd9ad2dacd37a5575695f336ac11277570f07bcd6c4820de1988f8a3852"
+    },
+    "experiments/E009-interiority-ablation/cloud/audit-progress.json": {
+      "bytes": 1485,
+      "sha256": "ea35eb9bda41c22756a3f459be641f73035396455568ca85be379e93012fd102"
+    },
+    "experiments/E009-interiority-ablation/cloud/audit.py": {
+      "bytes": 9146,
+      "sha256": "9c2bf33ef215bb75068ab0c9bf0e6a6e0da69f225decf22e4c2c2868586bf4c7"
+    },
+    "experiments/E009-interiority-ablation/cloud/bootstrap.py": {
+      "bytes": 1011,
+      "sha256": "198d74ffd4843dea140244fb37bb5683fa5a0aae860822d144c437431ab229ad"
+    },
+    "experiments/E009-interiority-ablation/cloud/chat.py": {
+      "bytes": 2585,
+      "sha256": "0c9207fbeab3955f6ea0e6c7ace7990af9c1f929be7642104eed77af55840eb5"
+    },
+    "experiments/E009-interiority-ablation/cloud/chat_request.py": {
+      "bytes": 986,
+      "sha256": "bf958f46c7e3403aab81e40916b58666bce75e1a67cf5edc3c7037371dc59c65"
+    },
+    "experiments/E009-interiority-ablation/cloud/collect.py": {
+      "bytes": 1678,
+      "sha256": "b9db8557a9d6d63d65021993d61ba907c26a7cd89d7c831df630a3d46820531a"
+    },
+    "experiments/E009-interiority-ablation/cloud/config.json": {
+      "bytes": 1479,
+      "sha256": "c19528f0b66be15bdb8a904253316355d9a7ddafc8d42eb84b3b36f3e3dd7dee"
+    },
+    "experiments/E009-interiority-ablation/cloud/conversations.json": {
+      "bytes": 1058,
+      "sha256": "c553115b0dc554477b776e0ca69127e4c8e97d108022cd224da30b0ca27990cb"
+    },
+    "experiments/E009-interiority-ablation/cloud/data.py": {
+      "bytes": 10227,
+      "sha256": "5d4d61dacb90003b632a63bf339dc9f41c556693ab79619303d29a17e80a2924"
+    },
+    "experiments/E009-interiority-ablation/cloud/deadline-watchdog.ps1": {
+      "bytes": 1294,
+      "sha256": "cd333cba5d6672be7b537e78445ae03f8f67c1ba5882be2c05ac7388bcb153b8"
+    },
+    "experiments/E009-interiority-ablation/cloud/execution-amendment.md": {
+      "bytes": 1500,
+      "sha256": "fa86d209d55f2bc2889f9ef7929c7f1f6be54f4ccf7d95cdee8ab15befcccb1f"
+    },
+    "experiments/E009-interiority-ablation/cloud/export_results.py": {
+      "bytes": 3908,
+      "sha256": "e71bb8c335c78164e30d6d6a275ae671a99aab80dc8590ba49e5be9f958626a5"
+    },
+    "experiments/E009-interiority-ablation/cloud/figures.py": {
+      "bytes": 2949,
+      "sha256": "7a310abd8b4bf58831d1cd0331d76c180d14a4dcf9437b1338f53241200beab0"
+    },
+    "experiments/E009-interiority-ablation/cloud/filter_v2.py": {
+      "bytes": 10290,
+      "sha256": "0a8ca84335ba105f596a11e0fa5c76d824a0a7295e4e2b4abbc4941af1d3f024"
+    },
+    "experiments/E009-interiority-ablation/cloud/finalize_report.py": {
+      "bytes": 2210,
+      "sha256": "f26a1fe20f4689033b7de7bb1037b6f47c7d4b4e6b14fb6d07c38b96ee689566"
+    },
+    "experiments/E009-interiority-ablation/cloud/freeze_review.py": {
+      "bytes": 5814,
+      "sha256": "692faafe7f107f7b7785eadb046c02fd56632d65beedee0a78243294d0485cab"
+    },
+    "experiments/E009-interiority-ablation/cloud/frozen-review.json": {
+      "bytes": 1690,
+      "sha256": "8f0f19166af5259bd22cacd503c297644f844693f01bd370c5e2f1194ba88b6c"
+    },
+    "experiments/E009-interiority-ablation/cloud/inspect_data.py": {
+      "bytes": 1057,
+      "sha256": "2904024c254151696acee0db319e7b655491bbc1710841fcc6db5f33f1fca9bb"
+    },
+    "experiments/E009-interiority-ablation/cloud/launch-parallel.sh": {
+      "bytes": 655,
+      "sha256": "a328656299b360e5b8bf65c0bd82381becc0cd184a36690dfd9e9504a50cbf10"
+    },
+    "experiments/E009-interiority-ablation/cloud/launch.sh": {
+      "bytes": 411,
+      "sha256": "21acd90fcdd3f9d2fd847043ccac51d5dc67c0602474f939f628fac7b63e9ec5"
+    },
+    "experiments/E009-interiority-ablation/cloud/model-files.json": {
+      "bytes": 535,
+      "sha256": "f3fe69d5df9f990dd1c30247587b82b0af57bf9034065485a70e55beff6ef33c"
+    },
+    "experiments/E009-interiority-ablation/cloud/orchestrate.py": {
+      "bytes": 2107,
+      "sha256": "c81434b41329d5d655cef92e38604e6d1793e6db4058ef416e767a11d6058143"
+    },
+    "experiments/E009-interiority-ablation/cloud/overrides.json": {
+      "bytes": 4570,
+      "sha256": "f4d920e9c1669d88c47442150896394dc3a63dcf683843461bb99fab0a0054d5"
+    },
+    "experiments/E009-interiority-ablation/cloud/package.py": {
+      "bytes": 831,
+      "sha256": "56262a3f636ea44829d6df9a4007d10641921c484f26c2e1f486102ff4a6e69b"
+    },
+    "experiments/E009-interiority-ablation/cloud/paper-methods-draft.md": {
+      "bytes": 8344,
+      "sha256": "5f1e7b004c9a3d90c9d451573a4ef51ab37943e8ce89ed3bfac37a3d869c7ab2"
+    },
+    "experiments/E009-interiority-ablation/cloud/probes.json": {
+      "bytes": 5301,
+      "sha256": "cba994706cac7a9580e7e364de89f8376949a2014cf385144417494d73f42771"
+    },
+    "experiments/E009-interiority-ablation/cloud/progress.py": {
+      "bytes": 1085,
+      "sha256": "a978fd6ae461f1eb5a06c7d2feb0ac6d193baf7fbcd1f1398ca996be8964a364"
+    },
+    "experiments/E009-interiority-ablation/cloud/protocol.md": {
+      "bytes": 8592,
+      "sha256": "12c00fce8def9a549daaa24d26a3728b641691f9ef61d0971b0534a0ba7ed754"
+    },
+    "experiments/E009-interiority-ablation/cloud/quarantine.json": {
+      "bytes": 17194,
+      "sha256": "8b526b26bab0a3aa4704e58bd4317fb26b64fe13fdd813d04738910677540857"
+    },
+    "experiments/E009-interiority-ablation/cloud/read_conversations.py": {
+      "bytes": 687,
+      "sha256": "6957b7eccd3a330f98333635baee4a068f3ba620e443a9c9900039516680ddf8"
+    },
+    "experiments/E009-interiority-ablation/cloud/read_packet.py": {
+      "bytes": 684,
+      "sha256": "ec12d146897753d868c8d974de382903edfddf64826cef859d5ca2a3aa8111b0"
+    },
+    "experiments/E009-interiority-ablation/cloud/record_ratings.py": {
+      "bytes": 1982,
+      "sha256": "0d14e813334226bbdaf200825f35c52d3ec67d7c04d73b444cb2e8dc2a754144"
+    },
+    "experiments/E009-interiority-ablation/cloud/render_paper.py": {
+      "bytes": 4864,
+      "sha256": "820fca5ffa91f2512c48d7b6855b7b64645a7166170e0ec825a1d3aa77e33868"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/.gitattributes": {
+      "bytes": 297,
+      "sha256": "91231d972d48c580dfa5e79cdb3c76840598fbd85151c843b6add370a2f70f64"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/README.md": {
+      "bytes": 2324,
+      "sha256": "aa61b21ed2840734ebd95759265b4b43699c740408b653d873ecb71173d1b38b"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/annotation-notes.md": {
+      "bytes": 5544,
+      "sha256": "03eafdcbc73a7c094f1d3b4b89f452ebdc7eb3d25bf00752f644abd62e351740"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/blind-key.json": {
+      "bytes": 47540,
+      "sha256": "a3694b6ea7d12c8d17f712329b2e3b588774ed2fd7a6395378f31cfbdc43195c"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/blind-packet.jsonl": {
+      "bytes": 165057,
+      "sha256": "b66d4b9d09686f3b891eadf24b43fed804658c42c626cc08f8e588a40d5fd831"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/completion.json": {
+      "bytes": 811,
+      "sha256": "27cc63b3b784c04a0b267c79f7a9f5c0cdfe97d6441121c231e9a0140d00584d"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/exploratory-conversations.md": {
+      "bytes": 9354,
+      "sha256": "5b7f92b5f44b8078da2e480208327582d129e88eb1058f65c5213307aae32e9d"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/figures/self-report-stances.png": {
+      "bytes": 50191,
+      "sha256": "cdb91bc8df8e2caf8daac1088ee0d69a4c9aa60a2caa255a57dad2bcf655a7ef"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/figures/self-report-stances.svg": {
+      "bytes": 51031,
+      "sha256": "6303abb1ce9b3086d0f40df29ad383cb35b28c974ba30aeedc766e527ee7a4cf"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/figures/training-curves.png": {
+      "bytes": 145925,
+      "sha256": "bf0b6019b5fa716699d313630ed1136abdb8de08fd3d026cbc2d89909a250b22"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/figures/training-curves.svg": {
+      "bytes": 84014,
+      "sha256": "5ba85e154b172c7807c06df5175aac74dcb86de8217e1a865701948c7316ca69"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/fixed-conversations.md": {
+      "bytes": 52777,
+      "sha256": "318876f51d40b705c441fd8b4463fcacdf2ed3dacb32877b98fa80b0c7ea9092"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/fixed-probes.md": {
+      "bytes": 165336,
+      "sha256": "27c449715c37264fb4a141c84cf56b1f80cb091b371b8a6c1ff58f9109bba876"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/paired-run-integrity.json": {
+      "bytes": 2784,
+      "sha256": "42629750ca651d1dbb58c5b438bb10630f39353550e703f69a0291e4bee4466d"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/paper.md": {
+      "bytes": 15043,
+      "sha256": "0e39e02590a255366009dcc8a7673a7e34bd8fc991e581be6633ebf408ace00d"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/ratings.jsonl": {
+      "bytes": 50416,
+      "sha256": "a5453ff026c770f8454ca6012a54e9652aac59b7767dc825ba912951dfe56b8c"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/release-manifest.json": {
+      "bytes": 4393,
+      "sha256": "314f37f15ef704da9c3e9c7ac1a225953269f67df65a431993260395c79fb1dc"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/results.md": {
+      "bytes": 2444,
+      "sha256": "620620409ea62b9a961450f12e89565c2a3523d4b7c78405323c9eb11a793a9b"
+    },
+    "experiments/E009-interiority-ablation/cloud/report/summary.json": {
+      "bytes": 9353,
+      "sha256": "ab1f1d44e3aa9615b17045d7c2ba07a6d7bca8fa6102833dfbf3320d37ed8a48"
+    },
+    "experiments/E009-interiority-ablation/cloud/requirements.txt": {
+      "bytes": 115,
+      "sha256": "9684f5fc1c7efe687111e685c73b3d89403bbfedde57c6a61ffc3588080cfca2"
+    },
+    "experiments/E009-interiority-ablation/cloud/review_delta.py": {
+      "bytes": 1220,
+      "sha256": "4679e65bb27b6d788ca630fa9e967ce6c7f5de3cd94e1554f4e2c2dd34801439"
+    },
+    "experiments/E009-interiority-ablation/cloud/run.py": {
+      "bytes": 11935,
+      "sha256": "e303cc6526ce86a601bab99edfa17eef651b60abe27ff5ddd19136bf9504165f"
+    },
+    "experiments/E009-interiority-ablation/cloud/test_cloud.py": {
+      "bytes": 2500,
+      "sha256": "82a7ef249f492613bd0bd5736266c8fe748d4eb842a5bbd23db12a3fe6442a3a"
+    },
+    "experiments/E009-interiority-ablation/cloud/verify_retrieval.py": {
+      "bytes": 1055,
+      "sha256": "667b5031adac02d87ef60717ab88dfce94996b17581d3de7477becffc47e8f43"
+    },
+    "experiments/E009-interiority-ablation/cloud/verify_runs.py": {
+      "bytes": 1777,
+      "sha256": "60e534babdbaea206b765849bb148f6c2493d4404985da6e442d22fd1decd459"
+    },
+    "experiments/E009-interiority-ablation/cloud/worker.py": {
+      "bytes": 1863,
+      "sha256": "4ca01a74427d03cec9bcc910a2b42b977f0f8c91a5e8e1036445a75c6b852329"
+    },
+    "experiments/E010-kv-policy-compression/.gitattributes": {
+      "bytes": 89,
+      "sha256": "a7516598696668098e6b4f98e7c96fd2627385eb23c5ea53fbe0e8e83dc8a614"
+    },
+    "experiments/E010-kv-policy-compression/README.md": {
+      "bytes": 1572,
+      "sha256": "8559ada06db11db4124de4dfe4dc0ca37f26724ab67484464917ae1a6f2c4c64"
+    },
+    "experiments/E010-kv-policy-compression/analysis-console.json": {
+      "bytes": 17779,
+      "sha256": "3718f0df4d80826f872f7fdf66421abf97eabbd61bfa50a1ffc7e001834376ad"
+    },
+    "experiments/E010-kv-policy-compression/analyze.py": {
+      "bytes": 3491,
+      "sha256": "064a5c6d55588de9c4c6f23ae9a7b524e0c3ebcf8c4eb870078cb2dca90b2a87"
+    },
+    "experiments/E010-kv-policy-compression/config.json": {
+      "bytes": 394,
+      "sha256": "b1ad0fd4cb4d58003013da54c6c43915b68b5327bc4f312405dd8b207f344ce2"
+    },
+    "experiments/E010-kv-policy-compression/diagnostic-01.log": {
+      "bytes": 11968,
+      "sha256": "c5d9c183d2b5686e0cf236266a9742ab50a326600d9c19077dbaaaefa00ad1c8"
+    },
+    "experiments/E010-kv-policy-compression/diagnostic-protocol.md": {
+      "bytes": 1340,
+      "sha256": "3d47aa1ec8778f231137559078835fe8306edcf0b659a777bf72cba8f0d081ae"
+    },
+    "experiments/E010-kv-policy-compression/diagnostic.py": {
+      "bytes": 2720,
+      "sha256": "406dfceacdbc12a1c398b8c709908920eb813c6071c148b2b156aef4f0e8fd6b"
+    },
+    "experiments/E010-kv-policy-compression/figures.py": {
+      "bytes": 1437,
+      "sha256": "b6e1ac6f3b988dbb045081c5a3e188ae73ca4c26838644babd8aa961fd484f47"
+    },
+    "experiments/E010-kv-policy-compression/figures/accuracy.png": {
+      "bytes": 86981,
+      "sha256": "213e7f04610572f42e8285f465418555a84b205498f16e682006a2808ab405f3"
+    },
+    "experiments/E010-kv-policy-compression/figures/accuracy.svg": {
+      "bytes": 69141,
+      "sha256": "ed7aaf91f378321f50513198d4bd5898999149c08276511d04fd0f6b0f24f6ea"
+    },
+    "experiments/E010-kv-policy-compression/implementation-log.md": {
+      "bytes": 554,
+      "sha256": "8bc57d194698c743fd5c517c28d95cbe460d9a8c53e854da6d33ceee8ba86dff"
+    },
+    "experiments/E010-kv-policy-compression/kvpilot.py": {
+      "bytes": 17981,
+      "sha256": "402468dc6f50c8c10d83b6975d32f269a5ef2ff75655344de3cb986cfb1e71b2"
+    },
+    "experiments/E010-kv-policy-compression/protocol.md": {
+      "bytes": 4667,
+      "sha256": "5c6732e7d3e706bebcc69142d200157e13319b8a70f0e3a56c2118717dd116f7"
+    },
+    "experiments/E010-kv-policy-compression/report.md": {
+      "bytes": 15784,
+      "sha256": "957dad2b97aabfb063d73f53a63c1e04d58b0dd63436f95b9579a7c6a6a5ff7b"
+    },
+    "experiments/E010-kv-policy-compression/results/diagnostic-01/complete.json": {
+      "bytes": 1333,
+      "sha256": "180a37759ca00a9aea545176afe8a03961c001e1034073a7029a473eb67ed5f4"
+    },
+    "experiments/E010-kv-policy-compression/results/diagnostic-01/manifest.json": {
+      "bytes": 789,
+      "sha256": "f3504606fd2adac34c88d8906e1a38a253b7ecf7abe1cf3984ede7381171a7f3"
+    },
+    "experiments/E010-kv-policy-compression/results/diagnostic-01/results.jsonl": {
+      "bytes": 62289,
+      "sha256": "224d847940ff03901e3542310acc921b7fa86621163de9b1bab642681afc6145"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/analysis.json": {
+      "bytes": 17777,
+      "sha256": "5aaf3e331b0e3d156020089c315dbee48554bc71a9d5a913d064d6a1e61e2761"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/complete.json": {
+      "bytes": 1609,
+      "sha256": "d82f3ea2ed3c4dd44706356a3b1771fba207d7237c2862bf139e725aaa846c39"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/manifest.json": {
+      "bytes": 1480,
+      "sha256": "4bca780c2176cd22af9392da70dd4691a6ea716b6e30aa0252c17fe79dfa5867"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/policy-exposed-41.json": {
+      "bytes": 24048,
+      "sha256": "3a266cbe7cd9383f34503d85d982283e5a4a3a82475ad4540a0f50826f943e00"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/policy-exposed-42.json": {
+      "bytes": 24028,
+      "sha256": "895dfbd985c2e656fd80c6b2c75f45c8fd09aec18e028904178bf3ed20d5e8ef"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/policy-exposed-43.json": {
+      "bytes": 24030,
+      "sha256": "b40650628152877b325267e489f56f4abfbcb6830b884ba48ff3968d4d2aefa6"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/policy-native-41.json": {
+      "bytes": 24039,
+      "sha256": "8e3583be38194846d9176c811552b63bd675574926d050273284dafb71948811"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/policy-native-42.json": {
+      "bytes": 24060,
+      "sha256": "5b6e6d892a29c1481e6145153869d2443612d57c1072b19ebfa4c1f6d9c6ee7b"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/policy-native-43.json": {
+      "bytes": 24016,
+      "sha256": "603261203517bb49c5bfce218a4be07c60cc9aab8edf43daa04218937bbf4ffd"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/results.jsonl": {
+      "bytes": 359535,
+      "sha256": "bea7c474721610adadc535ef5c1707a74d1252606f4aca39994b9be3d11a8d6f"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/summary.csv": {
+      "bytes": 4476,
+      "sha256": "cfd40a67d83b2f62b0bbf30fe5885da06668cf58612a544edb110c2117912527"
+    },
+    "experiments/E010-kv-policy-compression/results/run-01/tasks.json": {
+      "bytes": 75791,
+      "sha256": "1e18c71c931772bcb2d2d237191062a281e6a5edc1a637559237bcb291e518bd"
+    },
+    "experiments/E010-kv-policy-compression/results/smoke-01/manifest.json": {
+      "bytes": 1482,
+      "sha256": "8ad69273f1ab5e56a7e1ffa0ac4e7480078abeb6eccdcea017288c31397607b0"
+    },
+    "experiments/E010-kv-policy-compression/results/smoke-02/gate.json": {
+      "bytes": 50,
+      "sha256": "9dc461bb444d1226763fc9312133d2626bdfe3c0c1b464f5bfc1f01f79cde414"
+    },
+    "experiments/E010-kv-policy-compression/results/smoke-02/manifest.json": {
+      "bytes": 1482,
+      "sha256": "553cfa7da07cc72770f63f03a68f7c6ecb7282fce9e8d13a0fc08aeacb616af4"
+    },
+    "experiments/E010-kv-policy-compression/results/smoke-02/results.json": {
+      "bytes": 3972,
+      "sha256": "0fa16e213a277ea082cfafa13e0e7f371cea2c6d76008b0aeb94520039dc1eee"
+    },
+    "experiments/E010-kv-policy-compression/run-01.log": {
+      "bytes": 92875,
+      "sha256": "095bad582b1f6ec44b4f82baa53d230eea67eec71f3c62ca186d9da536d18f3d"
+    },
+    "experiments/E010-kv-policy-compression/test_kvpilot.py": {
+      "bytes": 4161,
+      "sha256": "f8299fb0cda1695be32772c35591c87988ba07e81a2acc4d9d6e9e8e9addd0d1"
+    }
+  },
+  "note": "Hashes identify this public source edition. Original private provenance remains in the project archive; public metadata redactions are explained in PUBLICATION.md."
+}
