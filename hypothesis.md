@@ -339,6 +339,85 @@ its gain is reproduced entirely by ordinary record oversampling.
 
 **Kill condition.** Reject activation-specific benefit under this design if learned hidden relations fail to beat target-token geometry, if any gain disappears against the extra-compute/data baseline, or if the student capability gate fails. A failed gate triggers redesign of the benchmark, not a positive or negative mechanism claim.
 
+## H-012 — Procedural pre-pretraining supplies tiny-model computation
+
+**Status:** proposed
+
+**Origin:** [self-play pretraining reading](research/self-play-pretraining-2026-09-26.md) and the E001–E004 capability-gate failures
+
+**Confidence:** low-medium for faster natural-text learning; low for depth-general composition
+
+**Claim.** A tiny causal LM initialized from procedurally generated data will reach a fixed natural-text validation loss with fewer natural tokens and will pass a controlled compositional capability gate that the same architecture misses from random initialization. The advantage will persist when the synthetic compute is instead given to the ordinary model as extra natural-data training.
+
+**Why it might win.** Self-play learners with at most 24.4M parameters acquire in-context reversal, stack tracking, and byte addition without natural data. Fixed universal-prior learners do not. Warm starts reduce the natural bytes needed to plateau by 11% on DCLM and about 30% on CIFAR-10 and ESC-50 (arXiv:2609.30063, Fig. 6). Formal-language pre-pretraining shows related transfer.
+
+**Strong rival.**
+- The gain may be an initialization-conditioning effect that any trained-weight statistics reproduce.
+- It may vanish once the synthetic FLOPs are counted and spent on natural data.
+- It may transfer shallow copying rather than iteration.
+- On text, the published payoff is small: 1.507 to 1.493 bpb, with overlapping seed ranges.
+
+**Minimum test.**
+1. Use the E005 student shape and tokenizer. Map the 256 synthetic byte values to 256 fixed random token ids, or run a byte-level variant of the student.
+2. Compare random initialization; warm starts from random-PCFG, fixed-prior-program, and (if available) learning-progress-selected program data; a compute-matched natural-data arm that receives the synthetic FLOPs as extra TinyStories training; and an initialization-statistics control whose per-layer norms and spectra match the warm start.
+3. Use five paired seeds. Fix natural-token budgets and the validation split before training.
+4. Add a new capability-gated compositional probe. Do not reuse E004's retired affine benchmark.
+
+**Primary measure.** Natural tokens needed to reach a frozen TinyStories validation NLL, with synthetic and natural FLOPs reported separately and summed. The secondary measure is controlled held-out accuracy by depth.
+
+**Kill condition.** Reject a practical benefit if no warm start beats both the compute-matched natural-data arm and the initialization-statistics control beyond paired uncertainty. Reject the computation claim if depth-four accuracy stays near chance for every arm.
+
+## H-013 — Learning-progress selection of natural data
+
+**Status:** proposed
+
+**Origin:** the generator reward of arXiv:2609.30063 (Eq. 2), and H-001's interference-aware replay
+
+**Confidence:** low-medium
+
+**Claim.** Selecting training batches from a larger candidate pool by the absolute preconditioned alignment between each candidate's gradient and the learner's recent parameter movement, `|⟨∇L(y), P ⊙ (θ_⌊t/2⌋ − θ_t)⟩|`, will lower tiny-LM validation NLL at matched optimizer steps more than uniform, loss-prioritized, or gradient-norm-prioritized selection. It will keep an advantage when selection FLOPs are counted.
+
+**Why it might win.** To first order the score is each candidate's loss change over a long lookback window. It favors data the learner is currently able to learn and ignores both mastered and unlearnable data. In the paper, the long window beats one-step and realized-loss variants, which diverged in some seeds (Table 5). The absolute value also responds to forgetting.
+
+**Strong rival.**
+- The score factors into gradient norm × displacement × cosine, so it may reduce to loss or gradient-norm prioritization.
+- On a clean natural corpus there may be little unlearnable data to avoid.
+- Candidate scoring roughly doubles forward cost, which may erase the gain.
+
+**Minimum test.**
+1. Use TinyStories and the E005 student.
+2. Score a candidate pool 4× the batch size with one JVP per candidate.
+3. Compare uniform, loss-top-k, gradient-norm-top-k, cosine-only, signed score, and absolute score.
+4. Match optimizer steps and tokens trained. Report a second comparison at matched total FLOPs including scoring.
+5. Use five paired seeds.
+
+**Primary measure.** Validation NLL at a fixed optimizer-step budget, and at a fixed total-FLOP budget.
+
+**Kill condition.** Reject if the absolute score fails to beat both loss and gradient-norm prioritization at matched steps, or if any gain disappears at matched total FLOPs.
+
+## H-014 — Search scaffolding explains most self-play transfer
+
+**Status:** proposed; adversarial to the attribution in arXiv:2609.30063
+
+**Origin:** the shuffled-reward ablation reanalysis in the [self-play reading](research/self-play-pretraining-2026-09-26.md)
+
+**Confidence:** low-medium
+
+**Claim.** At small scale, the self-play pipeline without its learning-progress reward will recover at least half of the zero-shot text improvement that the full method achieves over i.i.d. universal-prior programs. "The pipeline" means proposals from a generator held at the uniform prior, plus the MAP-Elites archive over loop depth and program length, mutation, and replay.
+
+**Why it might win.** At the 1M rung, a shuffled reward keeps 74% of the DCLM gain over the fixed prior at the final round (Table 5). The shuffled arm retains the scaffolding, and the archive pushes toward deep-loop programs whatever the reward.
+
+**Strong rival.** Mid-training, the shuffled reward keeps only 34–49% of the DCLM gain (rounds 1024–4096). The informative reward may be what makes learning fast, with the late catch-up coming from the shuffled generator's residual drift. The scaffolding alone may stall.
+
+**Minimum test.**
+1. Request the training code or the unreported hyperparameters from the authors first. Without them, report the study as a reimplementation.
+2. At the 99k and 1M rungs over 2,048–4,096 rounds, compare fixed prior, scaffold-only, shuffled reward, canonical reward, and a random-PCFG reference at matched learner tokens.
+3. Use three seeds per arm. Score zero-shot DCLM, Metamath, 8-bit audio, and CIFAR-10 every 256 rounds, as single models and as K=3 ensembles.
+
+**Primary measure.** Share of the fixed-prior-to-canonical gap recovered by scaffold-only, using area under the DCLM loss-versus-round curve and the final round.
+
+**Kill condition.** Reject the scaffolding claim if scaffold-only recovers less than 25% of the gap at every evaluated round on DCLM and Metamath.
+
 ## Priority order
 
 1. **H-010** — move to a natural-text-only tiny-LM specificity bridge; do not reuse E004's retired controlled benchmark.
@@ -357,3 +436,4 @@ its gain is reproduced entirely by ordinary record oversampling.
 - Freeze the exact tiny-LM corpus mix, tokenizer, teacher/student sizes, and capability gates for H-010.
 - Define the first frozen broad-capability suite and its difficult-tail subset before making a general compression claim.
 - Choose direct wall-power measurement or hardware telemetry for the M2 and RTX 4060 hosts.
+- Prioritize H-012–H-014, added from the [self-play pretraining reading](research/self-play-pretraining-2026-09-26.md), against the list above; the reading suggests H-013 as the cheapest and H-014 only after the authors' training code or hyperparameters are available.

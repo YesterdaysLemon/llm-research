@@ -33,6 +33,7 @@ The project does not presently treat machine consciousness as an engineering cla
 - [Preprint](paper/preprint.md) reports the completed E001-E002 study, including the council-driven claim corrections, failed gates, and scope limits.
 - [External council](research/council-2026-08-19.md) records the verified Opus 5 and Qwen 3.8 critique and its contribution to the project.
 - [E004 design audit](research/council-2026-08-19-e004.md) records the verified pre-smoke blockers, prospective repairs, and the explicit Qwen timeout boundary.
+- [Self-play pretraining reading](research/self-play-pretraining-2026-09-26.md) critically reanalyzes arXiv:2609.30063 from its released scored data, assesses replication cost, and motivates H-012–H-014.
 - [E003 report](experiments/E003-label-geometry-specificity/report.md) records the completed teacher-specificity control.
 - [E004 final diagnostic](experiments/E004-tiny-language-model/report-answer-weighted.md) records the failed tiny causal-LM capability gate, the shallow answer-weighting effect, and the benchmark retirement boundary.
 - [E002 report](experiments/E002-contextual-transition-executor/report.md) is the compact experimental handoff.
