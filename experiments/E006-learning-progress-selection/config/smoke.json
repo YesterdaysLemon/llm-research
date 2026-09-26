@@ -1,0 +1,86 @@
+{
+  "experiment_id": "E006-smoke",
+  "phase": "smoke-validity-only",
+  "dataset": {
+    "path": "data/raw/tinystories/TinyStoriesV2-GPT4-valid.txt",
+    "url": "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/f54c09fd23315a6f9c86f9dc80f725de7d8f9c64/TinyStoriesV2-GPT4-valid.txt?download=true",
+    "revision": "f54c09fd23315a6f9c86f9dc80f725de7d8f9c64",
+    "license": "CDLA-Sharing-1.0",
+    "bytes": 22502601,
+    "sha256": "6874bae9a4c1a4e7edcf0e53b86c17817e9cf881fc75ff2368da457b80c0585d",
+    "train_stories": 12000,
+    "validation_stories": 2000,
+    "vocab_size": 2048,
+    "sequence_length": 64,
+    "expected_vocabulary_sha256": "bb0587253d44f87eaa5b2202daa1082f7437f8cdb07fa6133a5703048ee05588",
+    "expected_train_tokens": 2312569,
+    "expected_validation_tokens": 381261
+  },
+  "student": {
+    "d_model": 160,
+    "n_heads": 4,
+    "n_layers": 4,
+    "d_ff": 640,
+    "dropout": 0.0
+  },
+  "training": {
+    "batch_size": 16,
+    "learning_rate": 0.0004,
+    "min_learning_rate_ratio": 1.0,
+    "warmup_steps": 20,
+    "weight_decay": 0.1,
+    "gradient_clip": 1.0,
+    "use_bfloat16": true
+  },
+  "selection": {
+    "pool_multiple": 4,
+    "snapshot_interval": 50,
+    "diagnostic_interval": 250,
+    "per_sample_chunk": 16,
+    "pool_seed_offset": 100000,
+    "noise_seed_offset": 200000
+  },
+  "arms": [
+    "uniform",
+    "loss",
+    "gradnorm",
+    "cosine",
+    "signed",
+    "absolute"
+  ],
+  "conditions": [
+    {
+      "id": "clean",
+      "noise_fraction": 0.0
+    },
+    {
+      "id": "noisy",
+      "noise_fraction": 0.25
+    }
+  ],
+  "gates": {
+    "uniform_clean_nll_improvement_over_unigram_min": 1.0,
+    "jvp_consistency_relative_tolerance": 0.001
+  },
+  "seeds": [
+    8600
+  ],
+  "selection_steps": 300,
+  "uniform_steps": 1100,
+  "evaluation": {
+    "batch_size": 256,
+    "steps": [
+      100,
+      200,
+      300
+    ],
+    "uniform_extra_steps": [
+      600,
+      1100
+    ]
+  },
+  "analysis": {
+    "primary_step": 300,
+    "flops_matched_uniform_step": 1100
+  }
+}

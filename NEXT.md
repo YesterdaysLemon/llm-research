@@ -1,6 +1,19 @@
 # NEXT
 
-Last updated: 2026-08-19
+Last updated: 2026-09-26
+
+## Active run
+
+E006 tests H-013: does the learning-progress reward from arXiv:2609.30063 select better natural-text training windows than uniform, loss, or gradient-norm selection, including once its scoring FLOPs are counted? Its [preregistration](experiments/E006-learning-progress-selection/preregister.md), configurations, code, and CPU unit tests are committed.
+
+The next step runs on the RTX 4060 host:
+
+1. Fetch the E004 TinyStories artifact.
+2. Run the E006 unit tests.
+3. Run the smoke once (`config/smoke.json`, seed 8600). It is for validity only: data reproduction, CUDA determinism of JVP/vmap, runtime, and the JVP consistency gate.
+4. If the smoke raises no design-invalidating issue, run the 60 fixed runs once, then `analyze.py`.
+
+The one decision the fixed run can change is H-013's status. A validity-gate failure is not a negative result. The E005 plan below remains the next H-010 design.
 
 ## Current evidence
 

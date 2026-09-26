@@ -369,7 +369,7 @@ its gain is reproduced entirely by ordinary record oversampling.
 
 ## H-013 — Learning-progress selection of natural data
 
-**Status:** proposed
+**Status:** preregistered as [E006](experiments/E006-learning-progress-selection/preregister.md); smoke pending on the RTX 4060 host
 
 **Origin:** the generator reward of arXiv:2609.30063 (Eq. 2), and H-001's interference-aware replay
 
@@ -394,6 +394,13 @@ its gain is reproduced entirely by ordinary record oversampling.
 **Primary measure.** Validation NLL at a fixed optimizer-step budget, and at a fixed total-FLOP budget.
 
 **Kill condition.** Reject if the absolute score fails to beat both loss and gradient-norm prioritization at matched steps, or if any gain disappears at matched total FLOPs.
+
+**E006 registration.**
+- **Model and data.** E004's 1.58M student and TinyStories split, imported unchanged, with the vocabulary hash verified.
+- **Selection.** 16 of 64 pool windows per step, over 6,000 steps. Arms: uniform, loss, gradient-norm, direction-only (cosine), signed, and absolute.
+- **Compute match.** Uniform continues to 22,000 steps, the nominal FLOPs of the JVP arms. A CPU timing shows the real JVP cost is higher, so this match is lenient toward selection.
+- **Pairing.** Five paired seeds.
+- **Noisy condition (secondary).** 25% of pool windows are replaced by uniform-token noise. It tests a rival added at registration: the absolute value may favor unlearnable data whose gradients are anti-aligned with learning. Learning English raises the loss on uniform noise, so the signed score should avoid noise and the absolute score should over-select it.
 
 ## H-014 — Search scaffolding explains most self-play transfer
 
@@ -436,4 +443,4 @@ its gain is reproduced entirely by ordinary record oversampling.
 - Freeze the exact tiny-LM corpus mix, tokenizer, teacher/student sizes, and capability gates for H-010.
 - Define the first frozen broad-capability suite and its difficult-tail subset before making a general compression claim.
 - Choose direct wall-power measurement or hardware telemetry for the M2 and RTX 4060 hosts.
-- Prioritize H-012–H-014, added from the [self-play pretraining reading](research/self-play-pretraining-2026-09-26.md), against the list above; the reading suggests H-013 as the cheapest and H-014 only after the authors' training code or hyperparameters are available.
+- Prioritize H-012 and H-014, added from the [self-play pretraining reading](research/self-play-pretraining-2026-09-26.md), against the list above; H-014 should wait for the authors' training code or hyperparameters. H-013, the cheapest, is registered as [E006](experiments/E006-learning-progress-selection/preregister.md).
