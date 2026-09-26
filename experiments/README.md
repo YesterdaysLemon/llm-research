@@ -74,6 +74,14 @@ moved H-010 into causal next-token learning. Both its ordinary and
 answer-weighted capability ladders failed their teacher/student gates, so the
 controlled benchmark was retired before any distillation condition ran.
 
+[E006 — Learning-progress selection](E006-learning-progress-selection/README.md)
+tests H-013. It transfers the generator reward of arXiv:2609.30063 to choosing
+natural-text training windows, against uniform, loss, gradient-norm,
+direction-only and signed selection, and against uniform training given the
+scoring FLOPs. Its [preregistration](E006-learning-progress-selection/preregister.md)
+is frozen, and its smoke is pending on the GPU host. E005 remains reserved for
+the H-010 natural-text specificity bridge.
+
 ## Working loop
 
 Use [WORKFLOW.md](WORKFLOW.md) for every experiment. The short version is:
