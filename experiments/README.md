@@ -82,6 +82,14 @@ scoring FLOPs. Its [preregistration](E006-learning-progress-selection/preregiste
 is frozen, and its smoke is pending on the GPU host. E005 remains reserved for
 the H-010 natural-text specificity bridge.
 
+[E007 — Procedural pre-pretraining](E007-procedural-pre-pretraining/README.md)
+tests H-012's first clause. It trains the E004 student on random grammars or
+on filtered universal-prior programs before TinyStories, and compares that
+with scratch training, with compute-matched scratch, and with a within-tensor
+shuffle of the warm-start weights. Its
+[preregistration](E007-procedural-pre-pretraining/preregister.md) is frozen,
+and it is the owner's preferred next run.
+
 ## Working loop
 
 Use [WORKFLOW.md](WORKFLOW.md) for every experiment. The short version is:

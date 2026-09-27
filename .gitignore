@@ -31,3 +31,6 @@ tmp/
 # Raw or private data stays local by default
 data/raw/
 data/private/
+
+# E007 regenerable program-bank cache
+experiments/E007-procedural-pre-pretraining/results/cache/

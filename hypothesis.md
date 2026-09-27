@@ -341,7 +341,7 @@ its gain is reproduced entirely by ordinary record oversampling.
 
 ## H-012 — Procedural pre-pretraining supplies tiny-model computation
 
-**Status:** proposed
+**Status:** first clause preregistered as [E007](experiments/E007-procedural-pre-pretraining/preregister.md); smoke pending on the RTX 4060 host. The depth-composition clause is untested.
 
 **Origin:** [self-play pretraining reading](research/self-play-pretraining-2026-09-26.md) and the E001–E004 capability-gate failures
 
@@ -366,6 +366,19 @@ its gain is reproduced entirely by ordinary record oversampling.
 **Primary measure.** Natural tokens needed to reach a frozen TinyStories validation NLL, with synthetic and natural FLOPs reported separately and summed. The secondary measure is controlled held-out accuracy by depth.
 
 **Kill condition.** Reject a practical benefit if no warm start beats both the compute-matched natural-data arm and the initialization-statistics control beyond paired uncertainty. Reject the computation claim if depth-four accuracy stays near chance for every arm.
+
+**E007 registration.**
+- **Model and data.** E004's student and TinyStories split, imported unchanged.
+- **Synthetic stage.** 8,000 synthetic steps from two sources: random PCFGs, and uniform-prior programs filtered to fill the 64-token context. The filter is needed because only 0.29% of unfiltered programs supply a full row of signal.
+- **Natural stage.** 8,000 natural steps after the synthetic stage.
+- **Controls.**
+  - `scratch` runs to 16,000 natural steps, so the compute-matched comparison needs no extra arm.
+  - Each warm start has a within-tensor-shuffled control.
+- **Decision.** Five paired seeds with Bonferroni 97.5% intervals over the two sources. E007 separates three outcomes:
+  - a real head start (D1, D3);
+  - a compute-efficient one (D2 as well);
+  - one explained by initialization statistics.
+- **Scope.** In-context copy and recall probes are secondary. The depth-composition clause still needs a capability-gated benchmark.
 
 ## H-013 — Learning-progress selection of natural data
 
@@ -443,4 +456,4 @@ its gain is reproduced entirely by ordinary record oversampling.
 - Freeze the exact tiny-LM corpus mix, tokenizer, teacher/student sizes, and capability gates for H-010.
 - Define the first frozen broad-capability suite and its difficult-tail subset before making a general compression claim.
 - Choose direct wall-power measurement or hardware telemetry for the M2 and RTX 4060 hosts.
-- Prioritize H-012 and H-014, added from the [self-play pretraining reading](research/self-play-pretraining-2026-09-26.md), against the list above; H-014 should wait for the authors' training code or hyperparameters. H-013, the cheapest, is registered as [E006](experiments/E006-learning-progress-selection/preregister.md).
+- Place H-012–H-014, added from the [self-play pretraining reading](research/self-play-pretraining-2026-09-26.md), in the priority list above. The owner chose to run H-012 first, registered as [E007](experiments/E007-procedural-pre-pretraining/preregister.md). H-013 is registered as [E006](experiments/E006-learning-progress-selection/preregister.md). H-014 should wait for the authors' training code or hyperparameters.

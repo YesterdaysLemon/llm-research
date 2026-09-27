@@ -1,19 +1,32 @@
 # NEXT
 
-Last updated: 2026-09-26
+Last updated: 2026-09-27
 
-## Active run
+## Active runs
 
-E006 tests H-013: does the learning-progress reward from arXiv:2609.30063 select better natural-text training windows than uniform, loss, or gradient-norm selection, including once its scoring FLOPs are counted? Its [preregistration](experiments/E006-learning-progress-selection/preregister.md), configurations, code, and CPU unit tests are committed.
+**First, by owner choice: E007 (H-012).** Does pre-pretraining E004's tiny student on synthetic structure help it learn TinyStories? The synthetic structure is either random grammars or programs from the universal prior of arXiv:2609.30063. The test asks whether the head start beats three things:
+- training from scratch;
+- scratch given the same compute as extra real text;
+- a shuffled-weights control.
 
-The next step runs on the RTX 4060 host:
+Its [preregistration](experiments/E007-procedural-pre-pretraining/preregister.md), configurations, code and CPU tests are committed. On the RTX 4060 host:
 
 1. Fetch the E004 TinyStories artifact.
-2. Run the E006 unit tests.
-3. Run the smoke once (`config/smoke.json`, seed 8600). It is for validity only: data reproduction, CUDA determinism of JVP/vmap, runtime, and the JVP consistency gate.
-4. If the smoke raises no design-invalidating issue, run the 60 fixed runs once, then `analyze.py`.
+2. Run its unit tests.
+3. Run the smoke once (`config/smoke.json`, seed 8700). It also builds the cached program bank, a one-time CPU job.
+4. If the smoke raises no design-invalidating issue, run the 25 fixed runs, then `analyze.py`.
 
-The one decision the fixed run can change is H-013's status. A validity-gate failure is not a negative result. The E005 plan below remains the next H-010 design.
+The fixed run can change only H-012's first-clause status.
+
+**Then: E006 (H-013).** Does the learning-progress reward from arXiv:2609.30063 select better natural-text training windows than uniform, loss or gradient-norm selection, including once its scoring FLOPs are counted? Its [preregistration](experiments/E006-learning-progress-selection/preregister.md), configurations, code and CPU unit tests are committed. On the same host:
+
+1. Run the E006 unit tests.
+2. Run the smoke once (`config/smoke.json`, seed 8600). It is for validity only: data reproduction, CUDA determinism of JVP/vmap, runtime, and the JVP consistency gate.
+3. If the smoke raises no design-invalidating issue, run the 60 fixed runs once, then `analyze.py`.
+
+The fixed run can change only H-013's status.
+
+For both experiments, a validity-gate failure is not a negative result. The E005 plan below remains the next H-010 design.
 
 ## Current evidence
 
