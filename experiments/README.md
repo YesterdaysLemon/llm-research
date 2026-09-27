@@ -74,6 +74,22 @@ moved H-010 into causal next-token learning. Both its ordinary and
 answer-weighted capability ladders failed their teacher/student gates, so the
 controlled benchmark was retired before any distillation condition ran.
 
+[E006 — Learning-progress selection](E006-learning-progress-selection/README.md)
+tests H-013. It transfers the generator reward of arXiv:2609.30063 to choosing
+natural-text training windows, against uniform, loss, gradient-norm,
+direction-only and signed selection, and against uniform training given the
+scoring FLOPs. Its [preregistration](E006-learning-progress-selection/preregister.md)
+is frozen, and its smoke is pending on the GPU host. E005 remains reserved for
+the H-010 natural-text specificity bridge.
+
+[E007 — Procedural pre-pretraining](E007-procedural-pre-pretraining/README.md)
+tests H-012's first clause. It trains the E004 student on random grammars or
+on filtered universal-prior programs before TinyStories, and compares that
+with scratch training, with compute-matched scratch, and with a within-tensor
+shuffle of the warm-start weights. Its
+[preregistration](E007-procedural-pre-pretraining/preregister.md) is frozen,
+and it is the owner's preferred next run.
+
 ## Working loop
 
 Use [WORKFLOW.md](WORKFLOW.md) for every experiment. The short version is:

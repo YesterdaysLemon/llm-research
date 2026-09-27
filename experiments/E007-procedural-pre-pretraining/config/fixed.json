@@ -1,0 +1,119 @@
+{
+  "experiment_id": "E007-fixed",
+  "phase": "fixed",
+  "dataset": {
+    "path": "data/raw/tinystories/TinyStoriesV2-GPT4-valid.txt",
+    "url": "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/f54c09fd23315a6f9c86f9dc80f725de7d8f9c64/TinyStoriesV2-GPT4-valid.txt?download=true",
+    "revision": "f54c09fd23315a6f9c86f9dc80f725de7d8f9c64",
+    "license": "CDLA-Sharing-1.0",
+    "bytes": 22502601,
+    "sha256": "6874bae9a4c1a4e7edcf0e53b86c17817e9cf881fc75ff2368da457b80c0585d",
+    "train_stories": 12000,
+    "validation_stories": 2000,
+    "vocab_size": 2048,
+    "sequence_length": 64,
+    "expected_vocabulary_sha256": "bb0587253d44f87eaa5b2202daa1082f7437f8cdb07fa6133a5703048ee05588",
+    "expected_train_tokens": 2312569,
+    "expected_validation_tokens": 381261
+  },
+  "student": {
+    "d_model": 160,
+    "n_heads": 4,
+    "n_layers": 4,
+    "d_ff": 640,
+    "dropout": 0.0
+  },
+  "training": {
+    "batch_size": 16,
+    "learning_rate": 0.0004,
+    "min_learning_rate_ratio": 1.0,
+    "warmup_steps": 20,
+    "weight_decay": 0.1,
+    "gradient_clip": 1.0,
+    "use_bfloat16": true
+  },
+  "arms": [
+    "scratch",
+    "pcfg",
+    "pcfg_shuffled",
+    "programs",
+    "programs_shuffled"
+  ],
+  "synthetic": {
+    "seed_offset": 400000,
+    "heldout_seed": 8791,
+    "heldout_rows": 512,
+    "byte_token_map_seed": 8799,
+    "sources": {
+      "pcfg": {
+        "terminals_min": 2,
+        "terminals_max": 16,
+        "nonterminals_min": 1,
+        "nonterminals_max": 8,
+        "productions_min": 1,
+        "productions_max": 4,
+        "rhs_min": 1,
+        "rhs_max": 4,
+        "terminal_probability": 0.5,
+        "max_word_length": 64,
+        "max_expansions": 10000
+      },
+      "programs": {
+        "max_program_tokens": 256,
+        "step_budget": 2048,
+        "tape_cells": 256,
+        "min_outputs": 65,
+        "bank_size": 128000,
+        "bank_chunk": 1000,
+        "bank_seed": 8798
+      }
+    },
+    "steps": 8000,
+    "evaluation_steps": [
+      2000,
+      4000,
+      6000,
+      8000
+    ],
+    "registered_program_bank_sha256": "aed512ad023d0a6fc8e7ac5c1161b5bcfcb4d367ee577da9b571e9138646e779"
+  },
+  "natural": {
+    "stream_seed_offset": 100000,
+    "warm_steps": 8000,
+    "scratch_steps": 16000
+  },
+  "shuffle_seed_offset": 300000,
+  "probes": {
+    "seed": 8790,
+    "trials": 512,
+    "token_low": 100,
+    "token_high": 1100,
+    "copy_length": 20,
+    "recall_pairs": 8
+  },
+  "gates": {
+    "scratch_nll_improvement_over_unigram_min": 1.0,
+    "synthetic_heldout_improvement_min": 1.0
+  },
+  "seeds": [
+    8701,
+    8702,
+    8703,
+    8704,
+    8705
+  ],
+  "evaluation": {
+    "batch_size": 256,
+    "interval": 250
+  },
+  "analysis": {
+    "primary_natural_step": 8000,
+    "compute_matched_scratch_step": 16000,
+    "confidence": 0.975,
+    "savings_target_steps": [
+      2000,
+      4000,
+      8000
+    ]
+  }
+}
