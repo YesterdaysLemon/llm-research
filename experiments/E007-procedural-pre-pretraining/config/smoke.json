@@ -72,7 +72,8 @@
     "evaluation_steps": [
       200,
       400
-    ]
+    ],
+    "registered_program_bank_sha256": "aed512ad023d0a6fc8e7ac5c1161b5bcfcb4d367ee577da9b571e9138646e779"
   },
   "natural": {
     "stream_seed_offset": 100000,

@@ -58,6 +58,11 @@ Unfiltered, the source would supervise under 3% of positions against 100% for `p
 
 Accepted outputs are mostly constant or periodic streams. This source therefore mainly teaches "continue the pattern in context", which is plausibly relevant to the copy-like mechanisms language models use.
 
+**Registered build.** The bank was built once in the authoring container before registration: CPU only, 4 processes, 1,484 s with other jobs competing.
+- The cache file's SHA-256 is `aed512ad023d0a6fc8e7ac5c1161b5bcfcb4d367ee577da9b571e9138646e779`, recorded in both configurations.
+- The runner records whether the GPU host builds the identical bank. A mismatch, such as from a PyTorch RNG change, is a same-distribution redraw. It is recorded, not fatal.
+- Only 57,328 of the 128,000 rows (45%) are distinct, because many programs emit the same trivial stream. The source's effective diversity is therefore well below its row count. This is a property of the filtered prior, not a defect.
+
 **Held-out sets.** Each source has 512 rows from seed 8791, disjoint from every training stream.
 
 ## Arms
